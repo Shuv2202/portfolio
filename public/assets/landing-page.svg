@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b" />
+      <stop offset="50%" stop-color="#121218" />
+      <stop offset="100%" stop-color="#1c162e" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.4" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#121215" stop-opacity="0.9" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)" />
+  <circle cx="950" cy="150" r="300" fill="#8b5cf6" opacity="0.15" />
+  <circle cx="200" cy="500" r="250" fill="#6366f1" opacity="0.12" />
+  
+  <rect x="60" y="45" width="1080" height="585" rx="16" fill="#111114" stroke="#27272a" stroke-width="1.5" />
+  <circle cx="90" cy="72" r="6" fill="#ef4444" opacity="0.8" />
+  <circle cx="110" cy="72" r="6" fill="#f59e0b" opacity="0.8" />
+  <circle cx="130" cy="72" r="6" fill="#10b981" opacity="0.8" />
+  <rect x="220" y="60" width="760" height="24" rx="6" fill="#18181b" stroke="#27272a" stroke-width="1" />
+  <text x="600" y="76" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#71717a" text-anchor="middle">https://modern-landing-page.demo.app</text>
+  
+  <rect x="100" y="120" width="36" height="36" rx="8" fill="#8b5cf6" />
+  <text x="118" y="144" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#fff" text-anchor="middle">L</text>
+  <text x="150" y="144" font-family="system-ui, sans-serif" font-weight="bold" font-size="16" fill="#fff">NEXUS</text>
+  
+  <rect x="925" y="124" width="115" height="28" rx="6" fill="#8b5cf6" />
+  <text x="982" y="142" font-family="system-ui, sans-serif" font-weight="bold" font-size="12" fill="#fff" text-anchor="middle">Get Started</text>
+  
+  <rect x="100" y="190" width="200" height="24" rx="12" fill="#8b5cf6" fill-opacity="0.15" stroke="#8b5cf6" stroke-opacity="0.3" />
+  <text x="200" y="206" font-family="system-ui, sans-serif" font-weight="600" font-size="11" fill="#c4b5fd" text-anchor="middle">🚀 Next-Gen Web Landing</text>
+  
+  <text x="100" y="270" font-family="system-ui, sans-serif" font-weight="900" font-size="44" fill="#ffffff" letter-spacing="-1">Modern, Clean &amp;</text>
+  <text x="100" y="325" font-family="system-ui, sans-serif" font-weight="900" font-size="44" fill="url(#glow)" letter-spacing="-1">Intuitive Web Experience.</text>
+  <text x="100" y="370" font-family="system-ui, sans-serif" font-size="16" fill="#a1a1aa">Crafted with precision, responsive fluid layout, and high conversion flow.</text>
+  
+  <rect x="100" y="415" width="160" height="44" rx="10" fill="#8b5cf6" />
+  <text x="180" y="442" font-family="system-ui, sans-serif" font-weight="bold" font-size="14" fill="#fff" text-anchor="middle">Explore Features ↗</text>
+  
+  <rect x="680" y="180" width="380" height="400" rx="16" fill="url(#cardGrad)" stroke="#27272a" stroke-width="1.5" />
+  <rect x="710" y="220" width="48" height="48" rx="12" fill="#8b5cf6" fill-opacity="0.2" stroke="#8b5cf6" stroke-opacity="0.4" />
+  <text x="734" y="250" font-family="system-ui, sans-serif" font-size="22" fill="#8b5cf6" text-anchor="middle">⚡</text>
+  <text x="780" y="240" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#fff">Lightning Fast</text>
+  <text x="780" y="260" font-family="system-ui, sans-serif" font-size="13" fill="#a1a1aa">Optimized assets &amp; clean structure</text>
+  
+  <rect x="710" y="310" width="48" height="48" rx="12" fill="#6366f1" fill-opacity="0.2" stroke="#6366f1" stroke-opacity="0.4" />
+  <text x="734" y="340" font-family="system-ui, sans-serif" font-size="22" fill="#6366f1" text-anchor="middle">📱</text>
+  <text x="780" y="330" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#fff">Fully Responsive</text>
+  <text x="780" y="350" font-family="system-ui, sans-serif" font-size="13" fill="#a1a1aa">Mobile, tablet &amp; desktop adaptive</text>
+
+  <rect x="710" y="400" width="48" height="48" rx="12" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-opacity="0.4" />
+  <text x="734" y="430" font-family="system-ui, sans-serif" font-size="22" fill="#10b981" text-anchor="middle">✨</text>
+  <text x="780" y="420" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#fff">Modern Aesthetics</text>
+  <text x="780" y="440" font-family="system-ui, sans-serif" font-size="13" fill="#a1a1aa">Polished UI with dark theme</text>
+</svg>
