@@ -45,13 +45,20 @@ export default function ShubhamVisitIntro({
 
     if (!intro) return;
 
+    // Check if intro was already played in this session
+    const hasVisited = typeof window !== "undefined" && sessionStorage.getItem("shubham_intro_played");
+
     const reducedMotion =
       window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
 
-    if (reducedMotion) {
+    if (reducedMotion || hasVisited) {
       intro.style.display = "none";
+      gsap.set(".hero-reveal", {
+        opacity: 1,
+        clearProps: "transform,opacity,visibility",
+      });
       onComplete?.();
       return;
     }
@@ -88,27 +95,20 @@ export default function ShubhamVisitIntro({
 
     gsap.set(letters, {
       opacity: 0,
-
-      x: (index) =>
-        scatter[index]?.x ?? 0,
-
-      y: (index) =>
-        scatter[index]?.y ?? 0,
-
-      rotation: (index) =>
-        scatter[index]?.rotation ?? 0,
-
-      scale: 0.55,
+      x: (index) => scatter[index]?.x ?? 0,
+      y: (index) => scatter[index]?.y ?? 0,
+      rotation: (index) => scatter[index]?.rotation ?? 0,
+      scale: 0.6,
     });
 
     gsap.set(seed, {
       opacity: 0,
-      scale: 0.3,
+      scale: 0.4,
     });
 
     gsap.set(subtitle, {
       opacity: 0,
-      y: 12,
+      y: 8,
     });
 
     gsap.set(spark, {
@@ -117,13 +117,16 @@ export default function ShubhamVisitIntro({
 
     gsap.set(heroObjects, {
       opacity: 0,
-      y: 70,
-      scale: 0.88,
+      y: 40,
+      scale: 0.94,
     });
 
     const timeline = gsap.timeline({
       onComplete: () => {
         intro.style.display = "none";
+        try {
+          sessionStorage.setItem("shubham_intro_played", "true");
+        } catch {}
         onComplete?.();
       },
     });
@@ -133,105 +136,83 @@ export default function ShubhamVisitIntro({
     timeline
       .to(seed, {
         opacity: 1,
-        scale: 1.35,
-        duration: 0.52,
-        ease: "power4.out",
+        scale: 1.1,
+        duration: 0.2,
+        ease: "power2.out",
       })
-
-      .to(seed, {
-        scale: 0.9,
-        duration: 0.3,
-      })
-
       .to(seed, {
         opacity: 0,
-        scale: 0.4,
-        duration: 0.18,
+        scale: 0.5,
+        duration: 0.1,
       })
-
       .to(letters, {
         opacity: 1,
         x: 0,
         y: 0,
         rotation: 0,
         scale: 1,
-        duration: 0.82,
-
+        duration: 0.4,
         stagger: {
-          each: 0.045,
-          from: "random",
+          each: 0.02,
+          from: "center",
         },
-
-        ease: "back.out(1.8)",
+        ease: "back.out(1.4)",
       })
-
       .to(
         subtitle,
         {
           opacity: 1,
           y: 0,
-          duration: 0.26,
+          duration: 0.15,
         },
-        "-=0.2",
+        "-=0.15",
       )
-
       .to(surname, {
         fontStyle: "italic",
-        skewX: -7,
-        duration: 0.3,
+        skewX: -5,
+        duration: 0.15,
       })
-
       .fromTo(
         spark,
         {
           opacity: 0,
-          left: "-5%",
-          top: "-25%",
-          scale: 0.4,
+          left: "0%",
+          top: "-20%",
+          scale: 0.5,
         },
         {
           opacity: 1,
           left: "100%",
           top: "-5%",
-          scale: 1.3,
-          duration: 0.65,
+          scale: 1.1,
+          duration: 0.3,
           ease: "power2.inOut",
         },
       )
-
       .to(spark, {
         opacity: 0,
-        scale: 0,
-        duration: 0.12,
+        duration: 0.08,
       })
-
       .to(intro, {
-        clipPath:
-          "circle(0px at 50% 50%)",
-
-        duration: 0.88,
-        ease: "power4.inOut",
+        clipPath: "circle(0px at 50% 50%)",
+        duration: 0.45,
+        ease: "power3.inOut",
       })
-
       .to(
         heroObjects,
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.72,
-
+          duration: 0.4,
           stagger: {
-            each: 0.075,
+            each: 0.04,
             from: "start",
           },
-
-          ease: "back.out(1.35)",
-
-          clearProps:
-            "transform,opacity,visibility",
+          ease: "power2.out",
+          clearProps: "transform,opacity,visibility",
         },
-        "-=0.72",
+        "-=0.35",
       );
 
     return () => {
