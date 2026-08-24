@@ -1,121 +1,284 @@
 "use client";
 
-import { PointerEvent, useEffect, useRef } from "react";
+import {
+  useEffect,
+  useRef,
+  type KeyboardEvent,
+  type PointerEvent,
+} from "react";
 
 type PhysicsState = {
   angle: number;
   target: number;
   velocity: number;
   dragging: boolean;
+  lastX: number;
+  lastTime: number;
+  pointerVelocity: number;
 };
+
+const clamp = (
+  value: number,
+  minimum: number,
+  maximum: number,
+) => Math.min(maximum, Math.max(minimum, value));
 
 export default function HangingIdCard() {
   const containerRef = useRef<HTMLDivElement>(null);
   const pendulumRef = useRef<HTMLDivElement>(null);
 
   const physics = useRef<PhysicsState>({
-    angle: -3,
+    angle: -2.4,
     target: 0,
     velocity: 0,
     dragging: false,
+    lastX: 0,
+    lastTime: 0,
+    pointerVelocity: 0,
   });
 
   useEffect(() => {
     const pendulum = pendulumRef.current;
+
     if (!pendulum) return;
 
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reducedMotion) {
+      pendulum.style.transform = "rotate(-2deg)";
+      return;
+    }
+
     let animationFrame = 0;
+    const startedAt = performance.now();
 
-    const animate = () => {
+    const animate = (now: number) => {
       const state = physics.current;
+      const elapsed = (now - startedAt) / 1000;
 
-      const stiffness = state.dragging ? 0.15 : 0.035;
-      const damping = state.dragging ? 0.76 : 0.935;
+      /*
+       * A small automatic movement makes the card
+       * feel like it is naturally hanging.
+       */
+      const idleMovement = state.dragging
+        ? 0
+        : Math.sin(elapsed * 0.78) * 0.42;
 
-      const springForce = (state.target - state.angle) * stiffness;
+      const restingTarget =
+        state.target + idleMovement;
 
-      state.velocity += springForce;
+      const stiffness = state.dragging
+        ? 0.18
+        : 0.028;
+
+      const damping = state.dragging
+        ? 0.72
+        : 0.955;
+
+      state.velocity +=
+        (restingTarget - state.angle) *
+        stiffness;
+
       state.velocity *= damping;
 
-      state.angle += state.velocity;
+      state.angle = clamp(
+        state.angle + state.velocity,
+        -24,
+        24,
+      );
 
-      const verticalMovement = Math.abs(state.angle) * 0.12;
+      const verticalLift =
+        Math.abs(state.angle) * 0.055;
 
       pendulum.style.transform = `
-        rotate(${state.angle}deg)
-        translateY(${verticalMovement}px)
+        rotate(${state.angle.toFixed(3)}deg)
+        translateY(${verticalLift.toFixed(2)}px)
       `;
 
-      animationFrame = requestAnimationFrame(animate);
+      animationFrame =
+        requestAnimationFrame(animate);
     };
 
-    animate();
+    animationFrame =
+      requestAnimationFrame(animate);
 
     return () => {
       cancelAnimationFrame(animationFrame);
     };
   }, []);
 
-  const calculateAngle = (clientX: number, clientY: number) => {
+  const calculateAngle = (
+    clientX: number,
+    clientY: number,
+  ) => {
     const container = containerRef.current;
+
     if (!container) return 0;
 
-    const bounds = container.getBoundingClientRect();
-    const pivotX = bounds.left + bounds.width / 2;
+    const bounds =
+      container.getBoundingClientRect();
+
+    const pivotX =
+      bounds.left + bounds.width / 2;
+
     const pivotY = bounds.top;
 
-    const differenceX = clientX - pivotX;
-    const differenceY = Math.max(clientY - pivotY, 50);
+    const distanceY = Math.max(
+      clientY - pivotY,
+      80,
+    );
 
-    const angle = Math.atan2(differenceX, differenceY) * (180 / Math.PI);
+    const angle =
+      Math.atan2(
+        clientX - pivotX,
+        distanceY,
+      ) *
+      (180 / Math.PI);
 
-    return Math.max(-27, Math.min(27, angle));
+    return clamp(angle, -22, 22);
   };
 
-  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    event.currentTarget.setPointerCapture(event.pointerId);
-    physics.current.dragging = true;
-    physics.current.target = calculateAngle(event.clientX, event.clientY);
+  const handlePointerDown = (
+    event: PointerEvent<HTMLDivElement>,
+  ) => {
+    event.preventDefault();
 
-    containerRef.current?.classList.add("is-dragging");
-  };
+    event.currentTarget.setPointerCapture(
+      event.pointerId,
+    );
 
-  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     const state = physics.current;
 
-    if (state.dragging) {
-      const nextAngle = calculateAngle(event.clientX, event.clientY);
+    state.dragging = true;
 
-      state.velocity += (nextAngle - state.target) * 0.08;
-      state.target = nextAngle;
+    state.target = calculateAngle(
+      event.clientX,
+      event.clientY,
+    );
+
+    state.lastX = event.clientX;
+    state.lastTime = performance.now();
+    state.pointerVelocity = 0;
+
+    containerRef.current?.classList.add(
+      "is-dragging",
+    );
+  };
+
+  const handlePointerMove = (
+    event: PointerEvent<HTMLDivElement>,
+  ) => {
+    const state = physics.current;
+
+    if (!state.dragging) {
+      const container =
+        containerRef.current;
+
+      if (!container) return;
+
+      const bounds =
+        container.getBoundingClientRect();
+
+      const relativeX =
+        (event.clientX - bounds.left) /
+        bounds.width;
+
+      state.target = clamp(
+        (relativeX - 0.5) * 5.5,
+        -3,
+        3,
+      );
+
       return;
     }
 
-    const container = containerRef.current;
-    if (!container) return;
+    const now = performance.now();
 
-    const bounds = container.getBoundingClientRect();
-    const relativeX = (event.clientX - bounds.left) / bounds.width;
+    const deltaTime = Math.max(
+      now - state.lastTime,
+      16,
+    );
 
-    state.target = (relativeX - 0.5) * 8;
+    state.pointerVelocity =
+      (event.clientX - state.lastX) /
+      deltaTime;
+
+    state.lastX = event.clientX;
+    state.lastTime = now;
+
+    state.target = calculateAngle(
+      event.clientX,
+      event.clientY,
+    );
   };
 
-  const releaseCard = (event: PointerEvent<HTMLDivElement> | undefined) => {
+  const releaseCard = (
+    event?: PointerEvent<HTMLDivElement>,
+  ) => {
     const state = physics.current;
-    state.dragging = false;
-    state.target = 0;
 
-    if (event && event.currentTarget.hasPointerCapture(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
+    if (!state.dragging) return;
+
+    state.dragging = false;
+
+    /*
+     * Maintain a little momentum after release.
+     */
+    state.velocity += clamp(
+      state.pointerVelocity * 2.1,
+      -2.8,
+      2.8,
+    );
+
+    state.target = 0;
+    state.pointerVelocity = 0;
+
+    if (
+      event &&
+      event.currentTarget.hasPointerCapture(
+        event.pointerId,
+      )
+    ) {
+      event.currentTarget.releasePointerCapture(
+        event.pointerId,
+      );
     }
 
-    containerRef.current?.classList.remove("is-dragging");
+    containerRef.current?.classList.remove(
+      "is-dragging",
+    );
+  };
+
+  const handleKeyDown = (
+    event: KeyboardEvent<HTMLDivElement>,
+  ) => {
+    if (
+      event.key !== "ArrowLeft" &&
+      event.key !== "ArrowRight"
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    physics.current.velocity +=
+      event.key === "ArrowLeft"
+        ? -1.6
+        : 1.6;
+
+    physics.current.target = 0;
   };
 
   return (
     <div
       ref={containerRef}
-      className="desk-object hanging-id hero-reveal hero-reveal--1"
+      className="
+        desk-object
+        hanging-id
+        hero-reveal
+      "
       data-cursor
       data-cursor-mode="drag"
       data-cursor-text="DRAG"
@@ -128,32 +291,64 @@ export default function HangingIdCard() {
           physics.current.target = 0;
         }
       }}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      aria-label="
+        Interactive hanging identity card.
+        Drag it or use the arrow keys.
+      "
     >
-      <div ref={pendulumRef} className="hanging-id__pendulum">
-        <div className="hanging-id__anchor">
+      <div
+        ref={pendulumRef}
+        className="hanging-id__pendulum"
+      >
+        <div
+          className="hanging-id__anchor"
+          aria-hidden="true"
+        />
+
+        <div
+          className="hanging-id__strap"
+          aria-hidden="true"
+        >
+          <span>
+            SHUBHAM · CREATIVE DEVELOPER
+          </span>
+        </div>
+
+        <div
+          className="hanging-id__hardware"
+          aria-hidden="true"
+        >
+          <i />
           <span />
         </div>
-
-        <div className="hanging-id__strap">
-          <span>SHUBHAM.DEV</span>
-        </div>
-
-        <div className="hanging-id__clip" />
 
         <article className="hanging-id__card">
           <div className="hanging-id__header">
             <span>SHUBHAM</span>
-            <span>001</span>
+            <span>SK · 001</span>
           </div>
 
           <div className="hanging-id__description">
             <strong>Shubham Kumar</strong>
-            <p>Love exploring, prototyping, storytelling, and visual craft.</p>
+
+            <p>
+              Building useful interfaces with
+              code, curiosity, and visual craft.
+            </p>
           </div>
 
           <div className="hanging-id__photo">
-            <img src="/assets/profile.svg" alt="Shubham Kumar" />
-            <span className="hanging-id__status">Available</span>
+            <img
+              src="/assets/profile.svg"
+              alt="Portrait of Shubham Kumar"
+            />
+
+            <span className="hanging-id__status">
+              <i />
+              Available
+            </span>
           </div>
 
           <div className="hanging-id__footer">

@@ -1,14 +1,25 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import {
+  useEffect,
+  useRef,
+} from "react";
 
 export default function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const followerRef = useRef<HTMLDivElement>(null);
-  const labelRef = useRef<HTMLSpanElement>(null);
+  const dotRef =
+    useRef<HTMLDivElement>(null);
+
+  const followerRef =
+    useRef<HTMLDivElement>(null);
+
+  const labelRef =
+    useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    const finePointer =
+      window.matchMedia(
+        "(pointer: fine)",
+      ).matches;
 
     if (!finePointer) return;
 
@@ -16,9 +27,13 @@ export default function CustomCursor() {
     const follower = followerRef.current;
     const label = labelRef.current;
 
-    if (!dot || !follower || !label) return;
+    if (!dot || !follower || !label) {
+      return;
+    }
 
-    document.documentElement.classList.add("custom-cursor-enabled");
+    document.documentElement.classList.add(
+      "custom-cursor-enabled",
+    );
 
     let mouseX = -100;
     let mouseY = -100;
@@ -28,7 +43,9 @@ export default function CustomCursor() {
 
     let animationFrame = 0;
 
-    const updateCursorTarget = (event: PointerEvent) => {
+    const handlePointerMove = (
+      event: globalThis.PointerEvent,
+    ) => {
       mouseX = event.clientX;
       mouseY = event.clientY;
 
@@ -44,29 +61,55 @@ export default function CustomCursor() {
       dot.classList.add("is-visible");
       follower.classList.add("is-visible");
 
-      const element = (event.target as HTMLElement).closest<HTMLElement>(
-        "[data-cursor]"
+      const target = (
+        event.target as HTMLElement
+      ).closest<HTMLElement>(
+        "[data-cursor], a, button, input",
       );
 
-      if (element) {
-        const text = element.dataset.cursorText ?? "VIEW";
-        const mode = element.dataset.cursorMode ?? "action";
+      if (target) {
+        const text =
+          target.dataset.cursorText ?? "";
+
+        const mode =
+          target.dataset.cursorMode ??
+          "action";
 
         label.textContent = text;
+
         follower.dataset.mode = mode;
-        follower.classList.add("is-active");
+
+        follower.classList.add(
+          "is-active",
+        );
+
+        follower.classList.toggle(
+          "has-label",
+          Boolean(text),
+        );
       } else {
         label.textContent = "";
-        follower.dataset.mode = "default";
-        follower.classList.remove("is-active");
+
+        follower.dataset.mode =
+          "default";
+
+        follower.classList.remove(
+          "is-active",
+          "has-label",
+        );
       }
     };
 
-    const animateCursor = () => {
+    const animate = () => {
       const smoothing = 0.13;
 
-      followerX += (mouseX - followerX) * smoothing;
-      followerY += (mouseY - followerY) * smoothing;
+      followerX +=
+        (mouseX - followerX) *
+        smoothing;
+
+      followerY +=
+        (mouseY - followerY) *
+        smoothing;
 
       follower.style.transform = `
         translate3d(
@@ -77,44 +120,95 @@ export default function CustomCursor() {
         translate(-50%, -50%)
       `;
 
-      animationFrame = requestAnimationFrame(animateCursor);
+      animationFrame =
+        requestAnimationFrame(animate);
     };
 
     const handlePointerDown = () => {
       dot.classList.add("is-pressed");
-      follower.classList.add("is-pressed");
+
+      follower.classList.add(
+        "is-pressed",
+      );
     };
 
     const handlePointerUp = () => {
       dot.classList.remove("is-pressed");
-      follower.classList.remove("is-pressed");
+
+      follower.classList.remove(
+        "is-pressed",
+      );
     };
 
-    const handlePointerLeave = () => {
+    const handleMouseLeave = () => {
       dot.classList.remove("is-visible");
-      follower.classList.remove("is-visible");
+
+      follower.classList.remove(
+        "is-visible",
+      );
     };
 
-    window.addEventListener("pointermove", updateCursorTarget);
-    window.addEventListener("pointerdown", handlePointerDown);
-    window.addEventListener("pointerup", handlePointerUp);
-    document.addEventListener("mouseleave", handlePointerLeave);
+    window.addEventListener(
+      "pointermove",
+      handlePointerMove,
+    );
 
-    animateCursor();
+    window.addEventListener(
+      "pointerdown",
+      handlePointerDown,
+    );
+
+    window.addEventListener(
+      "pointerup",
+      handlePointerUp,
+    );
+
+    document.addEventListener(
+      "mouseleave",
+      handleMouseLeave,
+    );
+
+    animate();
 
     return () => {
-      cancelAnimationFrame(animationFrame);
-      window.removeEventListener("pointermove", updateCursorTarget);
-      window.removeEventListener("pointerdown", handlePointerDown);
-      window.removeEventListener("pointerup", handlePointerUp);
-      document.removeEventListener("mouseleave", handlePointerLeave);
-      document.documentElement.classList.remove("custom-cursor-enabled");
+      cancelAnimationFrame(
+        animationFrame,
+      );
+
+      window.removeEventListener(
+        "pointermove",
+        handlePointerMove,
+      );
+
+      window.removeEventListener(
+        "pointerdown",
+        handlePointerDown,
+      );
+
+      window.removeEventListener(
+        "pointerup",
+        handlePointerUp,
+      );
+
+      document.removeEventListener(
+        "mouseleave",
+        handleMouseLeave,
+      );
+
+      document.documentElement.classList.remove(
+        "custom-cursor-enabled",
+      );
     };
   }, []);
 
   return (
     <>
-      <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
+      <div
+        ref={dotRef}
+        className="cursor-dot"
+        aria-hidden="true"
+      />
+
       <div
         ref={followerRef}
         className="cursor-follower"
