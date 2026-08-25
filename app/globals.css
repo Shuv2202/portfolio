@@ -222,7 +222,7 @@ img, svg { display: block; max-width: 100%; }
   background: #141412;
 }
 .hanging-id__photo img {
-  width: 108px; height: 108px; border-radius: 50%; object-fit: cover; object-position: top center;
+  width: 108px; height: 108px; border-radius: 50%; object-fit: cover; object-position: 50% 38%;
   border: 2px solid rgba(255,255,255,.22);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
