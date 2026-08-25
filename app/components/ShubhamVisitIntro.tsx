@@ -115,12 +115,6 @@ export default function ShubhamVisitIntro({
       opacity: 0,
     });
 
-    gsap.set(heroObjects, {
-      opacity: 0,
-      y: 70,
-      scale: 0.88,
-    });
-
     const timeline = gsap.timeline({
       onComplete: () => {
         intro.style.display = "none";
@@ -205,28 +199,11 @@ export default function ShubhamVisitIntro({
         duration: 0.12,
       })
 
-      .to(
-        heroObjects,
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.45,
-          stagger: {
-            each: 0.04,
-            from: "start",
-          },
-          ease: "power2.out",
-          clearProps: "transform,opacity,visibility",
-        },
-        "-=0.88",
-      )
-
       .to(intro, {
         clipPath: "circle(0px at 50% 50%)",
         duration: 0.88,
         ease: "power4.inOut",
-      }, "<");
+      });
 
     return () => {
       timeline.kill();
