@@ -222,9 +222,9 @@ img, svg { display: block; max-width: 100%; }
   background: #141412;
 }
 .hanging-id__photo img {
-  width: 105px; height: 105px; border-radius: 50%; object-fit: cover;
-  border: 2px solid rgba(255,255,255,.18);
-  filter: grayscale(85%) contrast(1.05); transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: 108px; height: 108px; border-radius: 50%; object-fit: cover; object-position: top center;
+  border: 2px solid rgba(255,255,255,.22);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .hanging-id:hover .hanging-id__photo img {
   transform: scale(1.06) rotate(-3deg);

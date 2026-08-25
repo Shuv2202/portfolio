@@ -320,7 +320,7 @@ export default function HangingIdCard() {
 
           <div className="hanging-id__photo">
             <img
-              src="/assets/profile.svg"
+              src="/assets/profile.png"
               alt="Portrait of Shubham Kumar"
             />
 
