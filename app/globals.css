@@ -1255,59 +1255,84 @@ img, svg { display: block; max-width: 100%; }
 
 @media (max-width: 760px) {
   .hero {
-    min-height: auto;
+    min-height: 940px;
+    padding-top: 54px;
   }
 
   .hero__canvas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    width: min(
-      calc(100% - 36px),
-      620px
-    );
-
-    min-height: auto;
-
-    padding:
-      85px 0 90px;
-  }
-
-  .hero-title {
     position: relative;
-
-    inset: auto;
-
-    order: 1;
-
-    transform: none;
+    width: 100%;
+    min-height: 940px;
+    padding: 0;
+    display: block;
   }
 
   .hanging-id {
-    position: relative;
-
-    inset: auto;
-
-    order: 2;
-
-    width: 240px;
-    height: 438px;
-
-    margin-top: 30px;
+    position: absolute;
+    top: 0;
+    left: 2%;
+    z-index: 12;
+    transform: scale(0.72);
+    transform-origin: 0 0;
+    margin-top: 0;
   }
 
-  .hanging-id__strap {
-    height: 98px;
+  .boarding-pass {
+    position: absolute;
+    top: 15px;
+    right: 2%;
+    z-index: 10;
+    transform: scale(0.68) rotate(3deg);
+    transform-origin: 100% 0;
   }
 
-  .hanging-id__strap span {
-    top: 43px;
+  .vinyl-card {
+    position: absolute;
+    top: 130px;
+    right: 2%;
+    z-index: 11;
+    transform: scale(0.72);
+    transform-origin: 100% 0;
+  }
+
+  .hero-title {
+    position: absolute;
+    top: 245px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    z-index: 9;
+  }
+
+  .hero-title .script {
+    font-size: clamp(3.2rem, 16vw, 4.5rem);
+  }
+
+  .hero-title h1 {
+    font-size: clamp(2.4rem, 12vw, 3.8rem);
+  }
+
+  .folder-card {
+    position: absolute;
+    top: 290px;
+    right: 4%;
+    z-index: 8;
+    transform: scale(0.78);
+    transform-origin: 100% 0;
+  }
+
+  .mini-terminal {
+    position: absolute;
+    top: 480px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    z-index: 10;
   }
 
   .visit-intro__name {
-    font-size:
-      clamp(2rem, 11vw, 4rem);
+    font-size: clamp(2rem, 11vw, 4rem);
   }
 
   .visit-intro__meta {
@@ -1316,8 +1341,7 @@ img, svg { display: block; max-width: 100%; }
     left: 18px;
   }
 
-  .visit-intro__meta
-  span:last-child {
+  .visit-intro__meta span:last-child {
     display: none;
   }
 
