@@ -440,7 +440,8 @@ function Contact() {
           <div><strong>Shubham Kumar</strong><span>B.Tech CSE · Web Developer</span></div>
           <nav aria-label="Social links">
             <a href="https://github.com/Shuv2202" target="_blank" rel="noreferrer">{`{ GitHub }`}</a>
-            <a href="https://www.linkedin.com/in/shubham-kumar/" target="_blank" rel="noreferrer">{`{ LinkedIn }`}</a>
+            <a href="https://www.linkedin.com/in/shubham-kumar-17313a236" target="_blank" rel="noreferrer">{`{ LinkedIn }`}</a>
+            <a href="https://www.instagram.com/thatsosubh/" target="_blank" rel="noreferrer">{`{ Instagram }`}</a>
             <a href="mailto:shuvm2000@gmail.com">{`{ Email }`}</a>
           </nav>
           <a href="#home">Back to top ↑</a>
