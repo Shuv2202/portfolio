@@ -59,23 +59,22 @@ export default function HangingIdCard() {
       const elapsed = (now - startedAt) / 1000;
 
       /*
-       * A small automatic movement makes the card
-       * feel like it is naturally hanging.
+       * Continuous natural pendulum movement
        */
       const idleMovement = state.dragging
         ? 0
-        : Math.sin(elapsed * 0.78) * 0.42;
+        : Math.sin(elapsed * 1.5) * 2.2 + Math.cos(elapsed * 0.75) * 0.9;
 
       const restingTarget =
         state.target + idleMovement;
 
       const stiffness = state.dragging
         ? 0.18
-        : 0.028;
+        : 0.032;
 
       const damping = state.dragging
         ? 0.72
-        : 0.955;
+        : 0.96;
 
       state.velocity +=
         (restingTarget - state.angle) *
