@@ -279,9 +279,7 @@ export default function HangingIdCard() {
         hanging-id
         hero-reveal
       "
-      data-cursor
-      data-cursor-mode="drag"
-      data-cursor-text="DRAG"
+      data-cursor-text="Drag my ID"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={releaseCard}

@@ -18,6 +18,7 @@ type Project = {
   className: string;
   category: "product" | "frontend" | "creative";
   github: string;
+  cursorText: string;
 };
 
 const projects: Project[] = [
@@ -35,6 +36,7 @@ const projects: Project[] = [
     className: "project-card--yellow",
     category: "product",
     github: "https://github.com/Shuv2202",
+    cursorText: "View ServeMe project",
   },
   {
     id: "portfolio",
@@ -50,6 +52,7 @@ const projects: Project[] = [
     className: "project-card--ink",
     category: "creative",
     github: "https://github.com/Shuv2202",
+    cursorText: "View creative portfolio",
   },
   {
     id: "landing",
@@ -65,6 +68,7 @@ const projects: Project[] = [
     className: "project-card--blue",
     category: "frontend",
     github: "https://github.com/Shuv2202",
+    cursorText: "View landing page",
   },
 ];
 
@@ -185,9 +189,7 @@ function Hero() {
           type="button"
           onClick={() => setFocusMode(!focusMode)}
           aria-pressed={focusMode}
-          data-cursor
-          data-cursor-mode="play"
-          data-cursor-text={focusMode ? "PAUSE" : "PLAY"}
+          data-cursor-text="Play focus music"
         >
           <span className={`vinyl ${focusMode ? "vinyl--playing" : ""}`} aria-hidden="true"><i /></span>
           <span className="vinyl-card__text"><small>FOCUS MODE</small><strong>{focusMode ? "Flow activated" : "Vibe coding"}</strong><em>{focusMode ? "Click to pause" : "Click the record"}</em></span>
@@ -197,9 +199,7 @@ function Hero() {
           className="folder-card hero-reveal hero-reveal--6"
           type="button"
           onClick={() => document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" })}
-          data-cursor
-          data-cursor-mode="view"
-          data-cursor-text="OPEN"
+          data-cursor-text="Open my projects"
         >
           <span className="folder-card__tab" aria-hidden="true" />
           <span className="folder-card__icon" aria-hidden="true">↳</span>
@@ -317,9 +317,7 @@ function Work({ onOpen }: { onOpen: (project: Project) => void }) {
                   type="button"
                   onClick={() => onOpen(project)}
                   aria-label={`Open ${project.title} details`}
-                  data-cursor
-                  data-cursor-mode="view"
-                  data-cursor-text="VIEW"
+                  data-cursor-text={project.cursorText}
                 >
                   <img src={project.image} alt={`${project.title} project preview`} />
                   <span>Open case study <ArrowIcon /></span>

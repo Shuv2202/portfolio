@@ -1,35 +1,22 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-} from "react";
+import { useEffect, useRef } from "react";
 
 export default function CustomCursor() {
-  const dotRef =
-    useRef<HTMLDivElement>(null);
-
-  const followerRef =
-    useRef<HTMLDivElement>(null);
-
-  const labelRef =
-    useRef<HTMLSpanElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const finePointer =
-      window.matchMedia(
-        "(pointer: fine)",
-      ).matches;
+    const hasFinePointer = window.matchMedia(
+      "(pointer: fine)",
+    ).matches;
 
-    if (!finePointer) return;
+    if (!hasFinePointer) return;
 
-    const dot = dotRef.current;
-    const follower = followerRef.current;
-    const label = labelRef.current;
+    const cursor = cursorRef.current;
+    const textElement = textRef.current;
 
-    if (!dot || !follower || !label) {
-      return;
-    }
+    if (!cursor || !textElement) return;
 
     document.documentElement.classList.add(
       "custom-cursor-enabled",
@@ -38,114 +25,96 @@ export default function CustomCursor() {
     let mouseX = -100;
     let mouseY = -100;
 
-    let followerX = -100;
-    let followerY = -100;
+    let cursorX = -100;
+    let cursorY = -100;
 
     let animationFrame = 0;
 
     const handlePointerMove = (
-      event: globalThis.PointerEvent,
+      event: PointerEvent,
     ) => {
       mouseX = event.clientX;
       mouseY = event.clientY;
 
-      dot.style.transform = `
-        translate3d(
-          ${mouseX}px,
-          ${mouseY}px,
-          0
-        )
-        translate(-50%, -50%)
-      `;
+      cursor.classList.add("is-visible");
 
-      dot.classList.add("is-visible");
-      follower.classList.add("is-visible");
-
-      const target = (
-        event.target as HTMLElement
-      ).closest<HTMLElement>(
-        "[data-cursor], a, button, input",
-      );
+      const target =
+        event.target instanceof Element
+          ? event.target.closest<HTMLElement>(
+              "[data-cursor-text]",
+            )
+          : null;
 
       if (target) {
-        const text =
-          target.dataset.cursorText ?? "";
+        const cursorText =
+          target.dataset.cursorText || "VIEW";
 
-        const mode =
-          target.dataset.cursorMode ??
-          "action";
+        textElement.textContent = cursorText;
 
-        label.textContent = text;
-
-        follower.dataset.mode = mode;
-
-        follower.classList.add(
-          "is-active",
+        /*
+         * Calculate pill width from text length.
+         */
+        const calculatedWidth = Math.min(
+          Math.max(
+            cursorText.length * 6.2 + 32,
+            82,
+          ),
+          230,
         );
 
-        follower.classList.toggle(
-          "has-label",
-          Boolean(text),
+        cursor.style.setProperty(
+          "--cursor-label-width",
+          `${calculatedWidth}px`,
         );
+
+        cursor.classList.add("is-label");
       } else {
-        label.textContent = "";
+        textElement.textContent = "";
 
-        follower.dataset.mode =
-          "default";
-
-        follower.classList.remove(
-          "is-active",
-          "has-label",
-        );
+        cursor.classList.remove("is-label");
       }
     };
 
-    const animate = () => {
-      const smoothing = 0.13;
+    const animateCursor = () => {
+      /*
+       * Lower number = more cursor delay.
+       * Increase it for faster movement.
+       */
+      const smoothing = 0.16;
 
-      followerX +=
-        (mouseX - followerX) *
-        smoothing;
+      cursorX +=
+        (mouseX - cursorX) * smoothing;
 
-      followerY +=
-        (mouseY - followerY) *
-        smoothing;
+      cursorY +=
+        (mouseY - cursorY) * smoothing;
 
-      follower.style.transform = `
+      cursor.style.transform = `
         translate3d(
-          ${followerX}px,
-          ${followerY}px,
+          ${cursorX}px,
+          ${cursorY}px,
           0
         )
         translate(-50%, -50%)
       `;
 
       animationFrame =
-        requestAnimationFrame(animate);
+        requestAnimationFrame(animateCursor);
     };
 
     const handlePointerDown = () => {
-      dot.classList.add("is-pressed");
-
-      follower.classList.add(
-        "is-pressed",
-      );
+      cursor.classList.add("is-pressed");
     };
 
     const handlePointerUp = () => {
-      dot.classList.remove("is-pressed");
-
-      follower.classList.remove(
-        "is-pressed",
-      );
+      cursor.classList.remove("is-pressed");
     };
 
     const handleMouseLeave = () => {
-      dot.classList.remove("is-visible");
+      cursor.classList.remove("is-visible");
+    };
 
-      follower.classList.remove(
-        "is-visible",
-      );
+    const handleMouseEnter = () => {
+      cursor.classList.add("is-visible");
     };
 
     window.addEventListener(
@@ -168,12 +137,15 @@ export default function CustomCursor() {
       handleMouseLeave,
     );
 
-    animate();
+    document.addEventListener(
+      "mouseenter",
+      handleMouseEnter,
+    );
+
+    animateCursor();
 
     return () => {
-      cancelAnimationFrame(
-        animationFrame,
-      );
+      cancelAnimationFrame(animationFrame);
 
       window.removeEventListener(
         "pointermove",
@@ -195,6 +167,11 @@ export default function CustomCursor() {
         handleMouseLeave,
       );
 
+      document.removeEventListener(
+        "mouseenter",
+        handleMouseEnter,
+      );
+
       document.documentElement.classList.remove(
         "custom-cursor-enabled",
       );
@@ -202,21 +179,16 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <>
-      <div
-        ref={dotRef}
-        className="cursor-dot"
-        aria-hidden="true"
-      />
+    <div
+      ref={cursorRef}
+      className="morph-cursor"
+      aria-hidden="true"
+    >
+      <div className="morph-cursor__surface">
+        <i />
 
-      <div
-        ref={followerRef}
-        className="cursor-follower"
-        data-mode="default"
-        aria-hidden="true"
-      >
-        <span ref={labelRef} />
+        <span ref={textRef} />
       </div>
-    </>
+    </div>
   );
 }
