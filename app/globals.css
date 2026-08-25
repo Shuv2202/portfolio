@@ -150,11 +150,8 @@ img, svg { display: block; max-width: 100%; }
 .hero { --pointer-x: 0; --pointer-y: 0; position: relative; min-height: 820px; padding-top: 0; overflow: hidden; }
 .hero__canvas { position: relative; width: min(1440px, 100%); min-height: 800px; margin-inline: auto; }
 .desk-object, .paper-strip, .boarding-pass, .vinyl-card, .folder-card, .mini-terminal, .code-sticker { position: absolute; box-shadow: var(--shadow); will-change: transform; }
-.hero-reveal { opacity: 0; animation: object-in .78s forwards cubic-bezier(.18,.78,.27,1.18); }
-.hero-reveal--1 { animation-delay: 1.45s; } .hero-reveal--2 { animation-delay: 1.56s; } .hero-reveal--3 { animation-delay: 1.66s; }
-.hero-reveal--4 { animation-delay: 1.5s; } .hero-reveal--5 { animation-delay: 1.78s; } .hero-reveal--6 { animation-delay: 1.88s; }
-.hero-reveal--7 { animation-delay: 1.98s; } .hero-reveal--8 { animation-delay: 2.08s; }
-@keyframes object-in { from { opacity: 0; translate: 0 70px; scale: .94; } to { opacity: 1; translate: 0 0; scale: 1; } }
+.hero-reveal { opacity: 1; }
+
 
 /* ========================================
    HANGING ID CARD (SPRING PHYSICS)
