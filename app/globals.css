@@ -1255,14 +1255,14 @@ img, svg { display: block; max-width: 100%; }
 
 @media (max-width: 760px) {
   .hero {
-    min-height: 940px;
+    min-height: 960px;
     padding-top: 54px;
   }
 
   .hero__canvas {
     position: relative;
     width: 100%;
-    min-height: 940px;
+    min-height: 960px;
     padding: 0;
     display: block;
   }
@@ -1270,65 +1270,78 @@ img, svg { display: block; max-width: 100%; }
   .hanging-id {
     position: absolute;
     top: 0;
-    left: 2%;
-    z-index: 12;
-    transform: scale(0.72);
+    left: 2px;
+    z-index: 14;
+    transform: scale(0.64);
     transform-origin: 0 0;
     margin-top: 0;
   }
 
   .boarding-pass {
     position: absolute;
-    top: 15px;
-    right: 2%;
+    top: 18px;
+    right: 8px;
     z-index: 10;
-    transform: scale(0.68) rotate(3deg);
+    transform: scale(0.62) rotate(3deg);
     transform-origin: 100% 0;
   }
 
   .vinyl-card {
     position: absolute;
-    top: 130px;
-    right: 2%;
+    top: 122px;
+    right: 8px;
     z-index: 11;
-    transform: scale(0.72);
+    width: 210px;
+    transform: scale(0.68);
     transform-origin: 100% 0;
+  }
+
+  .code-sticker {
+    position: absolute;
+    top: 270px;
+    left: 8px;
+    z-index: 12;
+    transform: scale(0.68);
+    transform-origin: 0 0;
   }
 
   .hero-title {
     position: absolute;
-    top: 245px;
+    top: 265px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: 58%;
     text-align: center;
     z-index: 9;
   }
 
   .hero-title .script {
-    font-size: clamp(3.2rem, 16vw, 4.5rem);
+    font-size: clamp(2.4rem, 10vw, 3.8rem);
+    white-space: nowrap;
+    margin-bottom: 4px;
   }
 
   .hero-title h1 {
-    font-size: clamp(2.4rem, 12vw, 3.8rem);
+    font-size: clamp(0.52rem, 2.4vw, 0.72rem);
+    letter-spacing: 0.16em;
   }
 
   .folder-card {
     position: absolute;
-    top: 290px;
-    right: 4%;
-    z-index: 8;
-    transform: scale(0.78);
+    top: 270px;
+    right: 8px;
+    z-index: 12;
+    transform: scale(0.7);
     transform-origin: 100% 0;
   }
 
   .mini-terminal {
     position: absolute;
-    top: 480px;
+    top: 440px;
     left: 50%;
     transform: translateX(-50%);
-    width: 92%;
-    z-index: 10;
+    width: min(92%, 480px);
+    z-index: 13;
   }
 
   .visit-intro__name {
@@ -1348,6 +1361,50 @@ img, svg { display: block; max-width: 100%; }
   .visit-intro__skip {
     right: 18px;
     bottom: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 920px;
+  }
+
+  .hanging-id {
+    transform: scale(0.56);
+  }
+
+  .boarding-pass {
+    top: 15px;
+    transform: scale(0.54) rotate(2deg);
+  }
+
+  .vinyl-card {
+    top: 110px;
+    transform: scale(0.6);
+  }
+
+  .code-sticker {
+    top: 242px;
+    transform: scale(0.6);
+  }
+
+  .hero-title {
+    top: 238px;
+    width: 56%;
+  }
+
+  .hero-title .script {
+    font-size: 2.2rem;
+  }
+
+  .folder-card {
+    top: 242px;
+    transform: scale(0.62);
+  }
+
+  .mini-terminal {
+    top: 405px;
+    width: 94%;
   }
 }
 
