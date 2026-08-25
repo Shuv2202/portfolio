@@ -12,6 +12,9 @@ type PhysicsState = {
   target: number;
   velocity: number;
   dragging: boolean;
+  startX: number;
+  startY: number;
+  dragDistance: number;
   lastX: number;
   lastTime: number;
   pointerVelocity: number;
@@ -32,6 +35,9 @@ export default function HangingIdCard() {
     target: 0,
     velocity: 0,
     dragging: false,
+    startX: 0,
+    startY: 0,
+    dragDistance: 0,
     lastX: 0,
     lastTime: 0,
     pointerVelocity: 0,
@@ -142,8 +148,6 @@ export default function HangingIdCard() {
   const handlePointerDown = (
     event: PointerEvent<HTMLDivElement>,
   ) => {
-    event.preventDefault();
-
     event.currentTarget.setPointerCapture(
       event.pointerId,
     );
@@ -151,6 +155,9 @@ export default function HangingIdCard() {
     const state = physics.current;
 
     state.dragging = true;
+    state.startX = event.clientX;
+    state.startY = event.clientY;
+    state.dragDistance = 0;
 
     state.target = calculateAngle(
       event.clientX,
@@ -174,6 +181,11 @@ export default function HangingIdCard() {
     if (!state.dragging) {
       return;
     }
+
+    state.dragDistance += Math.hypot(
+      event.clientX - state.startX,
+      event.clientY - state.startY,
+    );
 
     const now = performance.now();
 
@@ -204,17 +216,25 @@ export default function HangingIdCard() {
 
     state.dragging = false;
 
-    /*
-     * Maintain a little momentum after release.
-     */
-    state.velocity += clamp(
-      state.pointerVelocity * 2.1,
-      -2.8,
-      2.8,
-    );
-
-    state.target = 0;
-    state.pointerVelocity = 0;
+    if (state.dragDistance < 8) {
+      /* Click event: Open Instagram profile cleanly without fast swinging */
+      state.target = 0;
+      state.pointerVelocity = 0;
+      window.open(
+        "https://www.instagram.com/thatsosubh/",
+        "_blank",
+        "noopener,noreferrer",
+      );
+    } else {
+      /* Drag release: Gentle momentum without erratic fast swinging */
+      state.velocity += clamp(
+        state.pointerVelocity * 0.4,
+        -0.8,
+        0.8,
+      );
+      state.target = 0;
+      state.pointerVelocity = 0;
+    }
 
     if (
       event &&
@@ -237,8 +257,18 @@ export default function HangingIdCard() {
   ) => {
     if (
       event.key !== "ArrowLeft" &&
-      event.key !== "ArrowRight"
+      event.key !== "ArrowRight" &&
+      event.key !== "Enter"
     ) {
+      return;
+    }
+
+    if (event.key === "Enter") {
+      window.open(
+        "https://www.instagram.com/thatsosubh/",
+        "_blank",
+        "noopener,noreferrer",
+      );
       return;
     }
 
@@ -246,8 +276,8 @@ export default function HangingIdCard() {
 
     physics.current.velocity +=
       event.key === "ArrowLeft"
-        ? -1.6
-        : 1.6;
+        ? -1.2
+        : 1.2;
 
     physics.current.target = 0;
   };
@@ -260,7 +290,7 @@ export default function HangingIdCard() {
         hanging-id
         hero-reveal
       "
-      data-cursor-text="Drag my ID"
+      data-cursor-text="Instagram"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={releaseCard}
@@ -272,9 +302,10 @@ export default function HangingIdCard() {
       }}
       onKeyDown={handleKeyDown}
       tabIndex={0}
+      role="button"
       aria-label="
-        Interactive hanging identity card.
-        Drag it or use the arrow keys.
+        Visit Instagram profile @thatsosubh.
+        Click to open Instagram or drag to sway.
       "
     >
       <div
@@ -291,7 +322,7 @@ export default function HangingIdCard() {
           aria-hidden="true"
         >
           <span>
-            SHUBHAM · CREATIVE DEVELOPER
+            SHUBHAM · @THATSOSUBH
           </span>
         </div>
 
@@ -306,7 +337,7 @@ export default function HangingIdCard() {
         <article className="hanging-id__card">
           <div className="hanging-id__header">
             <span>SHUBHAM</span>
-            <span>SK · 001</span>
+            <span>@thatsosubh</span>
           </div>
 
           <div className="hanging-id__description">
@@ -331,8 +362,8 @@ export default function HangingIdCard() {
           </div>
 
           <div className="hanging-id__footer">
-            <span>B.TECH CSE</span>
-            <span>WEB DEVELOPER</span>
+            <span>INSTAGRAM</span>
+            <span>@THATSOSUBH</span>
           </div>
         </article>
       </div>
