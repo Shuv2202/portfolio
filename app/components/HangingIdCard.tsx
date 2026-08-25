@@ -172,24 +172,6 @@ export default function HangingIdCard() {
     const state = physics.current;
 
     if (!state.dragging) {
-      const container =
-        containerRef.current;
-
-      if (!container) return;
-
-      const bounds =
-        container.getBoundingClientRect();
-
-      const relativeX =
-        (event.clientX - bounds.left) /
-        bounds.width;
-
-      state.target = clamp(
-        (relativeX - 0.5) * 5.5,
-        -3,
-        3,
-      );
-
       return;
     }
 
