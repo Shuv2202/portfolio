@@ -1249,80 +1249,152 @@ img, svg { display: block; max-width: 100%; }
     rgba(255, 255, 255, 0.9);
 }
 
+/* Digital Card */
+.digital-card {
+  position: absolute;
+  top: 302px;
+  left: 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 86px;
+  border: 1px solid #3b3a36;
+  background: #1c1c1a;
+  color: #f5f1e7;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transform: rotate(-2deg);
+  z-index: 4;
+  transition: transform 0.28s ease-out;
+}
+
+.digital-card__dots {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+}
+
+.digital-card__value {
+  font-family: var(--mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.digital-card small {
+  margin-top: 2px;
+  font-family: var(--mono);
+  font-size: 0.45rem;
+  color: #aaa69d;
+  letter-spacing: 0.1em;
+}
+
+/* Yellow Personal Note (Hero Note) */
+.hero-note {
+  position: absolute;
+  top: 650px;
+  left: 22px;
+  right: 22px;
+  min-height: 165px;
+  padding: 46px 36px 30px;
+  border: 1px solid #e3d8ab;
+  background: #fdf7d3;
+  color: #3d392e;
+  box-shadow: 0 14px 34px rgba(45, 40, 30, 0.1);
+  border-radius: 4px;
+  transform: rotate(2deg);
+  z-index: 3;
+}
+
+.hero-note .tape {
+  position: absolute;
+  top: -12px;
+  width: 44px;
+  height: 20px;
+  background: rgba(210, 195, 140, 0.55);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(180, 165, 110, 0.4);
+}
+
+.hero-note .tape--left { left: 18%; transform: rotate(-3deg); }
+.hero-note .tape--mid { left: 50%; transform: translateX(-50%) rotate(1deg); }
+.hero-note .tape--right { right: 18%; transform: rotate(4deg); }
+
+.hero-note p {
+  font-family: var(--script);
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  line-height: 1.4;
+  color: #38342a;
+  margin: 0;
+}
+
 /* ==============================
    RESPONSIVE
 ============================== */
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .hero {
-    min-height: 520px;
-    padding-top: 54px;
+    min-height: 900px;
+    padding-top: 56px;
     overflow: hidden;
   }
 
   .hero__canvas {
     position: relative;
-    width: 100%;
-    min-height: 520px;
-    padding: 0;
+    width: min(100% - 24px, 390px);
+    min-height: 900px;
+    margin-inline: auto;
     display: block;
   }
 
-  /* 1. Hanging ID Card - Top Left */
+  /* 1. Hanging ID Card */
   .hanging-id {
     position: absolute;
-    top: 0;
-    left: 4%;
-    z-index: 15;
-    width: 152px;
-    height: 220px;
+    top: 28px;
+    left: 18px;
+    width: 155px;
+    z-index: 8;
     transform: none !important;
     margin-top: 0;
   }
 
   .hanging-id__pendulum {
-    width: 152px;
+    width: 155px;
   }
 
   .hanging-id__strap {
-    width: 18px;
-    height: 48px;
+    width: 20px;
+    height: 38px;
   }
 
   .hanging-id__strap span {
-    top: 16px;
-    font-size: 0.32rem;
+    top: 12px;
+    font-size: 0.3rem;
   }
 
   .hanging-id__hardware {
-    width: 32px;
+    width: 34px;
     height: 16px;
     margin-top: -2px;
     margin-bottom: -5px;
   }
 
-  .hanging-id__hardware i {
-    width: 14px;
-    height: 5px;
-    top: 2px;
-  }
-
-  .hanging-id__hardware span {
-    width: 8px;
-    height: 8px;
-    bottom: -5px;
-  }
-
   .hanging-id__card {
-    width: 152px;
+    width: 155px;
     min-height: 200px;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
   .hanging-id__header {
     padding: 6px 8px 4px;
     font-size: 0.36rem;
-    min-height: 0;
   }
 
   .hanging-id__description {
@@ -1331,14 +1403,13 @@ img, svg { display: block; max-width: 100%; }
   }
 
   .hanging-id__description strong {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     margin-bottom: 2px;
   }
 
   .hanging-id__description p {
-    font-size: 0.44rem;
+    font-size: 0.45rem;
     line-height: 1.25;
-    max-width: 100%;
   }
 
   .hanging-id__photo {
@@ -1347,8 +1418,8 @@ img, svg { display: block; max-width: 100%; }
   }
 
   .hanging-id__photo img {
-    width: 65px;
-    height: 65px;
+    width: 66px;
+    height: 66px;
   }
 
   .hanging-id__status {
@@ -1361,23 +1432,23 @@ img, svg { display: block; max-width: 100%; }
   .hanging-id__footer {
     padding: 5px 8px;
     font-size: 0.36rem;
-    min-height: 0;
   }
 
-  /* 2. Boarding Pass Ticket - Top Right */
+  /* 2. Boarding Pass Ticket */
   .boarding-pass {
     position: absolute;
-    top: 12px;
-    right: 4%;
-    z-index: 10;
-    width: 165px;
-    min-height: 85px;
+    top: 62px;
+    right: 8px;
+    width: 178px;
+    min-height: 62px;
     padding: 8px 24px 8px 12px;
-    transform: rotate(2deg) !important;
+    transform: rotate(3deg) !important;
+    z-index: 4;
   }
 
   .boarding-pass__title strong {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+    line-height: 0.9;
   }
 
   .boarding-pass__title span {
@@ -1387,8 +1458,8 @@ img, svg { display: block; max-width: 100%; }
 
   .boarding-pass__meta {
     gap: 6px;
-    padding-top: 6px;
-    font-size: 0.42rem;
+    padding-top: 4px;
+    font-size: 0.4rem;
   }
 
   .boarding-pass__edge {
@@ -1396,26 +1467,26 @@ img, svg { display: block; max-width: 100%; }
     font-size: 0.34rem;
   }
 
-  /* 3. Vinyl Card Widget - Right under ticket */
+  /* 3. Vinyl Card Widget */
   .vinyl-card {
     position: absolute;
-    top: 110px;
-    right: 4%;
-    z-index: 11;
-    width: 142px;
-    min-height: 110px;
-    padding: 10px 8px 10px;
+    top: 145px;
+    right: 25px;
+    width: 136px;
+    min-height: 132px;
+    padding: 12px 10px;
     flex-direction: column;
     align-items: center;
     text-align: center;
     background: #ffffff;
     border-radius: 12px;
-    transform: none !important;
+    transform: rotate(0deg) !important;
+    z-index: 5;
   }
 
   .vinyl {
-    width: 58px;
-    height: 58px;
+    width: 64px;
+    height: 64px;
   }
 
   .vinyl-card__text {
@@ -1423,101 +1494,95 @@ img, svg { display: block; max-width: 100%; }
   }
 
   .vinyl-card__text small {
-    margin-bottom: 3px;
-    font-size: 0.38rem;
+    margin-bottom: 4px;
+    font-size: 0.4rem;
   }
 
   .vinyl-card__text strong {
-    font-size: 0.68rem;
+    font-size: 0.72rem;
   }
 
   .vinyl-card__text em {
-    margin-top: 2px;
-    font-size: 0.44rem;
+    margin-top: 3px;
+    font-size: 0.46rem;
   }
 
-  /* 4. Middle Row: Code Sticker (Left), Title (Center), Folder (Right) at top: 240px */
-  .code-sticker {
+  /* 4. Digital Card */
+  .digital-card {
     position: absolute;
-    top: 240px;
-    left: 4%;
-    z-index: 12;
-    width: 52px;
-    height: 52px;
-    min-height: 0;
-    padding: 4px;
-    font-size: 0.45rem;
-    transform: none !important;
-    border-radius: 10px;
+    top: 302px;
+    left: 27px;
+    width: 88px;
+    height: 86px;
+    transform: rotate(-2deg) !important;
+    z-index: 4;
   }
 
-  .code-sticker strong {
-    font-size: 0.85rem;
-  }
-
+  /* 5. Hero Title */
   .hero-title {
     position: absolute;
-    top: 240px;
+    top: 304px;
     left: 50%;
+    width: 150px;
     transform: translateX(-50%) !important;
-    width: auto;
-    max-width: 55%;
     text-align: center;
-    z-index: 12;
+    z-index: 3;
     pointer-events: auto;
   }
 
   .hero-title .script {
-    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    font-size: 2.1rem;
     white-space: nowrap;
     margin-bottom: 2px;
   }
 
   .hero-title h1 {
-    font-size: 0.48rem;
+    font-size: 0.46rem;
     letter-spacing: 0.12em;
     white-space: nowrap;
     opacity: 0.8;
   }
 
+  /* 6. Folder Card */
   .folder-card {
     position: absolute;
-    top: 240px;
-    right: 4%;
-    z-index: 12;
-    width: 54px;
-    min-height: 44px;
-    padding: 6px;
-    transform: none !important;
+    top: 312px;
+    right: 18px;
+    width: 78px;
+    min-height: 66px;
+    padding: 8px;
+    transform: rotate(1deg) !important;
+    z-index: 5;
   }
 
   .folder-card__tab {
-    top: -10px;
-    width: 32px;
-    height: 10px;
+    top: -12px;
+    width: 42px;
+    height: 12px;
   }
 
   .folder-card__icon {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .folder-card strong {
-    font-size: 0.58rem;
+    font-size: 0.65rem;
   }
 
   .folder-card small {
     display: none;
   }
 
-  /* 5. Mini Terminal Window - Full width at top: 325px */
+  /* 7. Mini Terminal */
   .mini-terminal {
     position: absolute;
-    top: 325px;
-    left: 50%;
-    transform: translateX(-50%) !important;
-    width: min(92%, 440px);
-    min-height: 150px;
-    z-index: 13;
+    top: 410px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    min-height: 132px;
+    transform: none !important;
+    z-index: 6;
     background: #ffffff;
     border: 1px solid #e2ded4;
     color: #2e2d2a;
@@ -1543,85 +1608,33 @@ img, svg { display: block; max-width: 100%; }
     color: #666258;
   }
 
-  .visit-intro__name {
-    font-size: clamp(2rem, 11vw, 4rem);
+  /* 8. Hero Note */
+  .hero-note {
+    position: absolute;
+    top: 650px;
+    left: 22px;
+    right: 22px;
+    min-height: 165px;
+    padding: 46px 36px 30px;
+    transform: rotate(2deg) !important;
+    z-index: 3;
   }
 
-  .visit-intro__meta {
-    top: 19px;
-    right: 18px;
-    left: 18px;
-  }
-
-  .visit-intro__meta span:last-child {
-    display: none;
-  }
-
-  .visit-intro__skip {
-    right: 18px;
-    bottom: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    min-height: 500px;
-  }
-
-  .hanging-id {
-    left: 3%;
-    width: 138px;
-  }
-
-  .hanging-id__card {
-    width: 138px;
-  }
-
-  .hanging-id__photo img {
-    width: 58px;
-    height: 58px;
-  }
-
-  .boarding-pass {
-    right: 3%;
-    width: 150px;
-  }
-
-  .vinyl-card {
-    right: 3%;
-    width: 132px;
-  }
-
-  .code-sticker {
-    left: 3%;
-    width: 46px;
-    height: 46px;
-  }
-
-  .hero-title {
-    top: 235px;
-    max-width: 52%;
-  }
-
-  .hero-title .script {
-    font-size: 1.8rem;
-  }
-
-  .folder-card {
-    right: 3%;
-    width: 48px;
-  }
-
-  .mini-terminal {
-    top: 315px;
-    width: 94%;
+  .site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    min-height: 56px;
+    z-index: 100;
+    background: rgba(250, 248, 242, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 }
 
-@media (
-  prefers-reduced-motion:
-  reduce
-) {
+@media (prefers-reduced-motion: reduce) {
   .visit-intro {
     display: none;
   }

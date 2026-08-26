@@ -3,6 +3,7 @@
 import {
   useEffect,
   useRef,
+  useState,
   type KeyboardEvent,
   type PointerEvent,
 } from "react";
@@ -29,6 +30,7 @@ const clamp = (
 export default function HangingIdCard() {
   const containerRef = useRef<HTMLDivElement>(null);
   const pendulumRef = useRef<HTMLDivElement>(null);
+  const [isIllustrated, setIsIllustrated] = useState(false);
 
   const physics = useRef<PhysicsState>({
     angle: -2.4,
@@ -69,7 +71,7 @@ export default function HangingIdCard() {
        */
       const idleMovement = state.dragging
         ? 0
-        : Math.sin(elapsed * 1.5) * 2.2 + Math.cos(elapsed * 0.75) * 0.9;
+        : Math.sin(elapsed * 1.4) * 1.8 + Math.cos(elapsed * 0.7) * 0.6;
 
       const restingTarget =
         state.target + idleMovement;
@@ -88,10 +90,11 @@ export default function HangingIdCard() {
 
       state.velocity *= damping;
 
+      /* Max drag rotation +/-22deg */
       state.angle = clamp(
         state.angle + state.velocity,
-        -24,
-        24,
+        -22,
+        22,
       );
 
       const verticalLift =
@@ -179,6 +182,13 @@ export default function HangingIdCard() {
     const state = physics.current;
 
     if (!state.dragging) {
+      /* Subtle hover sway up to +/-10deg */
+      const container = containerRef.current;
+      if (container) {
+        const bounds = container.getBoundingClientRect();
+        const relX = (event.clientX - bounds.left) / bounds.width;
+        state.target = clamp((relX - 0.5) * 8, -10, 10);
+      }
       return;
     }
 
@@ -217,7 +227,7 @@ export default function HangingIdCard() {
     state.dragging = false;
 
     if (state.dragDistance < 8) {
-      /* Click event: Open Instagram profile cleanly without fast swinging */
+      /* Click event: Open Instagram profile cleanly */
       state.target = 0;
       state.pointerVelocity = 0;
       window.open(
@@ -226,7 +236,7 @@ export default function HangingIdCard() {
         "noopener,noreferrer",
       );
     } else {
-      /* Drag release: Gentle momentum without erratic fast swinging */
+      /* Drag release: Gentle damped spring momentum */
       state.velocity += clamp(
         state.pointerVelocity * 0.4,
         -0.8,
@@ -349,10 +359,16 @@ export default function HangingIdCard() {
             </p>
           </div>
 
-          <div className="hanging-id__photo">
+          <div
+            className="hanging-id__photo"
+            onPointerEnter={() => setIsIllustrated(true)}
+            onPointerLeave={() => setIsIllustrated(false)}
+            onTouchStart={() => setIsIllustrated((prev) => !prev)}
+          >
             <img
-              src="/assets/profile.png"
+              src={isIllustrated ? "/assets/shubham-ghibli.png" : "/assets/profile.png"}
               alt="Portrait of Shubham Kumar"
+              className={isIllustrated ? "is-illustrated" : ""}
             />
 
             <span className="hanging-id__status">

@@ -127,7 +127,6 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (va
         <span>Shubham Kumar</span>
       </a>
 
-
       <button
         className={`menu-toggle ${menuOpen ? "menu-toggle--open" : ""}`}
         type="button"
@@ -143,7 +142,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (va
       <nav id="primary-navigation" className={menuOpen ? "nav-links nav-links--open" : "nav-links"} aria-label="Primary navigation">
         <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
         <a href="#work" onClick={() => setMenuOpen(false)}>Work</a>
-        <a href="#lab" onClick={() => setMenuOpen(false)}>Lab</a>
+        <a href="#lab" onClick={() => setMenuOpen(false)}>Playground</a>
       </nav>
     </header>
   );
@@ -166,22 +165,13 @@ function Hero() {
       <div className="hero__canvas">
         <HangingIdCard />
 
-        <div className="paper-strip hero-reveal hero-reveal--2" aria-hidden="true">
-          <span>think</span><b>→</b><span>design</span><b>→</b><span>build</span><b>→</b><span>improve</span>
-        </div>
-
         <div className="boarding-pass hero-reveal hero-reveal--3">
-          <div className="boarding-pass__title"><strong>CODE ×<br />CRAFT</strong><span>2026</span></div>
+          <div className="boarding-pass__title"><strong>DESIGN ×<br />TECHNOLOGY</strong><span>2026</span></div>
           <div className="boarding-pass__meta">
             <span><small>DISCIPLINE</small>WEB / PRODUCT</span>
             <span><small>STATUS</small>OPEN TO WORK</span>
           </div>
           <div className="boarding-pass__edge" aria-hidden="true">SK&nbsp;&nbsp;001&nbsp;&nbsp;CSE</div>
-        </div>
-
-        <div className="hero-title hero-reveal hero-reveal--4">
-          <p className="script">Shubham Kumar</p>
-          <h1>I THINK, THEN I BUILD</h1>
         </div>
 
         <button
@@ -192,8 +182,19 @@ function Hero() {
           data-cursor-text="Play focus music"
         >
           <span className={`vinyl ${focusMode ? "vinyl--playing" : ""}`} aria-hidden="true"><i /></span>
-          <span className="vinyl-card__text"><small>FOCUS MODE</small><strong>{focusMode ? "Flow activated" : "Vibe coding"}</strong><em>{focusMode ? "Click to pause" : "Click the record"}</em></span>
+          <span className="vinyl-card__text"><small>FOCUS MODE</small><strong>{focusMode ? "Flow activated" : "Vibe coding playlist"}</strong><em>{focusMode ? "Click to pause" : "Click the record"}</em></span>
         </button>
+
+        <div className="digital-card hero-reveal hero-reveal--4" aria-label="Digital card SK 23">
+          <span className="digital-card__dots" aria-hidden="true" />
+          <span className="digital-card__value">SK</span>
+          <small>23</small>
+        </div>
+
+        <div className="hero-title hero-reveal hero-reveal--4">
+          <p className="script">Shubham Kumar</p>
+          <h1>I THINK, THEN I BUILD</h1>
+        </div>
 
         <button
           className="folder-card hero-reveal hero-reveal--6"
@@ -217,8 +218,13 @@ function Hero() {
           </div>
         </div>
 
-        <div className="code-sticker hero-reveal hero-reveal--8" aria-label="Current tools: React and TypeScript">
-          <span>REACT</span><strong>+</strong><span>TYPE<br />SCRIPT</span>
+        <div className="hero-note hero-reveal hero-reveal--8">
+          <span className="tape tape--left" aria-hidden="true" />
+          <span className="tape tape--mid" aria-hidden="true" />
+          <span className="tape tape--right" aria-hidden="true" />
+          <p>
+            I care about building useful products, understanding how people use them, and turning complex ideas into simple experiences. I’m always learning, experimenting, and improving.
+          </p>
         </div>
 
         <a className="hero-scroll" href="#about"><span>Scroll to explore</span><i aria-hidden="true" /></a>
