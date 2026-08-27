@@ -47,15 +47,11 @@ export default function HangingIdCard() {
 
   useEffect(() => {
     const pendulum = pendulumRef.current;
-
     if (!pendulum) return;
 
-    const reducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) {
-      pendulum.style.transform = "rotate(-2deg)";
+      pendulum.style.transform = "rotate(-2.4deg)";
       return;
     }
 
@@ -63,233 +59,41 @@ export default function HangingIdCard() {
     const startedAt = performance.now();
 
     const animate = (now: number) => {
-      const state = physics.current;
       const elapsed = (now - startedAt) / 1000;
 
-      /*
-       * Continuous natural pendulum movement
-       */
-      const idleMovement = state.dragging
-        ? 0
-        : Math.sin(elapsed * 1.4) * 1.8 + Math.cos(elapsed * 0.7) * 0.6;
-
-      const restingTarget =
-        state.target + idleMovement;
-
-      const stiffness = state.dragging
-        ? 0.18
-        : 0.032;
-
-      const damping = state.dragging
-        ? 0.72
-        : 0.96;
-
-      state.velocity +=
-        (restingTarget - state.angle) *
-        stiffness;
-
-      state.velocity *= damping;
-
-      /* Max drag rotation +/-22deg */
-      state.angle = clamp(
-        state.angle + state.velocity,
-        -22,
-        22,
-      );
-
-      const verticalLift =
-        Math.abs(state.angle) * 0.055;
+      /* Gentle continuous pendulum swing between -3.5deg and +3.5deg */
+      const angle = Math.sin(elapsed * 1.4) * 3.5;
+      const verticalLift = Math.abs(angle) * 0.06;
 
       pendulum.style.transform = `
-        rotate(${state.angle.toFixed(3)}deg)
+        rotate(${angle.toFixed(3)}deg)
         translateY(${verticalLift.toFixed(2)}px)
       `;
 
-      animationFrame =
-        requestAnimationFrame(animate);
+      animationFrame = requestAnimationFrame(animate);
     };
 
-    animationFrame =
-      requestAnimationFrame(animate);
+    animationFrame = requestAnimationFrame(animate);
 
     return () => {
       cancelAnimationFrame(animationFrame);
     };
   }, []);
 
-  const calculateAngle = (
-    clientX: number,
-    clientY: number,
-  ) => {
-    const container = containerRef.current;
-
-    if (!container) return 0;
-
-    const bounds =
-      container.getBoundingClientRect();
-
-    const pivotX =
-      bounds.left + bounds.width / 2;
-
-    const pivotY = bounds.top;
-
-    const distanceY = Math.max(
-      clientY - pivotY,
-      80,
-    );
-
-    const angle =
-      Math.atan2(
-        clientX - pivotX,
-        distanceY,
-      ) *
-      (180 / Math.PI);
-
-    return clamp(angle, -22, 22);
-  };
-
-  const handlePointerDown = (
-    event: PointerEvent<HTMLDivElement>,
-  ) => {
-    event.currentTarget.setPointerCapture(
-      event.pointerId,
-    );
-
-    const state = physics.current;
-
-    state.dragging = true;
-    state.startX = event.clientX;
-    state.startY = event.clientY;
-    state.dragDistance = 0;
-
-    state.target = calculateAngle(
-      event.clientX,
-      event.clientY,
-    );
-
-    state.lastX = event.clientX;
-    state.lastTime = performance.now();
-    state.pointerVelocity = 0;
-
-    containerRef.current?.classList.add(
-      "is-dragging",
-    );
-  };
-
-  const handlePointerMove = (
-    event: PointerEvent<HTMLDivElement>,
-  ) => {
-    const state = physics.current;
-
-    if (!state.dragging) {
-      /* Subtle hover sway up to +/-10deg */
-      const container = containerRef.current;
-      if (container) {
-        const bounds = container.getBoundingClientRect();
-        const relX = (event.clientX - bounds.left) / bounds.width;
-        state.target = clamp((relX - 0.5) * 8, -10, 10);
-      }
-      return;
-    }
-
-    state.dragDistance += Math.hypot(
-      event.clientX - state.startX,
-      event.clientY - state.startY,
-    );
-
-    const now = performance.now();
-
-    const deltaTime = Math.max(
-      now - state.lastTime,
-      16,
-    );
-
-    state.pointerVelocity =
-      (event.clientX - state.lastX) /
-      deltaTime;
-
-    state.lastX = event.clientX;
-    state.lastTime = now;
-
-    state.target = calculateAngle(
-      event.clientX,
-      event.clientY,
-    );
-  };
-
-  const releaseCard = (
-    event?: PointerEvent<HTMLDivElement>,
-  ) => {
-    const state = physics.current;
-
-    if (!state.dragging) return;
-
-    state.dragging = false;
-
-    if (state.dragDistance < 8) {
-      /* Click event: Open Instagram profile cleanly */
-      state.target = 0;
-      state.pointerVelocity = 0;
-      window.open(
-        "https://www.instagram.com/thatsosubh/",
-        "_blank",
-        "noopener,noreferrer",
-      );
-    } else {
-      /* Drag release: Gentle damped spring momentum */
-      state.velocity += clamp(
-        state.pointerVelocity * 0.4,
-        -0.8,
-        0.8,
-      );
-      state.target = 0;
-      state.pointerVelocity = 0;
-    }
-
-    if (
-      event &&
-      event.currentTarget.hasPointerCapture(
-        event.pointerId,
-      )
-    ) {
-      event.currentTarget.releasePointerCapture(
-        event.pointerId,
-      );
-    }
-
-    containerRef.current?.classList.remove(
-      "is-dragging",
+  const handleClick = () => {
+    window.open(
+      "https://www.instagram.com/thatsosubh/",
+      "_blank",
+      "noopener,noreferrer",
     );
   };
 
   const handleKeyDown = (
     event: KeyboardEvent<HTMLDivElement>,
   ) => {
-    if (
-      event.key !== "ArrowLeft" &&
-      event.key !== "ArrowRight" &&
-      event.key !== "Enter"
-    ) {
-      return;
-    }
-
     if (event.key === "Enter") {
-      window.open(
-        "https://www.instagram.com/thatsosubh/",
-        "_blank",
-        "noopener,noreferrer",
-      );
-      return;
+      handleClick();
     }
-
-    event.preventDefault();
-
-    physics.current.velocity +=
-      event.key === "ArrowLeft"
-        ? -1.2
-        : 1.2;
-
-    physics.current.target = 0;
   };
 
   return (
@@ -301,22 +105,11 @@ export default function HangingIdCard() {
         hero-reveal
       "
       data-cursor-text="Instagram"
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={releaseCard}
-      onPointerCancel={releaseCard}
-      onPointerLeave={() => {
-        if (!physics.current.dragging) {
-          physics.current.target = 0;
-        }
-      }}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="button"
-      aria-label="
-        Visit Instagram profile @thatsosubh.
-        Click to open Instagram or drag to sway.
-      "
+      aria-label="Visit Instagram profile @thatsosubh."
     >
       <div
         ref={pendulumRef}

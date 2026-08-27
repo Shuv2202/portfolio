@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --cream: #f4f1ea;
-  --paper: #faf7f1;
-  --paper-2: #e7e0d2;
+  --cream: #f6f3eb;
+  --paper: #faf7ef;
+  --paper-2: #e9e3d5;
   --ink: #22221f;
   --ink-soft: #656158;
-  --line: #c8c1b3;
-  --yellow: #d7c625;
-  --yellow-soft: #e3d651;
+  --line: #d8d1c1;
+  --yellow: #e4d84f;
+  --yellow-soft: #ebd95f;
   --blue: #4c72bd;
   --dark: #22221f;
   --dark-2: #30302b;
@@ -26,9 +26,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 84px; }
 body {
   min-width: 320px;
   overflow-x: hidden;
-  background-color: var(--cream);
-  background-image: linear-gradient(rgba(175, 166, 148, 0.28) 1px, transparent 1px), linear-gradient(90deg, rgba(175, 166, 148, 0.28) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background-color: #f6f3eb;
+  background-image:
+    linear-gradient(rgba(180, 170, 150, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180, 170, 150, 0.22) 1px, transparent 1px);
+  background-size: 40px 40px;
   color: var(--ink);
   font-family: var(--sans);
   line-height: 1.5;
@@ -385,21 +387,21 @@ img, svg { display: block; max-width: 100%; }
 .terminal__form button:hover { border-color: var(--yellow-soft); color: var(--yellow-soft); }
 
 /* Contact */
-.contact { padding-block: 130px 35px; border-top: 1px solid #11110f; background: #232320; color: #f1ecdf; }
+.contact { padding-block: 130px 35px; border-top: 0; background: transparent; color: var(--ink); }
 .contact__layout { display: grid; grid-template-columns: 1.1fr .65fr; gap: 10%; align-items: center; padding-bottom: 120px; }
-.contact__headline .script { color: var(--yellow-soft); }
-.contact__headline h2 { font-size: clamp(3.7rem,7.8vw,8rem); font-weight: 700; line-height: .84; letter-spacing: -.08em; }
-.contact__headline h2 span { color: var(--yellow-soft); }
-.contact__card { padding: 30px; border: 1px solid #5a5851; background: #2d2d29; box-shadow: 0 25px 70px rgba(0,0,0,.23); }
-.contact__status { display: flex; align-items: center; gap: 9px; color: #b8b4aa; font: 400 .56rem var(--mono); text-transform: uppercase; }
-.contact__status i { width: 7px; height: 7px; border-radius: 50%; background: #78b37f; box-shadow: 0 0 0 5px rgba(120,179,127,.1); }
-.contact__card > p { margin: 33px 0 28px; color: #a9a59b; font-size: .8rem; line-height: 1.8; }
-.contact__email { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid #6b685f; font-size: clamp(.9rem,1.5vw,1.25rem); font-weight: 700; }
+.contact__headline .script { color: #7c6e19; }
+.contact__headline h2 { font-size: clamp(3.7rem,7.8vw,8rem); font-weight: 700; line-height: .84; letter-spacing: -.08em; color: var(--ink); }
+.contact__headline h2 span { color: #7c6e19; }
+.contact__card { padding: 30px; border: 1px solid var(--line); background: #faf7ef; box-shadow: var(--shadow); border-radius: 12px; }
+.contact__status { display: flex; align-items: center; gap: 9px; color: var(--ink-soft); font: 400 .56rem var(--mono); text-transform: uppercase; }
+.contact__status i { width: 7px; height: 7px; border-radius: 50%; background: #588e5d; box-shadow: 0 0 0 5px rgba(88,142,93,.15); }
+.contact__card > p { margin: 33px 0 28px; color: var(--ink-soft); font-size: .8rem; line-height: 1.8; }
+.contact__email { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: clamp(.9rem,1.5vw,1.25rem); font-weight: 700; color: var(--ink); }
 .contact__email svg { transition: transform .25s ease; } .contact__email:hover svg { transform: translate(3px,-3px); }
-.contact__card > button { margin-top: 20px; color: var(--yellow-soft); font: 500 .57rem var(--mono); }
-.contact__footer { display: grid; grid-template-columns: 1fr auto auto auto; gap: 35px; align-items: center; padding-top: 30px; border-top: 1px solid #4b4943; color: #928f86; font-size: .62rem; }
-.contact__footer > div { display: flex; flex-direction: column; gap: 3px; } .contact__footer strong { color: #e7e1d5; font-size: .7rem; }
-.contact__footer nav { display: flex; gap: 18px; } .contact__footer a { transition: color .2s ease; } .contact__footer a:hover { color: var(--yellow-soft); }
+.contact__card > button { margin-top: 20px; color: #7c6e19; font: 600 .57rem var(--mono); }
+.contact__footer { display: grid; grid-template-columns: 1fr auto auto auto; gap: 35px; align-items: center; padding-top: 30px; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: .62rem; }
+.contact__footer > div { display: flex; flex-direction: column; gap: 3px; } .contact__footer strong { color: var(--ink); font-size: .7rem; }
+.contact__footer nav { display: flex; gap: 18px; } .contact__footer a { transition: color .2s ease; } .contact__footer a:hover { color: #7c6e19; }
 
 /* Modal */
 .modal { position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center; padding: 28px; background: rgba(24,24,22,.76); backdrop-filter: blur(12px); animation: modal-in .25s ease both; }
@@ -1648,5 +1650,767 @@ img, svg { display: block; max-width: 100%; }
     transform: none !important;
   }
 }
+
+/* ========================================
+   NEW TACTILE COMPONENTS & LAYOUT STYLES
+======================================== */
+
+/* Accent Black Circle Dots */
+.accent-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #1a1a18;
+  display: block;
+}
+
+.accent-dot--hero-left {
+  position: absolute;
+  top: 360px;
+  left: 31.5%;
+  z-index: 6;
+}
+
+.accent-dot--manifesto {
+  margin: 40px auto 0 64%;
+}
+
+.accent-dot--finder {
+  position: absolute;
+  top: 48%;
+  right: 12%;
+}
+
+.accent-dot--moodboard {
+  position: absolute;
+  bottom: 120px;
+  right: 6%;
+}
+
+/* 1. Torn Paper Header (Top Center) */
+.torn-paper-banner {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 520px;
+  height: 180px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.torn-paper-scrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.torn-paper-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 6px 12px rgba(45, 40, 30, 0.12));
+}
+
+.torn-paper__plant {
+  position: absolute;
+  top: -10px;
+  left: 35px;
+  z-index: 4;
+}
+
+.torn-paper__coffee {
+  position: absolute;
+  top: 35px;
+  left: 240px;
+  z-index: 4;
+}
+
+.torn-paper__pencil {
+  position: absolute;
+  top: 20px;
+  right: 75px;
+  z-index: 4;
+  transform: rotate(28deg);
+}
+
+.torn-paper__tape {
+  position: absolute;
+  width: 85px;
+  height: 28px;
+  background: rgba(210, 195, 140, 0.65);
+  backdrop-filter: blur(2px);
+  z-index: 5;
+}
+
+.torn-paper__tape--left {
+  top: 15px;
+  left: 90px;
+  transform: rotate(-6deg);
+}
+
+.torn-paper__tape--right {
+  top: 10px;
+  right: 120px;
+  transform: rotate(4deg);
+}
+
+/* Arch Window Flower Frame (Hero Center Left) */
+.arch-window-card {
+  position: absolute;
+  top: 350px;
+  left: 33%;
+  width: 110px;
+  height: 155px;
+  border-radius: 55px 55px 6px 6px;
+  border: 1px solid #d5cfbf;
+  background: #fdfbf7;
+  padding: 8px;
+  box-shadow: var(--shadow);
+  transform: rotate(-3deg);
+  z-index: 4;
+  overflow: hidden;
+}
+
+.arch-window-card__inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 48px 48px 3px 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.arch-window-card__inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dot Matrix Display Module (Hero Center Right) */
+.dot-matrix-badge {
+  position: absolute;
+  top: 395px;
+  right: 30.5%;
+  width: 68px;
+  height: 68px;
+  border-radius: 12px;
+  background: #252422;
+  border: 1px solid #3c3a37;
+  padding: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 5;
+  transform: rotate(4deg);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  place-items: center;
+}
+
+.dot-matrix-badge span {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background-color: #3b3935;
+}
+
+.dot-matrix-badge span.is-on {
+  background-color: #e5dfd3;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+/* Polaroid Photo Album Collage ("capture moments") */
+.polaroid-album {
+  position: absolute;
+  bottom: 25px;
+  right: 4.5%;
+  width: 320px;
+  height: 420px;
+  z-index: 4;
+}
+
+.polaroid-album__paper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #d1ba96;
+  border-radius: 8px;
+  border: 1px solid #bd9e72;
+  padding: 15px;
+  box-shadow: var(--shadow-deep);
+  transform: rotate(3.5deg);
+  overflow: hidden;
+}
+
+.polaroid-photo {
+  position: absolute;
+  background: #ffffff;
+  padding: 6px 6px 20px 6px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+  border-radius: 2px;
+}
+
+.polaroid-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid-photo--1 {
+  top: 15px;
+  left: 12px;
+  width: 120px;
+  height: 110px;
+  transform: rotate(-6deg);
+  z-index: 1;
+}
+
+.polaroid-photo--2 {
+  top: 20px;
+  right: 15px;
+  width: 125px;
+  height: 105px;
+  transform: rotate(5deg);
+  z-index: 2;
+}
+
+.polaroid-photo--main {
+  top: 110px;
+  left: 80px;
+  width: 145px;
+  height: 175px;
+  transform: rotate(-1deg);
+  z-index: 5;
+}
+
+.polaroid-photo--3 {
+  bottom: 80px;
+  left: 10px;
+  width: 95px;
+  height: 90px;
+  transform: rotate(4deg);
+  z-index: 3;
+}
+
+.polaroid-photo--4 {
+  bottom: 75px;
+  right: 12px;
+  width: 100px;
+  height: 95px;
+  transform: rotate(-7deg);
+  z-index: 3;
+}
+
+.polaroid-photo--5 {
+  bottom: 12px;
+  left: 55px;
+  width: 110px;
+  height: 90px;
+  transform: rotate(2deg);
+  z-index: 4;
+}
+
+.polaroid-photo__tape {
+  position: absolute;
+  width: 45px;
+  height: 16px;
+  background: rgba(230, 220, 180, 0.75);
+  backdrop-filter: blur(1px);
+  z-index: 10;
+}
+
+.polaroid-photo__tape--top {
+  top: -8px;
+  left: 30px;
+  transform: rotate(3deg);
+}
+
+.polaroid-photo__tape--top-right {
+  top: -6px;
+  right: 25px;
+  transform: rotate(-4deg);
+}
+
+.polaroid-photo__tape--center {
+  top: -8px;
+  left: 45px;
+  transform: rotate(-2deg);
+}
+
+.polaroid-photo__tape--bottom {
+  bottom: 8px;
+  right: -10px;
+  transform: rotate(45deg);
+}
+
+.polaroid-leaf {
+  position: absolute;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.polaroid-leaf--left {
+  bottom: 0px;
+  left: -5px;
+  transform: rotate(-15deg);
+}
+
+.polaroid-leaf--right {
+  bottom: -10px;
+  left: 65px;
+  transform: rotate(10deg);
+}
+
+.polaroid-album__caption {
+  position: absolute;
+  bottom: 25px;
+  right: 18px;
+  font-family: var(--script);
+  font-size: 1.8rem;
+  color: #2b2823;
+  z-index: 9;
+  line-height: 1;
+}
+
+/* ========================================
+   SECTION 2: MANIFESTO & STICKY NOTE
+======================================== */
+
+.manifesto-section {
+  position: relative;
+  padding-block: 100px 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Crosshair targets (+) at 4 corners */
+.crosshair {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px dashed rgba(160, 150, 130, 0.45);
+  display: grid;
+  place-items: center;
+  color: #888070;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+}
+
+.crosshair--top-left {
+  top: 40px;
+  left: 60px;
+}
+
+.crosshair--top-right {
+  top: 40px;
+  right: 60px;
+}
+
+.crosshair--bottom-left {
+  bottom: 40px;
+  left: 60px;
+}
+
+.crosshair--bottom-right {
+  bottom: 40px;
+  right: 60px;
+}
+
+/* Yellow Sticky Note */
+.sticky-note {
+  position: relative;
+  width: min(440px, 90%);
+  padding: 40px 36px 36px;
+  background: #ffeb7b;
+  border: 1px solid #e6d367;
+  box-shadow: 0 16px 35px rgba(60, 55, 30, 0.15);
+  transform: rotate(-2.5deg);
+  margin-bottom: 70px;
+}
+
+.sticky-note__tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 26px;
+  background: rgba(240, 230, 170, 0.7);
+  backdrop-filter: blur(2px);
+}
+
+.sticky-note__pins {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding-inline: 40px;
+}
+
+.sticky-note__pins span {
+  width: 10px;
+  height: 10px;
+  background: #d4c359;
+  border-radius: 2px;
+}
+
+.sticky-note__text {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #3b371b;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Manifesto Lines Typography & Badges */
+.manifesto-body {
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.manifesto-line {
+  font-family: var(--mono);
+  font-size: clamp(1.15rem, 2.2vw, 1.8rem);
+  line-height: 1.6;
+  color: #2b2a26;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.inline-icon--brain {
+  font-size: 1.3em;
+  vertical-align: middle;
+}
+
+.inline-sparkle {
+  font-size: 1.2em;
+}
+
+.inline-badge {
+  padding: 3px 12px;
+  border: 1px solid #33322d;
+  border-radius: 4px;
+  font-family: var(--mono);
+  font-size: 0.95em;
+  background: #ffffff;
+  color: #1c1b18;
+}
+
+.inline-badge--bordered {
+  border: 1px solid #1c1b18;
+  background: #fbf9f4;
+
+}
+
+/* ========================================
+   SECTION 3: MAC OS FINDER WORKSPACE
+======================================== */
+
+.finder-section {
+  position: relative;
+  padding-block: 80px 100px;
+}
+
+.finder-window {
+  width: min(1040px, 94%);
+  margin-inline: auto;
+  border-radius: 16px;
+  border: 1px solid #dbd4c4;
+  background: #f4f0e6;
+  box-shadow: 0 30px 80px rgba(45, 40, 30, 0.16);
+  overflow: hidden;
+}
+
+.finder-window__header {
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  align-items: center;
+  height: 44px;
+  padding-inline: 16px;
+  background: #ebe5d8;
+  border-bottom: 1px solid #dbd4c4;
+}
+
+.finder-window__traffic-lights {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot--red { background: #ed6a5e; }
+.dot--yellow { background: #f5bf4f; }
+.dot--green { background: #62c655; }
+
+.finder-window__title {
+  justify-self: center;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: #6b6456;
+}
+
+.finder-window__body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 480px;
+}
+
+.finder-sidebar {
+  background: #e8e2d4;
+  border-right: 1px solid #dcd5c5;
+  padding: 24px 16px;
+}
+
+.finder-sidebar__label {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: #8c8474;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.finder-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.finder-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: #4a453b;
+  width: 100%;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.finder-sidebar__item.is-active,
+.finder-sidebar__item:hover {
+  background: #d8cfbe;
+  color: #1a1917;
+  font-weight: 600;
+}
+
+.sidebar-icon {
+  font-size: 1.1rem;
+}
+
+.finder-content {
+  padding: 40px;
+  background: #f5f1e7;
+}
+
+.finder-folder-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 40px;
+  align-items: flex-start;
+}
+
+/* Colored macOS Folder Cards */
+.mac-folder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 105px;
+  text-align: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.mac-folder:hover {
+  transform: translateY(-4px);
+}
+
+.mac-folder__icon {
+  position: relative;
+  width: 90px;
+  height: 72px;
+  border-radius: 8px 12px 12px 12px;
+  border: 1px solid rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.mac-folder__tab {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 42px;
+  height: 14px;
+  border-radius: 6px 6px 0 0;
+  border-top: 1px solid rgba(0,0,0,0.15);
+  border-left: 1px solid rgba(0,0,0,0.15);
+  border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+.mac-folder__name {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #403b32;
+  line-height: 1.3;
+}
+
+/* ========================================
+   SECTION 4: MOODBOARD CANVAS & FOOTER
+======================================== */
+
+.moodboard-section {
+  position: relative;
+  padding-block: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pinboard-canvas {
+  width: min(1180px, 96%);
+  margin-inline: auto;
+}
+
+.pinboard-canvas__frame {
+  background: #e5decb;
+  border-radius: 24px;
+  border: 4px solid #d4cca6;
+  padding: 50px 40px;
+  box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.08), var(--shadow-deep);
+}
+
+.pinboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px 30px;
+}
+
+.pinboard-card {
+  position: relative;
+  background: #ffffff;
+  padding: 10px 10px 16px;
+  border-radius: 6px;
+  border: 1px solid #dcd5c5;
+  box-shadow: 0 12px 28px rgba(45, 40, 30, 0.14);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0.3s ease;
+}
+
+.pinboard-card:hover {
+  z-index: 10;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.22);
+  transform: scale(1.04) rotate(0deg) !important;
+}
+
+.pinboard-card__tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background: rgba(220, 210, 160, 0.65);
+  backdrop-filter: blur(1px);
+  z-index: 2;
+}
+
+.pinboard-card__image {
+  width: 100%;
+  height: 180px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #eae5d8;
+}
+
+.pinboard-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pinboard-card__meta {
+  margin-top: 12px;
+}
+
+.pinboard-card__meta span {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: #888072;
+  text-transform: uppercase;
+}
+
+.pinboard-card__meta h4 {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #24221e;
+  margin-top: 2px;
+}
+
+/* Bracketed Social Media Links matching Image 4 */
+.bracket-footer {
+  margin-top: 80px;
+  padding-bottom: 40px;
+}
+
+.bracket-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.bracket-footer a {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: #2b2823;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.bracket-footer a:hover {
+  color: #7c6e19;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1020px) {
+  .torn-paper-banner { display: none; }
+  .arch-window-card { display: none; }
+  .dot-matrix-badge { display: none; }
+  .polaroid-album { position: relative; inset: auto; margin: 40px auto 0; }
+  .crosshair { display: none; }
+  .finder-window__body { grid-template-columns: 1fr; }
+  .finder-sidebar { display: none; }
+  .pinboard-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .pinboard-grid { grid-template-columns: 1fr; }
+  .manifesto-line { font-size: 1rem; }
+}
+
 
 

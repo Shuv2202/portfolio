@@ -5,6 +5,13 @@ import Lenis from "lenis";
 import ShubhamVisitIntro from "./components/ShubhamVisitIntro";
 import CustomCursor from "./components/CustomCursor";
 import HangingIdCard from "./components/HangingIdCard";
+import TornPaperHeader from "./components/TornPaperHeader";
+import PolaroidScrapbookCard from "./components/PolaroidScrapbookCard";
+import ManifestoSection from "./components/ManifestoSection";
+import FinderProjectsSection from "./components/FinderProjectsSection";
+import MoodboardSection from "./components/MoodboardSection";
+
+import { toggleLofiAudio } from "./utils/lofiAudio";
 
 type Project = {
   id: string;
@@ -118,8 +125,6 @@ function CloseIcon() {
   );
 }
 
-
-
 function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (value: boolean) => void }) {
   return (
     <header className="site-nav">
@@ -142,7 +147,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (va
       <nav id="primary-navigation" className={menuOpen ? "nav-links nav-links--open" : "nav-links"} aria-label="Primary navigation">
         <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
         <a href="#work" onClick={() => setMenuOpen(false)}>Work</a>
-        <a href="#lab" onClick={() => setMenuOpen(false)}>Playground</a>
+        <a href="#manifesto" onClick={() => setMenuOpen(false)}>Playground</a>
       </nav>
     </header>
   );
@@ -163,10 +168,15 @@ function Hero() {
   return (
     <section id="home" ref={heroRef} className="hero" onMouseMove={handlePointerMove}>
       <div className="hero__canvas">
+        {/* Top Left: Hanging ID Card */}
         <HangingIdCard />
 
+        {/* Top Right: Boarding Pass Ticket */}
         <div className="boarding-pass hero-reveal hero-reveal--3">
-          <div className="boarding-pass__title"><strong>DESIGN ×<br />TECHNOLOGY</strong><span>2026</span></div>
+          <div className="boarding-pass__title">
+            <strong>DESIGN ×<br />TECHNOLOGY</strong>
+            <span>2026</span>
+          </div>
           <div className="boarding-pass__meta">
             <span><small>DISCIPLINE</small>WEB / PRODUCT</span>
             <span><small>STATUS</small>OPEN TO WORK</span>
@@ -174,28 +184,32 @@ function Hero() {
           <div className="boarding-pass__edge" aria-hidden="true">SK&nbsp;&nbsp;001&nbsp;&nbsp;CSE</div>
         </div>
 
-        <button
-          className="vinyl-card hero-reveal hero-reveal--5"
-          type="button"
-          onClick={() => setFocusMode(!focusMode)}
-          aria-pressed={focusMode}
-          data-cursor-text="Play focus music"
-        >
-          <span className={`vinyl ${focusMode ? "vinyl--playing" : ""}`} aria-hidden="true"><i /></span>
-          <span className="vinyl-card__text"><small>FOCUS MODE</small><strong>{focusMode ? "Flow activated" : "Vibe coding playlist"}</strong><em>{focusMode ? "Click to pause" : "Click the record"}</em></span>
-        </button>
-
-        <div className="digital-card hero-reveal hero-reveal--4" aria-label="Digital card SK 23">
-          <span className="digital-card__dots" aria-hidden="true" />
-          <span className="digital-card__value">SK</span>
-          <small>23</small>
-        </div>
-
+        {/* Center Title & Subhead */}
         <div className="hero-title hero-reveal hero-reveal--4">
           <p className="script">Shubham Kumar</p>
           <h1>I THINK, THEN I BUILD</h1>
         </div>
 
+        {/* Bottom Left: Vinyl Record Playlist Card */}
+        <button
+          className="vinyl-card hero-reveal hero-reveal--5"
+          type="button"
+          onClick={() => {
+            const active = toggleLofiAudio();
+            setFocusMode(active);
+          }}
+          aria-pressed={focusMode}
+          data-cursor-text={focusMode ? "Pause music" : "Play focus music"}
+        >
+          <span className={`vinyl ${focusMode ? "vinyl--playing" : ""}`} aria-hidden="true"><i /></span>
+          <span className="vinyl-card__text">
+            <small>PLAYLIST</small>
+            <strong>{focusMode ? "Playing Vibe Beats ♫" : "Vibe Coding"}</strong>
+            <em>{focusMode ? "Click to pause music" : "Click to play chill beats"}</em>
+          </span>
+        </button>
+
+        {/* Bottom Center Left: Yellow macOS Folder Icon */}
         <button
           className="folder-card hero-reveal hero-reveal--6"
           type="button"
@@ -207,8 +221,12 @@ function Hero() {
           <span><strong>projects/</strong><small>03 selected builds</small></span>
         </button>
 
+        {/* Bottom Center Right: macOS Mini Terminal */}
         <div className="mini-terminal hero-reveal hero-reveal--7">
-          <div className="window-bar"><span className="window-dots"><i /><i /><i /></span><span>shubham — zsh</span></div>
+          <div className="window-bar">
+            <span className="window-dots"><i /><i /><i /></span>
+            <span>shubham — zsh</span>
+          </div>
           <div className="mini-terminal__body">
             <p><b>~ $</b> whoami</p>
             <span>Shubham Kumar · Web Developer</span>
@@ -218,16 +236,10 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hero-note hero-reveal hero-reveal--8">
-          <span className="tape tape--left" aria-hidden="true" />
-          <span className="tape tape--mid" aria-hidden="true" />
-          <span className="tape tape--right" aria-hidden="true" />
-          <p>
-            I care about building useful products, understanding how people use them, and turning complex ideas into simple experiences. I’m always learning, experimenting, and improving.
-          </p>
-        </div>
+        {/* Bottom Right: Polaroid Scrapbook Collage Album Card ("capture moments") */}
+        <PolaroidScrapbookCard />
 
-        <a className="hero-scroll" href="#about"><span>Scroll to explore</span><i aria-hidden="true" /></a>
+        <a className="hero-scroll" href="#manifesto"><span>Scroll to explore</span><i aria-hidden="true" /></a>
       </div>
     </section>
   );
@@ -421,7 +433,6 @@ function Contact() {
   return (
     <footer id="contact" className="contact">
       <div className="section-shell">
-        <div className="section-kicker section-kicker--dark reveal-on-scroll"><span>05</span><p>CONTACT / SAY HELLO</p></div>
         <div className="contact__layout">
           <div className="contact__headline reveal-on-scroll">
             <p className="script">Have an idea?</p>
@@ -564,10 +575,35 @@ export default function Home() {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main>
         <Hero />
-        <About />
-        <Toolbox />
-        <Work onOpen={setSelectedProject} />
-        <TerminalLab />
+        <ManifestoSection />
+        <FinderProjectsSection
+          onSelectCategory={(id) => {
+            const workElem = document.querySelector("#moodboard");
+            if (workElem) {
+              workElem.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
+        />
+        <div id="moodboard">
+          <MoodboardSection
+            onOpenProject={(item) =>
+              setSelectedProject({
+                id: item.id,
+                title: item.title,
+                label: item.label,
+                year: item.year,
+                description: item.description,
+                story: item.story,
+                tags: item.tags,
+                image: item.image,
+                className: "project-card--yellow",
+                category: "creative",
+                github: item.github,
+                cursorText: item.cursorText,
+              })
+            }
+          />
+        </div>
       </main>
       <Contact />
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
