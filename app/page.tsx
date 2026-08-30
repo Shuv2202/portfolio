@@ -11,6 +11,9 @@ import ManifestoSection from "./components/ManifestoSection";
 import FinderProjectsSection from "./components/FinderProjectsSection";
 import MoodboardSection from "./components/MoodboardSection";
 
+import DotMatrixCard from "./components/DotMatrixCard";
+import MobileDesktopNoticePopup from "./components/MobileDesktopNoticePopup";
+
 import { toggleLofiAudio } from "./utils/lofiAudio";
 
 type Project = {
@@ -156,6 +159,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (va
 function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const [focusMode, setFocusMode] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(true);
 
   const handlePointerMove = (event: MouseEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -167,6 +171,22 @@ function Hero() {
 
   return (
     <section id="home" ref={heroRef} className="hero" onMouseMove={handlePointerMove}>
+      {/* Top Banner Notice (Dismissible Pill matching Photo 1) */}
+      {bannerVisible && (
+        <div className="hero-desktop-banner">
+          <span className="hero-desktop-banner__icon" aria-hidden="true">🖥️</span>
+          <span>Best experienced on desktop — grab a bigger screen for the full experience.</span>
+          <button
+            type="button"
+            className="hero-desktop-banner__close"
+            onClick={() => setBannerVisible(false)}
+            aria-label="Dismiss desktop suggestion banner"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       <div className="hero__canvas">
         {/* Top Left: Hanging ID Card */}
         <HangingIdCard />
@@ -184,13 +204,16 @@ function Hero() {
           <div className="boarding-pass__edge" aria-hidden="true">SK&nbsp;&nbsp;001&nbsp;&nbsp;CSE</div>
         </div>
 
+        {/* Middle Left: LED Dot Matrix Card (Figma/Nothing style LED grid display) */}
+        <DotMatrixCard />
+
         {/* Center Title & Subhead */}
         <div className="hero-title hero-reveal hero-reveal--4">
           <p className="script">Shubham Kumar</p>
-          <h1>I THINK, THEN I BUILD</h1>
+          <h1>I THINK, THEN I BUILD.</h1>
         </div>
 
-        {/* Bottom Left: Vinyl Record Playlist Card */}
+        {/* Center Right: Vinyl Record Playlist Card */}
         <button
           className="vinyl-card hero-reveal hero-reveal--5"
           type="button"
@@ -201,15 +224,17 @@ function Hero() {
           aria-pressed={focusMode}
           data-cursor-text={focusMode ? "Pause music" : "Play focus music"}
         >
-          <span className={`vinyl ${focusMode ? "vinyl--playing" : ""}`} aria-hidden="true"><i /></span>
+          <span className={`vinyl ${focusMode ? "vinyl--playing" : ""}`} aria-hidden="true">
+            <i className="vinyl__center-dot" />
+          </span>
           <span className="vinyl-card__text">
             <small>PLAYLIST</small>
-            <strong>{focusMode ? "Playing Vibe Beats ♫" : "Vibe Coding"}</strong>
+            <strong>{focusMode ? "Playing Vibe Beats ♫" : "Vibe coding playlist"}</strong>
             <em>{focusMode ? "Click to pause music" : "Click to play chill beats"}</em>
           </span>
         </button>
 
-        {/* Bottom Center Left: Yellow macOS Folder Icon */}
+        {/* Center Right (below vinyl): Yellow macOS Folder Icon */}
         <button
           className="folder-card hero-reveal hero-reveal--6"
           type="button"
@@ -221,7 +246,7 @@ function Hero() {
           <span><strong>projects/</strong><small>03 selected builds</small></span>
         </button>
 
-        {/* Bottom Center Right: macOS Mini Terminal */}
+        {/* Bottom Center: macOS Mini Terminal */}
         <div className="mini-terminal hero-reveal hero-reveal--7">
           <div className="window-bar">
             <span className="window-dots"><i /><i /><i /></span>
@@ -569,6 +594,7 @@ export default function Home() {
   return (
     <>
       <CustomCursor />
+      <MobileDesktopNoticePopup />
       <a className="skip-link" href="#about">Skip to content</a>
       <ShubhamVisitIntro onComplete={() => setIntroComplete(true)} />
       <div className="scroll-progress" style={{ transform: "scaleX(0)" }} aria-hidden="true" />
