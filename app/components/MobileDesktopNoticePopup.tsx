@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function DesktopMonitorIcon() {
   return (
-    <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="28" height="28" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
       {/* Outer monitor bezel */}
       <rect x="3" y="4" width="28" height="18" rx="3" fill="#2d2c28" stroke="#4c4a43" strokeWidth="1.5" />
       {/* Blue screen display */}
@@ -20,30 +20,23 @@ function DesktopMonitorIcon() {
 }
 
 export default function MobileDesktopNoticePopup() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const isDismissed = sessionStorage.getItem("mobile_desktop_notice_dismissed");
-    if (isDismissed) return;
-
-    const checkMobile = () => {
-      const isNarrow = window.innerWidth <= 1024;
-      const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
-      if (isNarrow || isMobileUA) {
-        setIsVisible(true);
-      }
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const handleDismiss = () => {
     setIsVisible(false);
-    sessionStorage.setItem("mobile_desktop_notice_dismissed", "true");
+    if (timerRef.current) clearTimeout(timerRef.current);
+
+    // Re-show popup after 10 seconds (10000 ms) as requested by user
+    timerRef.current = setTimeout(() => {
+      setIsVisible(true);
+    }, 10000);
   };
 
   if (!isVisible) return null;

@@ -1606,16 +1606,16 @@ img, svg { display: block; max-width: 100%; }
   }
 
   .site-nav {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 56px;
+    height: auto;
     min-height: 56px;
     z-index: 100;
-    background: rgba(250, 248, 242, 0.94);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
   }
 }
 

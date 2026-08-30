@@ -159,7 +159,6 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (va
 function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const [focusMode, setFocusMode] = useState(false);
-  const [bannerVisible, setBannerVisible] = useState(true);
 
   const handlePointerMove = (event: MouseEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -171,22 +170,6 @@ function Hero() {
 
   return (
     <section id="home" ref={heroRef} className="hero" onMouseMove={handlePointerMove}>
-      {/* Top Banner Notice (Dismissible Pill matching Photo 1) */}
-      {bannerVisible && (
-        <div className="hero-desktop-banner">
-          <span className="hero-desktop-banner__icon" aria-hidden="true">🖥️</span>
-          <span>Best experienced on desktop — grab a bigger screen for the full experience.</span>
-          <button
-            type="button"
-            className="hero-desktop-banner__close"
-            onClick={() => setBannerVisible(false)}
-            aria-label="Dismiss desktop suggestion banner"
-          >
-            ×
-          </button>
-        </div>
-      )}
-
       <div className="hero__canvas">
         {/* Top Left: Hanging ID Card */}
         <HangingIdCard />
