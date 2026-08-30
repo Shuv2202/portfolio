@@ -95,6 +95,19 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
     }
   };
 
+  const getWindowTitle = () => {
+    switch (activeTab) {
+      case "Snapshot":
+        return "~ /shubham/snapshot";
+      case "Achievements":
+        return "~ /shubham/achievements";
+      case "Garden":
+        return "~ /shubham/garden";
+      default:
+        return "~ /shubham/project";
+    }
+  };
+
   return (
     <section id="work" className="finder-section section-shell">
       <div className="finder-window reveal-on-scroll">
@@ -105,7 +118,7 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
             <span className="dot dot--yellow" />
             <span className="dot dot--green" />
           </div>
-          <span className="finder-window__title">~ /shubham/project</span>
+          <span className="finder-window__title">{getWindowTitle()}</span>
           <div className="finder-window__actions">
             <span />
           </div>
@@ -152,33 +165,175 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
             </nav>
           </aside>
 
-          {/* Main Grid Area of Folders */}
+          {/* Main Content Area */}
           <main className="finder-content">
-            <div className="finder-folder-grid">
-              {folderCategories.map((folder) => (
-                <button
-                  key={folder.id}
-                  type="button"
-                  className={`mac-folder ${activeFolder === folder.id ? "is-active" : ""}`}
-                  onClick={() => handleFolderClick(folder.id)}
-                >
-                  <div
-                    className="mac-folder__icon"
-                    style={{
-                      backgroundColor: folder.color,
-                      borderColor: folder.borderColor,
-                    }}
+            {activeTab === "Snapshot" ? (
+              <SnapshotView />
+            ) : activeTab === "Achievements" ? (
+              <div style={{ padding: "40px", textAlign: "center", fontFamily: "var(--mono)", color: "#787265" }}>
+                <span style={{ fontSize: "2rem", display: "block", marginBottom: "12px" }}>⭐</span>
+                <h3>Achievements &amp; Milestones</h3>
+                <p style={{ marginTop: "8px", fontSize: "0.85rem" }}>Shipped 5+ Full-Stack Web Apps · AI Vibe-Coding Enthusiast · Open Source Contributor</p>
+              </div>
+            ) : activeTab === "Garden" ? (
+              <div style={{ padding: "40px", textAlign: "center", fontFamily: "var(--mono)", color: "#787265" }}>
+                <span style={{ fontSize: "2rem", display: "block", marginBottom: "12px" }}>🌱</span>
+                <h3>Digital Garden</h3>
+                <p style={{ marginTop: "8px", fontSize: "0.85rem" }}>Cultivating notes on AI Agents, Next.js, WebAudio &amp; Tactile Design Systems</p>
+              </div>
+            ) : (
+              <div className="finder-folder-grid">
+                {folderCategories.map((folder) => (
+                  <button
+                    key={folder.id}
+                    type="button"
+                    className={`mac-folder ${activeFolder === folder.id ? "is-active" : ""}`}
+                    onClick={() => handleFolderClick(folder.id)}
                   >
-                    <div className="mac-folder__tab" style={{ backgroundColor: folder.color, borderColor: folder.borderColor }} />
-                    <div className="mac-folder__symbol">{folder.iconSvg}</div>
-                  </div>
-                  <span className="mac-folder__name">{folder.name}</span>
-                </button>
-              ))}
-            </div>
+                    <div
+                      className="mac-folder__icon"
+                      style={{
+                        backgroundColor: folder.color,
+                        borderColor: folder.borderColor,
+                      }}
+                    >
+                      <div className="mac-folder__tab" style={{ backgroundColor: folder.color, borderColor: folder.borderColor }} />
+                      <div className="mac-folder__symbol">{folder.iconSvg}</div>
+                    </div>
+                    <span className="mac-folder__name">{folder.name}</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </main>
         </div>
       </div>
     </section>
+  );
+}
+
+function SnapshotView() {
+  const journeyList = [
+    { num: "01", text: "Studied Computer Science", tag: "CSE" },
+    { num: "02", text: "Full-Stack Web Dev", tag: "WEB" },
+    { num: "03", text: "Built ServeMe QR System", tag: "PRODUCT" },
+    { num: "04", text: "Built MediScan AI", tag: "HEALTH" },
+    { num: "05", text: "Building with AI & React", tag: "TECH" },
+    { num: "06", text: "Shipped 5+ Web Apps", tag: "SHIP" },
+    { num: "07", text: "Exploring UI/UX & Craft", tag: "DESIGN" },
+    { num: "08", text: "Full-Stack AI Developer", tag: "NOW", isActive: true },
+  ];
+
+  return (
+    <div className="snapshot-layout">
+      {/* Top 3 Widgets */}
+      <div className="snapshot-grid-top">
+        {/* DESIGN NOTES */}
+        <div className="snapshot-card spiral-card">
+          <div className="spiral-binder">
+            <span /><span /><span /><span /><span /><span /><span /><span /><span />
+          </div>
+          <span className="snapshot-card__eyebrow">DESIGN NOTES</span>
+          <div className="tag-cloud">
+            <span className="tag-pill tag-pill--green">Think deeply</span>
+            <span className="tag-pill tag-pill--blue">Data-driven</span>
+            <span className="tag-pill tag-pill--purple">Detail-focused</span>
+            <span className="tag-pill tag-pill--gold">Stay curious</span>
+            <span className="tag-pill tag-pill--pink">Exploring often</span>
+            <span className="tag-pill tag-pill--teal">Learn by building</span>
+          </div>
+        </div>
+
+        {/* ENERGY LEVEL */}
+        <div className="snapshot-card energy-card">
+          <span className="snapshot-card__eyebrow">ENERGY LEVEL</span>
+          <div className="energy-gauge">
+            <svg viewBox="0 0 36 36">
+              <path
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                fill="none"
+                stroke="#e4ded2"
+                strokeWidth="3.2"
+              />
+              <path
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                fill="none"
+                stroke="#47926b"
+                strokeWidth="3.2"
+                strokeDasharray="95, 100"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span className="energy-gauge__val">95%</span>
+          </div>
+          <span className="energy-card__status">Feeling great</span>
+        </div>
+
+        {/* FUEL MIX Radar Chart */}
+        <div className="snapshot-card fuel-card">
+          <span className="snapshot-card__eyebrow">FUEL MIX</span>
+          <div className="radar-chart">
+            <svg viewBox="0 0 200 180">
+              <polygon points="100,20 160,50 160,110 100,140 40,110 40,50" fill="none" stroke="#e6e0d3" strokeWidth="1" />
+              <polygon points="100,40 140,60 140,100 100,120 60,100 60,60" fill="none" stroke="#ede7db" strokeWidth="1" />
+              <polygon points="100,60 120,70 120,90 100,100 80,90 80,70" fill="none" stroke="#ede7db" strokeWidth="1" />
+              <line x1="100" y1="80" x2="100" y2="20" stroke="#ede7db" strokeWidth="1" />
+              <line x1="100" y1="80" x2="160" y2="50" stroke="#ede7db" strokeWidth="1" />
+              <line x1="100" y1="80" x2="160" y2="110" stroke="#ede7db" strokeWidth="1" />
+              <line x1="100" y1="80" x2="100" y2="140" stroke="#ede7db" strokeWidth="1" />
+              <line x1="100" y1="80" x2="40" y2="110" stroke="#ede7db" strokeWidth="1" />
+              <line x1="100" y1="80" x2="40" y2="50" stroke="#ede7db" strokeWidth="1" />
+              <polygon points="100,30 152,55 148,105 100,128 52,100 55,58" fill="rgba(87, 147, 186, 0.22)" stroke="#5793ba" strokeWidth="1.8" />
+              <circle cx="100" cy="30" r="3" fill="#5793ba" />
+              <circle cx="152" cy="55" r="3" fill="#5793ba" />
+              <circle cx="148" cy="105" r="3" fill="#5793ba" />
+              <circle cx="100" cy="128" r="3" fill="#5793ba" />
+              <circle cx="52" cy="100" r="3" fill="#5793ba" />
+              <circle cx="55" cy="58" r="3" fill="#5793ba" />
+              <text x="100" y="12" textAnchor="middle" fill="#6d675b" fontSize="10" fontFamily="sans-serif">Coffee</text>
+              <text x="172" y="52" textAnchor="start" fill="#6d675b" fontSize="10" fontFamily="sans-serif">Tea</text>
+              <text x="172" y="114" textAnchor="start" fill="#6d675b" fontSize="10" fontFamily="sans-serif">Music</text>
+              <text x="100" y="154" textAnchor="middle" fill="#6d675b" fontSize="10" fontFamily="sans-serif">Sunlight</text>
+              <text x="28" y="114" textAnchor="end" fill="#6d675b" fontSize="10" fontFamily="sans-serif">Curiosity</text>
+              <text x="28" y="52" textAnchor="end" fill="#6d675b" fontSize="10" fontFamily="sans-serif">Ideas</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom 2 Widgets */}
+      <div className="snapshot-grid-bottom">
+        {/* MY JOURNEY */}
+        <div className="snapshot-card">
+          <span className="snapshot-card__eyebrow">MY JOURNEY</span>
+          <div className="journey-list">
+            {journeyList.map((item) => (
+              <div key={item.num} className={`journey-item ${item.isActive ? "is-active" : ""}`}>
+                <div className="journey-item__left">
+                  <span className="journey-item__num">{item.num}</span>
+                  <span className="journey-item__dot" />
+                  <span>{item.text}</span>
+                </div>
+                <span className="journey-item__tag">{item.tag}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* FUN FACTS / STICKER STACK */}
+        <div className="snapshot-card fun-facts-card">
+          <span className="snapshot-card__eyebrow" style={{ position: "absolute", top: "18px", left: "18px" }}>FUN FACTS</span>
+          <div className="fun-sticker-stack">
+            <div className="sticker-card sticker-card--back">
+              <span style={{ fontSize: "2rem" }}>🎨</span>
+            </div>
+            <div className="sticker-card sticker-card--front">
+              <span style={{ fontSize: "3rem", marginBottom: "8px" }}>🧋</span>
+              <span style={{ fontFamily: "var(--mono)", fontSize: "0.68rem", color: "#595449", textAlign: "center" }}>Fueled by Boba &amp; Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

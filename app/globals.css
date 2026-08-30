@@ -2412,5 +2412,277 @@ img, svg { display: block; max-width: 100%; }
   .manifesto-line { font-size: 1rem; }
 }
 
+/* ========================================
+   SNAPSHOT DASHBOARD VIEW STYLES
+======================================== */
 
+.snapshot-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
 
+.snapshot-grid-top {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr 1.1fr;
+  gap: 16px;
+}
+
+.snapshot-grid-bottom {
+  display: grid;
+  grid-template-columns: 1.1fr 1.9fr;
+  gap: 16px;
+}
+
+.snapshot-card {
+  background: #ffffff;
+  border: 1px solid #e3dec3;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(50, 45, 35, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+.snapshot-card__eyebrow {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: #9e9788;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+}
+
+/* 1. Spiral Notepad Design Notes */
+.spiral-card {
+  background: #faf7f2;
+  border: 1px solid #dcd4c2;
+  padding-top: 28px;
+}
+
+.spiral-binder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: #eae3d2;
+  border-bottom: 1px solid #dcd4c2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-inline: 16px;
+}
+
+.spiral-binder span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.25);
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 6px;
+}
+
+.tag-pill {
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.tag-pill--green { background-color: #559e78; }
+.tag-pill--blue { background-color: #5a87b8; }
+.tag-pill--purple { background-color: #8c76ad; }
+.tag-pill--gold { background-color: #c99849; }
+.tag-pill--pink { background-color: #d16b6b; }
+.tag-pill--teal { background-color: #427c85; }
+
+/* 2. Energy Level Ring Gauge */
+.energy-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.energy-gauge {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: grid;
+  place-items: center;
+  margin-block: 4px;
+}
+
+.energy-gauge svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.energy-gauge__val {
+  position: absolute;
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2c3a32;
+}
+
+.energy-card__status {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  color: #5b6e62;
+  margin-top: 4px;
+}
+
+/* 3. Fuel Mix Radar Chart */
+.fuel-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.radar-chart {
+  width: 100%;
+  height: 140px;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.radar-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 4. My Journey Timeline */
+.journey-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.journey-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  color: #635d52;
+}
+
+.journey-item.is-active {
+  background: #e4f2eb;
+  border: 1px solid #b8dfcb;
+  color: #1e4a33;
+  font-weight: 700;
+}
+
+.journey-item__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.journey-item__num {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: #9e9788;
+}
+
+.journey-item.is-active .journey-item__num {
+  color: #2b704e;
+}
+
+.journey-item__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a8a294;
+}
+
+.journey-item.is-active .journey-item__dot {
+  background: #2cb36a;
+}
+
+.journey-item__tag {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #f0ebe0;
+  color: #7d7568;
+}
+
+.journey-item.is-active .journey-item__tag {
+  background: #2cb36a;
+  color: #ffffff;
+}
+
+/* 5. Fun Facts & Sticker Card */
+.fun-facts-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdfcf9;
+}
+
+.fun-sticker-stack {
+  position: relative;
+  width: 200px;
+  height: 220px;
+  display: grid;
+  place-items: center;
+}
+
+.sticker-card {
+  position: absolute;
+  width: 170px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e3dec3;
+  box-shadow: 0 10px 24px rgba(45, 40, 30, 0.1);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sticker-card--back {
+  transform: rotate(-4deg) translateY(-4px);
+  background: #f8f5ee;
+}
+
+.sticker-card--front {
+  transform: rotate(3deg);
+}
+
+.sticker-card img {
+  width: 120px;
+  height: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+}
+
+@media (max-width: 900px) {
+  .snapshot-grid-top { grid-template-columns: 1fr; }
+  .snapshot-grid-bottom { grid-template-columns: 1fr; }
+}
