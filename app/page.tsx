@@ -576,14 +576,7 @@ export default function Home() {
       <main>
         <Hero />
         <ManifestoSection />
-        <FinderProjectsSection
-          onSelectCategory={(id) => {
-            const workElem = document.querySelector("#moodboard");
-            if (workElem) {
-              workElem.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
-        />
+        <FinderProjectsSection />
         <div id="moodboard">
           <MoodboardSection
             onOpenProject={(item) =>
