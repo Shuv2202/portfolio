@@ -84,6 +84,185 @@ const folderCategories: FolderCategory[] = [
   },
 ];
 
+type FolderFileItem = {
+  id: string;
+  title: string;
+  type: string;
+  description: string;
+  tags: string[];
+  githubUrl?: string;
+  demoUrl?: string;
+  icon: string;
+};
+
+const folderContents: Record<string, { title: string; subtitle: string; color: string; items: FolderFileItem[] }> = {
+  work: {
+    title: "Projects at Work",
+    subtitle: "Production web applications & full-stack software shipped for real users.",
+    color: "#6b93c0",
+    items: [
+      {
+        id: "serveme",
+        title: "ServeMe Operating System",
+        type: "Full-Stack Web System",
+        description: "Mobile-first QR ordering flow connecting guests, kitchens, and management teams in real time.",
+        tags: ["React", "TypeScript", "PostgreSQL", "Vercel"],
+        githubUrl: "https://github.com/Shuv2202/finnal-website",
+        demoUrl: "https://finnal-website.vercel.app",
+        icon: "🍽️",
+      },
+      {
+        id: "kds",
+        title: "Kitchen Display System (KDS)",
+        type: "Real-Time Dashboard",
+        description: "Real-time kitchen order dispatch system tracking table timers and dish readiness.",
+        tags: ["CSS3", "JavaScript", "Real-Time"],
+        githubUrl: "https://github.com/Shuv2202/KDS",
+        icon: "🍳",
+      },
+      {
+        id: "vendor",
+        title: "Vendor Management App",
+        type: "Inventory Dashboard",
+        description: "Multi-vendor inventory tracking dashboard and catalog management console.",
+        tags: ["TypeScript", "React", "State Management"],
+        githubUrl: "https://github.com/Shuv2202/vendor",
+        icon: "🏪",
+      },
+    ],
+  },
+  ai: {
+    title: "Designing with AI",
+    subtitle: "AI-native prototypes, medical report analyzers, and prompt-to-UI experiments.",
+    color: "#d8a855",
+    items: [
+      {
+        id: "mediscan",
+        title: "MediScan AI Healthcare App",
+        type: "AI Medical Reader",
+        description: "AI-powered medical report analyzer providing instant summary insights and health metric breakdowns.",
+        tags: ["TypeScript", "AI", "Healthcare", "React"],
+        githubUrl: "https://github.com/Shuv2202/MediScan",
+        demoUrl: "https://medi-scan-rho.vercel.app",
+        icon: "🏥",
+      },
+      {
+        id: "vibe-challenge",
+        title: "Claude Vibe-Coding Canvas",
+        type: "Agentic UI System",
+        description: "Tactile web workspace translating physical desk objects into living browser interface components.",
+        tags: ["Agentic AI", "Tactile Design", "WebAudio"],
+        icon: "🧠",
+      },
+      {
+        id: "code-assistant",
+        title: "AI Prompt Engineering Tools",
+        type: "Developer Tools",
+        description: "Custom agentic workflows and tool schemas designed to accelerate full-stack coding tasks.",
+        tags: ["Prompting", "Automation", "Workflow"],
+        icon: "⚡",
+      },
+    ],
+  },
+  community: {
+    title: "Community Impact",
+    subtitle: "Open source contributions, student developer mentorship, and public utilities.",
+    color: "#5b9e84",
+    items: [
+      {
+        id: "weather",
+        title: "Weather Forecast Web App",
+        type: "Public Web Utility",
+        description: "Interactive web application to fetch, search, and visualize real-time global weather forecasts.",
+        tags: ["JavaScript", "HTML5", "REST API"],
+        githubUrl: "https://github.com/Shuv2202/Weather-Forecast",
+        demoUrl: "https://shuv2202.github.io/Weather-Forecast/",
+        icon: "🌤️",
+      },
+      {
+        id: "mentorship",
+        title: "College CSE Tech Workshops",
+        type: "Developer Community",
+        description: "Hands-on student mentorship sessions covering modern web development, React, and Git fundamentals.",
+        tags: ["Mentorship", "Community", "CSE"],
+        icon: "👥",
+      },
+      {
+        id: "open-source",
+        title: "Open Source Codebases",
+        type: "Open Source",
+        description: "Active maintenance and UI accessibility enhancements across public repositories.",
+        tags: ["Git", "GitHub", "Documentation"],
+        icon: "🚀",
+      },
+    ],
+  },
+  lens: {
+    title: "Through My Lens",
+    subtitle: "Visual photography, architectural snapshots, and creative inspiration gallery.",
+    color: "#d67474",
+    items: [
+      {
+        id: "urban",
+        title: "Urban Architecture Series",
+        type: "Photography",
+        description: "Minimalist geometry, shadow play, and high-contrast urban structural photography.",
+        tags: ["Photography", "Architecture", "Minimal"],
+        icon: "📷",
+      },
+      {
+        id: "botanical",
+        title: "Botanical Textures & Light",
+        type: "Visual Art",
+        description: "Golden hour light reflections, organic leaf macro shots, and warm natural textures.",
+        tags: ["Visuals", "Nature", "Texture"],
+        icon: "🌿",
+      },
+      {
+        id: "workspace",
+        title: "Tactile Workspace Aesthetics",
+        type: "Curated Aesthetic",
+        description: "Mechanical keycaps, grid paper journals, iced coffee setups, and analog desktop inspiration.",
+        tags: ["Workspace", "Design", "Aesthetic"],
+        icon: "☕",
+      },
+    ],
+  },
+  sketch: {
+    title: "From Sketch to Merch",
+    subtitle: "UI design systems, tactile components, vector merch graphics, and product UI builds.",
+    color: "#9777bc",
+    items: [
+      {
+        id: "nexus-landing",
+        title: "Nexus Product Landing Page",
+        type: "Frontend Product UX",
+        description: "Responsive product landing page focused on visual hierarchy, conversion flow, and clean layouts.",
+        tags: ["HTML5", "CSS3", "JavaScript"],
+        githubUrl: "https://github.com/Shuv2202/OIBSIP-WEB-DEVELOPMENT-DESIGNING---Level-1-Task-1---Landing-Page-",
+        demoUrl: "https://oibsip-web-development-designing-le.vercel.app",
+        icon: "🎨",
+      },
+      {
+        id: "design-system",
+        title: "Tactile Grid Design System",
+        type: "UI Component Library",
+        description: "Custom CSS component architecture with cream graph paper grids, Post-It cards, and ticket badges.",
+        tags: ["CSS Architecture", "Design System"],
+        icon: "💻",
+      },
+      {
+        id: "vector-merch",
+        title: "Brand Sticker & Merch Art",
+        type: "Graphic Design",
+        description: "Vector sticker artwork, embroidered patch badges, and custom merch graphics.",
+        tags: ["Vector", "Figma", "Branding"],
+        icon: "🏷️",
+      },
+    ],
+  },
+};
+
 export default function FinderProjectsSection({ onSelectCategory }: { onSelectCategory?: (id: string) => void }) {
   const [activeTab, setActiveTab] = useState("Projects");
   const [activeFolder, setActiveFolder] = useState<string | null>(null);
@@ -95,7 +274,15 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
     }
   };
 
+  const handleSidebarTabClick = (tabName: string) => {
+    setActiveTab(tabName);
+    setActiveFolder(null); // Reset open folder when switching sidebar tabs
+  };
+
   const getWindowTitle = () => {
+    if (activeTab === "Projects" && activeFolder && folderContents[activeFolder]) {
+      return `~ /shubham/project/${activeFolder}`;
+    }
     switch (activeTab) {
       case "Snapshot":
         return "~ /shubham/snapshot";
@@ -132,8 +319,8 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
             <nav className="finder-sidebar__nav">
               <button
                 type="button"
-                className={`finder-sidebar__item ${activeTab === "Projects" ? "is-active" : ""}`}
-                onClick={() => setActiveTab("Projects")}
+                className={`finder-sidebar__item ${activeTab === "Projects" && !activeFolder ? "is-active" : ""}`}
+                onClick={() => handleSidebarTabClick("Projects")}
               >
                 <span className="sidebar-icon">🏠</span>
                 <span>Projects</span>
@@ -141,7 +328,7 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
               <button
                 type="button"
                 className={`finder-sidebar__item ${activeTab === "Snapshot" ? "is-active" : ""}`}
-                onClick={() => setActiveTab("Snapshot")}
+                onClick={() => handleSidebarTabClick("Snapshot")}
               >
                 <span className="sidebar-icon">🖥️</span>
                 <span>Snapshot</span>
@@ -149,7 +336,7 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
               <button
                 type="button"
                 className={`finder-sidebar__item ${activeTab === "Achievements" ? "is-active" : ""}`}
-                onClick={() => setActiveTab("Achievements")}
+                onClick={() => handleSidebarTabClick("Achievements")}
               >
                 <span className="sidebar-icon">⭐</span>
                 <span>Achievements</span>
@@ -157,7 +344,7 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
               <button
                 type="button"
                 className={`finder-sidebar__item ${activeTab === "Garden" ? "is-active" : ""}`}
-                onClick={() => setActiveTab("Garden")}
+                onClick={() => handleSidebarTabClick("Garden")}
               >
                 <span className="sidebar-icon">🌱</span>
                 <span>Garden</span>
@@ -181,6 +368,12 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
                 <h3>Digital Garden</h3>
                 <p style={{ marginTop: "8px", fontSize: "0.85rem" }}>Cultivating notes on AI Agents, Next.js, WebAudio &amp; Tactile Design Systems</p>
               </div>
+            ) : activeFolder && folderContents[activeFolder] ? (
+              <FolderDetailView
+                folderKey={activeFolder}
+                folderData={folderContents[activeFolder]}
+                onBack={() => setActiveFolder(null)}
+              />
             ) : (
               <div className="finder-folder-grid">
                 {folderCategories.map((folder) => (
@@ -209,6 +402,70 @@ export default function FinderProjectsSection({ onSelectCategory }: { onSelectCa
         </div>
       </div>
     </section>
+  );
+}
+
+function FolderDetailView({
+  folderKey,
+  folderData,
+  onBack,
+}: {
+  folderKey: string;
+  folderData: { title: string; subtitle: string; color: string; items: FolderFileItem[] };
+  onBack: () => void;
+}) {
+  return (
+    <div className="folder-detail-view">
+      <div className="folder-detail-header">
+        <button type="button" className="folder-back-btn" onClick={onBack}>
+          ← Back to /shubham/project
+        </button>
+        <div className="folder-detail-title">
+          <span className="folder-detail-badge" style={{ backgroundColor: folderData.color }}>
+            {folderKey.toUpperCase()}
+          </span>
+          <h3>{folderData.title}</h3>
+        </div>
+      </div>
+      <p className="folder-detail-desc">{folderData.subtitle}</p>
+
+      <div className="folder-file-grid">
+        {folderData.items.map((file) => (
+          <div key={file.id} className="folder-file-card">
+            <div className="folder-file-card__header">
+              <span className="folder-file-card__icon">{file.icon}</span>
+              <div className="folder-file-card__meta">
+                <h4>{file.title}</h4>
+                <span className="folder-file-card__type">{file.type}</span>
+              </div>
+            </div>
+            <p className="folder-file-card__desc">{file.description}</p>
+
+            <div className="folder-file-card__footer">
+              <div className="folder-file-tags">
+                {file.tags.map((tag) => (
+                  <span key={tag} className="folder-file-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="folder-file-links">
+                {file.githubUrl && (
+                  <a href={file.githubUrl} target="_blank" rel="noreferrer" className="folder-file-link">
+                    GitHub ↗
+                  </a>
+                )}
+                {file.demoUrl && (
+                  <a href={file.demoUrl} target="_blank" rel="noreferrer" className="folder-file-link">
+                    Live Demo ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
