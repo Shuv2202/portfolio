@@ -279,6 +279,12 @@ img, svg { display: block; max-width: 100%; }
   backdrop-filter: blur(12px);
   animation: noticePopupSlideDown 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+@media (min-width: 769px) {
+  .mobile-desktop-notice {
+    display: none !important;
+  }
+}
 .mobile-desktop-notice__content {
   display: flex;
   align-items: center;
