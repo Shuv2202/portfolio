@@ -259,9 +259,9 @@ img, svg { display: block; max-width: 100%; }
 .boarding-pass__meta small { margin-bottom: 3px; color: #9a9388; font-size: .46rem; }
 .boarding-pass__edge { position: absolute; inset: 0 0 0 auto; display: flex; width: 34px; align-items: center; justify-content: center; border-left: 1px dashed #aca493; font: 400 .42rem var(--mono); writing-mode: vertical-rl; }
 
-.hero-title { position: absolute; top: 360px; left: 50%; z-index: 6; width: auto; text-align: center; transform: translateX(-50%); pointer-events: none; }
+.hero-title { position: absolute; top: 280px; left: 50%; z-index: 6; width: min(720px, 92vw); text-align: center; transform: translateX(-50%); pointer-events: auto; }
 .hero-title .script { margin-bottom: 8px; font-size: clamp(3.2rem, 5.2vw, 4.8rem); line-height: 1; font-weight: 500; color: var(--ink); transform: none; }
-.hero-title h1 { font-family: var(--mono); font-size: clamp(.68rem, 1vw, .76rem); font-weight: 500; letter-spacing: .28em; text-transform: uppercase; color: var(--ink-soft); opacity: .75; }
+.hero-title h1 { font-family: var(--mono); font-size: clamp(.72rem, 1.1vw, .85rem); font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--ink); opacity: .9; }
 
 /* Mobile Desktop Recommendation Popup (Photo 3) */
 .mobile-desktop-notice {
