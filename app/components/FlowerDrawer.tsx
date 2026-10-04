@@ -225,17 +225,16 @@ export default function FlowerDrawer() {
           </div>
         )}
 
-        {/* Floating Pencil Button */}
+        {/* Floating Pencil Icon Box Button */}
         <button
           type="button"
-          className={`pencil-toggle-btn pencil-toggle-btn--small ${isActive ? "is-active" : ""}`}
+          className={`pencil-toggle-btn pencil-box-btn ${isActive ? "is-active" : ""}`}
           onClick={() => setIsActive(!isActive)}
-          data-cursor-text={isActive ? "Stop drawing" : "Draw canvas"}
+          data-cursor-text={isActive ? "Close pencil" : "Draw canvas"}
           aria-label="Toggle pencil drawing tool"
-          title={isActive ? "Stop drawing" : "Draw flowers, cartoon & anime"}
+          title={isActive ? "Close pencil tool" : "Draw flowers, cartoon & anime"}
         >
-          <span className="pencil-icon">✏️</span>
-          <span className="pencil-label">{isActive ? "Close" : "Pencil"}</span>
+          <span className="pencil-icon">{isActive ? "✕" : "✏️"}</span>
         </button>
       </div>
     </>
