@@ -9,7 +9,6 @@ import PolaroidScrapbookCard from "./components/PolaroidScrapbookCard";
 import ManifestoSection from "./components/ManifestoSection";
 import FinderProjectsSection from "./components/FinderProjectsSection";
 import MoodboardSection from "./components/MoodboardSection";
-import MobileDesktopNoticePopup from "./components/MobileDesktopNoticePopup";
 import { toggleLofiAudio } from "./utils/lofiAudio";
 
 type Project = {
@@ -624,7 +623,6 @@ export default function Home() {
   return (
     <>
       <CustomCursor />
-      <MobileDesktopNoticePopup />
       <a className="skip-link" href="#about">Skip to content</a>
       <ShubhamVisitIntro onComplete={() => setIntroComplete(true)} />
       <div className="scroll-progress" style={{ transform: "scaleX(0)" }} aria-hidden="true" />
