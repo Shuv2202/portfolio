@@ -240,9 +240,15 @@ img, svg { display: block; max-width: 100%; }
   padding: 14px 16px 10px; background: #252521;
   background-image: radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px); background-size: 8px 8px;
 }
-.hanging-id__description strong {
-  display: block; margin-bottom: 6px; font-size: 1.55rem; font-weight: 800;
-  letter-spacing: -0.04em; color: #ffffff; line-height: 1;
+.hanging-id__description strong,
+.hanging-id__digital-name {
+  display: block; margin-bottom: 6px; font-size: 1.4rem; font-weight: 800;
+  letter-spacing: -0.04em; color: #ffffff; line-height: 1.15; min-height: 2.1rem;
+  animation: digitalNameSlide 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes digitalNameSlide {
+  from { opacity: 0; transform: translateY(5px); filter: blur(2px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 .hanging-id__description p {
   color: rgba(255,255,255,.68); font-size: 0.62rem; line-height: 1.45;

@@ -27,10 +27,30 @@ const clamp = (
   maximum: number,
 ) => Math.min(maximum, Math.max(minimum, value));
 
+const nameVariants = [
+  { name: "Shubham Kumar", lang: "English", code: "EN" },
+  { name: "शुभम कुमार", lang: "Hindi", code: "HI" },
+  { name: "シュバム クマール", lang: "Japanese", code: "JA" },
+  { name: "舒巴姆", lang: "Chinese", code: "ZH" },
+  { name: "Шубхам Кумар", lang: "Russian", code: "RU" },
+  { name: "شوبهام كومار", lang: "Arabic", code: "AR" },
+  { name: "슈밤 쿠마르", lang: "Korean", code: "KO" },
+  { name: "শুভম কুমার", lang: "Bengali", code: "BN" },
+  { name: "Σούμπχαμ", lang: "Greek", code: "EL" },
+];
+
 export default function HangingIdCard() {
   const containerRef = useRef<HTMLDivElement>(null);
   const pendulumRef = useRef<HTMLDivElement>(null);
   const [isIllustrated, setIsIllustrated] = useState(false);
+  const [nameIndex, setNameIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNameIndex((prev) => (prev + 1) % nameVariants.length);
+    }, 2200);
+    return () => clearInterval(timer);
+  }, []);
 
   const physics = useRef<PhysicsState>({
     angle: -2.4,
@@ -139,12 +159,14 @@ export default function HangingIdCard() {
 
         <article className="hanging-id__card">
           <div className="hanging-id__header">
-            <span>SHUBHAM</span>
+            <span>{nameVariants[nameIndex].code} · {nameVariants[nameIndex].lang}</span>
             <span>@thatsosubh</span>
           </div>
 
           <div className="hanging-id__description">
-            <strong>Shubham Kumar</strong>
+            <strong key={nameIndex} className="hanging-id__digital-name">
+              {nameVariants[nameIndex].name}
+            </strong>
 
             <p>
               Building useful interfaces with
