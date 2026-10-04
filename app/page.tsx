@@ -8,7 +8,6 @@ import HangingIdCard from "./components/HangingIdCard";
 import PolaroidScrapbookCard from "./components/PolaroidScrapbookCard";
 import ManifestoSection from "./components/ManifestoSection";
 import FinderProjectsSection from "./components/FinderProjectsSection";
-import MoodboardSection from "./components/MoodboardSection";
 import { toggleLofiAudio } from "./utils/lofiAudio";
 
 type Project = {
@@ -634,26 +633,6 @@ export default function Home() {
         <Toolbox />
         <ManifestoSection />
         <FinderProjectsSection />
-        <div id="moodboard">
-          <MoodboardSection
-            onOpenProject={(item) =>
-              setSelectedProject({
-                id: item.id,
-                title: item.title,
-                label: item.label,
-                year: item.year,
-                description: item.description,
-                story: item.story,
-                tags: item.tags,
-                image: item.image,
-                className: "project-card--yellow",
-                category: "creative",
-                github: item.github,
-                cursorText: item.cursorText,
-              })
-            }
-          />
-        </div>
       </main>
       <Contact />
       <ServeMeCaseStudyModal isOpen={serveMeModalOpen} onClose={() => setServeMeModalOpen(false)} />
