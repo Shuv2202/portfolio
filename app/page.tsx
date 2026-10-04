@@ -163,7 +163,6 @@ function Hero() {
 
         {/* Hero Headline & Actions */}
         <div className="hero-title hero-reveal hero-reveal--4">
-          <p className="script">SHUBHAM KUMAR</p>
           <h1>I BUILD DIGITAL PRODUCTS.</h1>
           <span className="tagline-badge">“I THINK, THEN I BUILD.”</span>
           <p className="hero-subhead">
