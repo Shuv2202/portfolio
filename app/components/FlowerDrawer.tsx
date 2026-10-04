@@ -108,6 +108,13 @@ export default function FlowerDrawer() {
     };
   }, [isActive, drawMode, selectedSize]);
 
+  const handleTogglePencil = () => {
+    if (isActive) {
+      setDrawnItems([]);
+    }
+    setIsActive((prev) => !prev);
+  };
+
   return (
     <>
       {/* Selection Lock & Capture Overlay */}
@@ -229,10 +236,10 @@ export default function FlowerDrawer() {
         <button
           type="button"
           className={`pencil-toggle-btn pencil-box-btn ${isActive ? "is-active" : ""}`}
-          onClick={() => setIsActive(!isActive)}
+          onClick={handleTogglePencil}
           data-cursor-text={isActive ? "Close pencil" : "Draw canvas"}
           aria-label="Toggle pencil drawing tool"
-          title={isActive ? "Close pencil tool" : "Draw flowers, cartoon & anime"}
+          title={isActive ? "Close pencil tool and clear" : "Draw flowers, cartoon & anime"}
         >
           <span className="pencil-icon">{isActive ? "✕" : "✏️"}</span>
         </button>
