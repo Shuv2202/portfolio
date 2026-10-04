@@ -310,80 +310,85 @@ function Work({ onOpenServeMe, onOpenProject }: { onOpenServeMe: () => void; onO
       <div className="section-shell">
         <div className="section-kicker section-kicker--dark reveal-on-scroll"><span>SELECTED WORK</span><p>FEATURED &amp; RECENT BUILDS</p></div>
 
-        {/* HUGE FEATURED PROJECT 01 — SERVEME */}
-        <div className="featured-project-card reveal-on-scroll">
-          <span className="featured-card__badge">FEATURED PROJECT / FULL-STACK</span>
-          <div className="featured-card__grid">
-            <div className="featured-card__info">
-              <span className="featured-card__num">01 — FEATURED</span>
-              <h2>SERVEME</h2>
-              <p className="featured-card__subtitle">Restaurant Operating System</p>
-              <p className="featured-card__desc">
-                A mobile-first QR ordering ecosystem connecting customers, kitchens, and restaurant management teams in real time.
-              </p>
+        {/* PINBOARD CANVAS FRAME CONTAINER */}
+        <div className="pinboard-canvas reveal-on-scroll">
+          <div className="pinboard-canvas__frame">
+            {/* HUGE FEATURED PROJECT 01 — SERVEME */}
+            <div className="featured-project-card">
+              <span className="featured-card__badge">FEATURED PROJECT / FULL-STACK</span>
+              <div className="featured-card__grid">
+                <div className="featured-card__info">
+                  <span className="featured-card__num">01 — FEATURED</span>
+                  <h2>SERVEME</h2>
+                  <p className="featured-card__subtitle">Restaurant Operating System</p>
+                  <p className="featured-card__desc">
+                    A mobile-first QR ordering ecosystem connecting customers, kitchens, and restaurant management teams in real time.
+                  </p>
 
-              <div className="featured-card__features">
-                <span>QR MENU</span>
-                <span>ORDER MANAGEMENT</span>
-                <span>KITCHEN DASHBOARD</span>
-                <span>VENDOR PORTAL</span>
-              </div>
+                  <div className="featured-card__features">
+                    <span>QR MENU</span>
+                    <span>ORDER MANAGEMENT</span>
+                    <span>KITCHEN DASHBOARD</span>
+                    <span>VENDOR PORTAL</span>
+                  </div>
 
-              <div className="chip-list">
-                <span>React</span>
-                <span>TypeScript</span>
-                <span>Node.js</span>
-                <span>PostgreSQL</span>
-              </div>
+                  <div className="chip-list">
+                    <span>React</span>
+                    <span>TypeScript</span>
+                    <span>Node.js</span>
+                    <span>PostgreSQL</span>
+                  </div>
 
-              <div className="featured-card__actions">
-                <button type="button" className="btn-case-study" onClick={onOpenServeMe} data-cursor-text="CASE STUDY">
-                  VIEW CASE STUDY ↗
-                </button>
-                <a href="https://github.com/Shuv2202/finnal-website" target="_blank" rel="noreferrer" className="btn-github">
-                  GitHub <ArrowIcon />
-                </a>
+                  <div className="featured-card__actions">
+                    <button type="button" className="btn-case-study" onClick={onOpenServeMe} data-cursor-text="CASE STUDY">
+                      VIEW CASE STUDY ↗
+                    </button>
+                    <a href="https://github.com/Shuv2202/finnal-website" target="_blank" rel="noreferrer" className="btn-github">
+                      GitHub <ArrowIcon />
+                    </a>
+                  </div>
+                </div>
+
+                <div className="featured-card__preview" onClick={onOpenServeMe} data-cursor-text="VIEW CASE STUDY">
+                  <img src="/assets/serveme.svg" alt="ServeMe Restaurant System UI" />
+                  <div className="preview-overlay">
+                    <span>EXPLORE SERVEME WORKFLOW ↗</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="featured-card__preview" onClick={onOpenServeMe} data-cursor-text="VIEW CASE STUDY">
-              <img src="/assets/serveme.svg" alt="ServeMe Restaurant System UI" />
-              <div className="preview-overlay">
-                <span>EXPLORE SERVEME WORKFLOW ↗</span>
-              </div>
+            {/* OTHER SELECTED PROJECTS GRID */}
+            <div className="other-projects-grid">
+              {/* 02 - MEDISCAN */}
+              <article className="project-card project-card--medium project-card--ink">
+                <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[1])} data-cursor-text="VIEW">
+                  <img src="/assets/mediscan.svg" alt="MediScan AI Healthcare App" />
+                  <span>Open details <ArrowIcon /></span>
+                </button>
+                <div className="project-card__content">
+                  <div className="project-card__meta"><span>02 — AI / HEALTHCARE</span><span>2026</span></div>
+                  <h3>MediScan AI</h3>
+                  <p>AI-powered medical report analyzer providing instant summary insights and health metric breakdowns.</p>
+                  <div className="chip-list"><span>TypeScript</span><span>AI</span><span>React</span></div>
+                </div>
+              </article>
+
+              {/* 03 - NEXUS */}
+              <article className="project-card project-card--medium project-card--blue">
+                <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[2])} data-cursor-text="VIEW">
+                  <img src="/assets/landing-page.svg" alt="Nexus Landing Page" />
+                  <span>Open details <ArrowIcon /></span>
+                </button>
+                <div className="project-card__content">
+                  <div className="project-card__meta"><span>03 — FRONTEND / PRODUCT</span><span>2026</span></div>
+                  <h3>Nexus Landing</h3>
+                  <p>Polished product landing page focused on visual hierarchy, conversion flow, and responsive touch layout.</p>
+                  <div className="chip-list"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+                </div>
+              </article>
             </div>
           </div>
-        </div>
-
-        {/* OTHER SELECTED PROJECTS GRID */}
-        <div className="other-projects-grid">
-          {/* 02 - MEDISCAN */}
-          <article className="project-card project-card--medium project-card--ink reveal-on-scroll">
-            <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[1])} data-cursor-text="VIEW">
-              <img src="/assets/mediscan.svg" alt="MediScan AI Healthcare App" />
-              <span>Open details <ArrowIcon /></span>
-            </button>
-            <div className="project-card__content">
-              <div className="project-card__meta"><span>02 — AI / HEALTHCARE</span><span>2026</span></div>
-              <h3>MediScan AI</h3>
-              <p>AI-powered medical report analyzer providing instant summary insights and health metric breakdowns.</p>
-              <div className="chip-list"><span>TypeScript</span><span>AI</span><span>React</span></div>
-            </div>
-          </article>
-
-          {/* 03 - NEXUS */}
-          <article className="project-card project-card--medium project-card--blue reveal-on-scroll">
-            <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[2])} data-cursor-text="VIEW">
-              <img src="/assets/landing-page.svg" alt="Nexus Landing Page" />
-              <span>Open details <ArrowIcon /></span>
-            </button>
-            <div className="project-card__content">
-              <div className="project-card__meta"><span>03 — FRONTEND / PRODUCT</span><span>2026</span></div>
-              <h3>Nexus Landing</h3>
-              <p>Polished product landing page focused on visual hierarchy, conversion flow, and responsive touch layout.</p>
-              <div className="chip-list"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
-            </div>
-          </article>
         </div>
       </div>
     </section>
