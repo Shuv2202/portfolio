@@ -183,7 +183,8 @@ export default function FlowerDrawer() {
                 onClick={() => setFlowers([])}
                 title="Clear flowers"
               >
-                <span>🧹 Clear</span>
+                <span className="clear-icon">🧹</span>
+                <span className="clear-label">Clear</span>
                 <span className="count-badge">{flowers.length}</span>
               </button>
             )}

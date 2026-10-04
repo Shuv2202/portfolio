@@ -3637,35 +3637,40 @@ body.is-pencil-active {
 }
 
 .pencil-toggle-btn--small {
-  padding: 8px 14px;
-  font-size: 0.7rem;
-  border-radius: 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  padding: 6px 12px;
+  font-size: 0.65rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
 }
 
 .pencil-toggle-btn:hover {
-  transform: translateY(-3px) scale(1.03);
+  transform: translateY(-2px) scale(1.02);
   background: #33322d;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 .pencil-toggle-btn.is-active {
   background: var(--yellow);
   color: var(--dark);
   border-color: var(--dark);
-  box-shadow: 0 0 20px rgba(228, 216, 79, 0.6);
+  box-shadow: 0 0 16px rgba(228, 216, 79, 0.5);
   animation: pencilPulse 2s infinite ease-in-out;
 }
 
 @keyframes pencilPulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.04); }
+  50% { transform: scale(1.03); }
 }
 
 .pencil-icon {
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   line-height: 1;
   transition: transform 0.2s ease;
+}
+
+.clear-icon {
+  font-size: 0.78rem;
+  line-height: 1;
 }
 
 .pencil-toggle-btn:hover .pencil-icon {
@@ -3675,16 +3680,16 @@ body.is-pencil-active {
 .flower-drawer-badge {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 12px;
-  border-radius: 24px;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: 20px;
   background: #ffffff;
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 500;
   border: 1px solid var(--line);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   animation: badgeFadeIn 0.3s ease-out;
 }
 
@@ -3698,7 +3703,7 @@ body.is-pencil-active {
   align-items: center;
   gap: 2px;
   padding: 2px;
-  border-radius: 12px;
+  border-radius: 10px;
   background: #f2eee5;
   border: 1px solid #e0d8c8;
 }
@@ -3707,11 +3712,11 @@ body.is-pencil-active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 700;
   color: #666054;
   cursor: pointer;
@@ -3726,30 +3731,30 @@ body.is-pencil-active {
 .size-btn.is-selected {
   background: var(--dark);
   color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .flower-clear-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: 14px;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 12px;
   background: #242421;
   color: #ffffff;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-family: var(--mono);
   font-weight: 600;
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
 
 .flower-clear-btn:hover {
   background: #ff5f56;
   border-color: #d63031;
-  box-shadow: 0 4px 12px rgba(255, 95, 86, 0.35);
+  box-shadow: 0 4px 10px rgba(255, 95, 86, 0.35);
   transform: translateY(-1px);
 }
 
