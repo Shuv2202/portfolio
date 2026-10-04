@@ -40,9 +40,6 @@ const nameVariants = [
   { name: "ชุบฮัม", lang: "Thai", code: "TH" },
   { name: "შუბჰამ", lang: "Georgian", code: "KA" },
   { name: "Շուբհամ", lang: "Armenian", code: "HY" },
-  { name: "Shubham", lang: "Spanish", code: "ES" },
-  { name: "Shubham", lang: "French", code: "FR" },
-  { name: "Shubham", lang: "German", code: "DE" },
   { name: "Шубхам", lang: "Mongolian", code: "MN" },
 ];
 
