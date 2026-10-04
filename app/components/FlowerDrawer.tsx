@@ -16,8 +16,8 @@ type Flower = {
 type FlowerSize = "S" | "M" | "L";
 
 const SIZE_MAP: Record<FlowerSize, { min: number; max: number; label: string }> = {
-  S: { min: 18, max: 26, label: "Small" },
-  M: { min: 32, max: 44, label: "Medium" },
+  S: { min: 14, max: 22, label: "Small" },
+  M: { min: 30, max: 42, label: "Medium" },
   L: { min: 54, max: 72, label: "Large" },
 };
 
@@ -33,7 +33,7 @@ const FLOWER_COLORS = [
 
 export default function FlowerDrawer() {
   const [isActive, setIsActive] = useState(false);
-  const [selectedSize, setSelectedSize] = useState<FlowerSize>("M");
+  const [selectedSize, setSelectedSize] = useState<FlowerSize>("S"); // Default to small pencil as requested!
   const [flowers, setFlowers] = useState<Flower[]>([]);
   const isDragging = useRef(false);
   const lastPos = useRef({ x: 0, y: 0 });
@@ -106,12 +106,7 @@ export default function FlowerDrawer() {
   return (
     <>
       {/* Active Pencil Overlay prevents accidental text selection & link triggers */}
-      {isActive && (
-        <div
-          className="pencil-active-overlay"
-          aria-hidden="true"
-        />
-      )}
+      {isActive && <div className="pencil-active-overlay" aria-hidden="true" />}
 
       {/* Flower Overlay Layer */}
       <div
@@ -163,7 +158,7 @@ export default function FlowerDrawer() {
       <div className="flower-drawer-controls">
         {isActive && (
           <div className="flower-drawer-badge">
-            <span className="badge-hint">Click &amp; drag to draw 🌸</span>
+            <span className="badge-hint">Click/drag to draw 🌸</span>
 
             {/* Size Selector Buttons */}
             <div className="flower-size-selector" aria-label="Select flower size">
@@ -180,29 +175,32 @@ export default function FlowerDrawer() {
               ))}
             </div>
 
-            {/* Prominent Clear Button */}
+            {/* Clear Button */}
             {flowers.length > 0 && (
               <button
                 type="button"
                 className="flower-clear-btn"
                 onClick={() => setFlowers([])}
-                title="Clear all flowers"
+                title="Clear flowers"
               >
-                🧹 Clear ({flowers.length})
+                <span>🧹 Clear</span>
+                <span className="count-badge">{flowers.length}</span>
               </button>
             )}
           </div>
         )}
 
+        {/* Small Pencil Button */}
         <button
           type="button"
-          className={`pencil-toggle-btn ${isActive ? "is-active" : ""}`}
+          className={`pencil-toggle-btn pencil-toggle-btn--small ${isActive ? "is-active" : ""}`}
           onClick={() => setIsActive(!isActive)}
           data-cursor-text={isActive ? "Stop drawing" : "Draw flowers"}
-          aria-label="Pencil tool to draw flowers"
+          aria-label="Toggle pencil drawing tool"
+          title={isActive ? "Stop drawing flowers" : "Draw flowers with pencil"}
         >
           <span className="pencil-icon">✏️</span>
-          <span className="pencil-label">{isActive ? "Stop Drawing" : "Draw Flowers"}</span>
+          <span className="pencil-label">{isActive ? "Close" : "Pencil"}</span>
         </button>
       </div>
     </>
