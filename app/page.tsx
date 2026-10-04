@@ -11,7 +11,6 @@ import ManifestoSection from "./components/ManifestoSection";
 import FinderProjectsSection from "./components/FinderProjectsSection";
 import MoodboardSection from "./components/MoodboardSection";
 
-import DotMatrixCard from "./components/DotMatrixCard";
 import MobileDesktopNoticePopup from "./components/MobileDesktopNoticePopup";
 
 import { toggleLofiAudio } from "./utils/lofiAudio";
@@ -186,9 +185,6 @@ function Hero() {
           </div>
           <div className="boarding-pass__edge" aria-hidden="true">SK&nbsp;&nbsp;001&nbsp;&nbsp;CSE</div>
         </div>
-
-        {/* Middle Left: LED Dot Matrix Card (Figma/Nothing style LED grid display) */}
-        <DotMatrixCard />
 
         {/* Center Title & Subhead */}
         <div className="hero-title hero-reveal hero-reveal--4">
