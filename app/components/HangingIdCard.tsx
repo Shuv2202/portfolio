@@ -28,14 +28,14 @@ const clamp = (
 ) => Math.min(maximum, Math.max(minimum, value));
 
 const nameVariants = [
-  { name: "Shubham Kumar", lang: "English", code: "EN" },
-  { name: "शुभम कुमार", lang: "Hindi", code: "HI" },
-  { name: "シュバム クマール", lang: "Japanese", code: "JA" },
+  { name: "Shubham", lang: "English", code: "EN" },
+  { name: "शुभम", lang: "Hindi", code: "HI" },
+  { name: "シュバム", lang: "Japanese", code: "JA" },
   { name: "舒巴姆", lang: "Chinese", code: "ZH" },
-  { name: "Шубхам Кумар", lang: "Russian", code: "RU" },
-  { name: "شوبهام كومار", lang: "Arabic", code: "AR" },
-  { name: "슈밤 쿠마르", lang: "Korean", code: "KO" },
-  { name: "শুভম কুমার", lang: "Bengali", code: "BN" },
+  { name: "Шубхам", lang: "Russian", code: "RU" },
+  { name: "شوبهام", lang: "Arabic", code: "AR" },
+  { name: "슈밤", lang: "Korean", code: "KO" },
+  { name: "শুভম", lang: "Bengali", code: "BN" },
   { name: "Σούμπχαμ", lang: "Greek", code: "EL" },
 ];
 

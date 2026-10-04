@@ -242,8 +242,9 @@ img, svg { display: block; max-width: 100%; }
 }
 .hanging-id__description strong,
 .hanging-id__digital-name {
-  display: block; margin-bottom: 6px; font-size: 1.4rem; font-weight: 800;
-  letter-spacing: -0.04em; color: #ffffff; line-height: 1.15; min-height: 2.1rem;
+  display: block; margin-bottom: 6px; font-size: 1.55rem; font-weight: 800;
+  letter-spacing: -0.04em; color: #ffffff; line-height: 1; height: 1.65rem;
+  min-height: 1.65rem; max-height: 1.65rem; overflow: hidden; white-space: nowrap;
   animation: digitalNameSlide 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes digitalNameSlide {
