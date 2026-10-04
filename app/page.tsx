@@ -614,13 +614,14 @@ export default function Home() {
         setMenuOpen(false);
       }
     };
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+    const handleAnchorClick = (e: Event) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
       const anchor = target.closest<HTMLAnchorElement>('a[href^="#"]');
       if (anchor) {
         const href = anchor.getAttribute("href");
         if (href && href.length > 1) {
-          const elem = document.querySelector(href);
+          const elem = document.querySelector<HTMLElement>(href);
           if (elem) {
             e.preventDefault();
             if (lenisRef.current) {
