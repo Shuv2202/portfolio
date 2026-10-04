@@ -13,6 +13,14 @@ type Flower = {
   rotation: number;
 };
 
+type FlowerSize = "S" | "M" | "L";
+
+const SIZE_MAP: Record<FlowerSize, { min: number; max: number; label: string }> = {
+  S: { min: 18, max: 26, label: "Small" },
+  M: { min: 32, max: 44, label: "Medium" },
+  L: { min: 54, max: 72, label: "Large" },
+};
+
 const FLOWER_COLORS = [
   { petal: "#ff85a2", center: "#ffee93" }, // Pink
   { petal: "#ffd166", center: "#704010" }, // Sunflower Yellow
@@ -25,6 +33,7 @@ const FLOWER_COLORS = [
 
 export default function FlowerDrawer() {
   const [isActive, setIsActive] = useState(false);
+  const [selectedSize, setSelectedSize] = useState<FlowerSize>("M");
   const [flowers, setFlowers] = useState<Flower[]>([]);
   const isDragging = useRef(false);
   const lastPos = useRef({ x: 0, y: 0 });
@@ -33,8 +42,12 @@ export default function FlowerDrawer() {
     const pageX = clientX + window.scrollX;
     const pageY = clientY + window.scrollY;
 
+    const { min, max } = SIZE_MAP[selectedSize];
+    const baseSize = Math.floor(Math.random() * (max - min)) + min;
+    const minDistance = baseSize * 0.7;
+
     const dist = Math.hypot(pageX - lastPos.current.x, pageY - lastPos.current.y);
-    if (isDragging.current && dist < 28) return;
+    if (isDragging.current && dist < minDistance) return;
 
     lastPos.current = { x: pageX, y: pageY };
 
@@ -43,18 +56,23 @@ export default function FlowerDrawer() {
       id: Date.now() + Math.random(),
       x: pageX,
       y: pageY,
-      size: Math.floor(Math.random() * 18) + 28, // 28px to 46px
+      size: baseSize,
       petals: Math.random() > 0.35 ? 6 : 8,
       color: randomPalette.petal,
       centerColor: randomPalette.center,
       rotation: Math.floor(Math.random() * 360),
     };
 
-    setFlowers((prev) => [...prev.slice(-90), newFlower]);
+    setFlowers((prev) => [...prev.slice(-120), newFlower]);
   };
 
   useEffect(() => {
-    if (!isActive) return;
+    if (!isActive) {
+      document.body.classList.remove("is-pencil-active");
+      return;
+    }
+
+    document.body.classList.add("is-pencil-active");
 
     const handlePointerDown = (e: PointerEvent) => {
       const target = e.target as HTMLElement | null;
@@ -78,14 +96,23 @@ export default function FlowerDrawer() {
     window.addEventListener("pointerup", handlePointerUp);
 
     return () => {
+      document.body.classList.remove("is-pencil-active");
       window.removeEventListener("pointerdown", handlePointerDown);
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerup", handlePointerUp);
     };
-  }, [isActive]);
+  }, [isActive, selectedSize]);
 
   return (
     <>
+      {/* Active Pencil Overlay prevents accidental text selection & link triggers */}
+      {isActive && (
+        <div
+          className="pencil-active-overlay"
+          aria-hidden="true"
+        />
+      )}
+
       {/* Flower Overlay Layer */}
       <div
         className="flower-canvas-overlay"
@@ -136,14 +163,32 @@ export default function FlowerDrawer() {
       <div className="flower-drawer-controls">
         {isActive && (
           <div className="flower-drawer-badge">
-            <span>Click or drag anywhere to draw 🌸</span>
+            <span className="badge-hint">Click &amp; drag to draw 🌸</span>
+
+            {/* Size Selector Buttons */}
+            <div className="flower-size-selector" aria-label="Select flower size">
+              {(["S", "M", "L"] as FlowerSize[]).map((sz) => (
+                <button
+                  key={sz}
+                  type="button"
+                  className={`size-btn ${selectedSize === sz ? "is-selected" : ""}`}
+                  onClick={() => setSelectedSize(sz)}
+                  title={`Flower Size: ${SIZE_MAP[sz].label}`}
+                >
+                  {sz}
+                </button>
+              ))}
+            </div>
+
+            {/* Prominent Clear Button */}
             {flowers.length > 0 && (
               <button
                 type="button"
                 className="flower-clear-btn"
                 onClick={() => setFlowers([])}
+                title="Clear all flowers"
               >
-                Clear ({flowers.length})
+                🧹 Clear ({flowers.length})
               </button>
             )}
           </div>
@@ -157,7 +202,7 @@ export default function FlowerDrawer() {
           aria-label="Pencil tool to draw flowers"
         >
           <span className="pencil-icon">✏️</span>
-          <span className="pencil-label">{isActive ? "Drawing..." : "Draw Flowers"}</span>
+          <span className="pencil-label">{isActive ? "Stop Drawing" : "Draw Flowers"}</span>
         </button>
       </div>
     </>

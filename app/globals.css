@@ -3574,6 +3574,22 @@ img, svg { display: block; max-width: 100%; }
 /* ========================================
    FLOWER DRAWER & PENCIL TOOL STYLES
 ======================================== */
+body.is-pencil-active {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  cursor: crosshair;
+}
+
+.pencil-active-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 8887;
+  cursor: crosshair;
+  background: transparent;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
 .blooming-flower {
   pointer-events: none;
   animation: flowerBloom 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
@@ -3654,14 +3670,14 @@ img, svg { display: block; max-width: 100%; }
   align-items: center;
   gap: 12px;
   padding: 8px 14px;
-  border-radius: 20px;
+  border-radius: 24px;
   background: #ffffff;
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 500;
   border: 1px solid var(--line);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
   animation: badgeFadeIn 0.3s ease-out;
 }
 
@@ -3670,18 +3686,60 @@ img, svg { display: block; max-width: 100%; }
   to { opacity: 1; transform: translateX(0); }
 }
 
+.flower-size-selector {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px;
+  border-radius: 14px;
+  background: #f2eee5;
+  border: 1px solid #e0d8c8;
+}
+
+.size-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 10px;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #666054;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.size-btn:hover {
+  color: #11110f;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.size-btn.is-selected {
+  background: var(--dark);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
 .flower-clear-btn {
-  padding: 3px 8px;
-  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 14px;
   background: #242421;
   color: #ffffff;
-  font-size: 0.64rem;
+  font-size: 0.65rem;
   font-family: var(--mono);
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .flower-clear-btn:hover {
   background: #ff5f56;
+  transform: scale(1.04);
 }
 
