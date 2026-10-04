@@ -614,8 +614,31 @@ export default function Home() {
         setMenuOpen(false);
       }
     };
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const anchor = target.closest<HTMLAnchorElement>('a[href^="#"]');
+      if (anchor) {
+        const href = anchor.getAttribute("href");
+        if (href && href.length > 1) {
+          const elem = document.querySelector(href);
+          if (elem) {
+            e.preventDefault();
+            if (lenisRef.current) {
+              lenisRef.current.scrollTo(elem, { offset: -20 });
+            } else {
+              elem.scrollIntoView({ behavior: "smooth" });
+            }
+          }
+        }
+      }
+    };
+
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener("click", handleAnchorClick);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("click", handleAnchorClick);
+    };
   }, []);
 
   return (
@@ -627,11 +650,10 @@ export default function Home() {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main>
         <Hero />
+        <Work onOpenServeMe={() => setServeMeModalOpen(true)} onOpenProject={(proj) => setSelectedProject(proj)} />
         <About />
         <Toolbox />
         <ManifestoSection />
-        <FinderProjectsSection />
-        <Work onOpenServeMe={() => setServeMeModalOpen(true)} onOpenProject={(proj) => setSelectedProject(proj)} />
       </main>
       <Contact />
       <ServeMeCaseStudyModal isOpen={serveMeModalOpen} onClose={() => setServeMeModalOpen(false)} />
