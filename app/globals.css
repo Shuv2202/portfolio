@@ -497,7 +497,7 @@ img, svg { display: block; max-width: 100%; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* Work */
-.work { padding-block: 130px 145px; border-top: 1px solid var(--line); background-color: #f6f3eb; background-image: linear-gradient(rgba(180, 170, 150, 0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(180, 170, 150, 0.22) 1px, transparent 1px); background-size: 40px 40px; color: var(--ink); }
+.work { padding-block: 130px 145px; border-top: none; background-color: #f6f3eb; background-image: linear-gradient(rgba(180, 170, 150, 0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(180, 170, 150, 0.22) 1px, transparent 1px); background-size: 40px 40px; color: var(--ink); }
 .work__intro { display: grid; grid-template-columns: 1fr .55fr; gap: 100px; align-items: end; margin-bottom: 78px; }
 .work__intro .script { color: #7c6e19; }
 .work__intro > p { padding-bottom: 11px; color: var(--ink-soft); font-size: .84rem; line-height: 1.8; }
