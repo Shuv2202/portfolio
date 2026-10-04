@@ -53,7 +53,7 @@ const projects: Project[] = [
     story:
       "MediScan helps users read complex medical lab reports by generating plain-language summaries, flag alerts, and visual health indicators.",
     tags: ["TypeScript", "AI", "Healthcare", "React"],
-    image: "/assets/landing-page.svg",
+    image: "/assets/mediscan.svg",
     className: "project-card--ink",
     category: "product",
     github: "https://github.com/Shuv2202/MediScan",
@@ -69,7 +69,7 @@ const projects: Project[] = [
     story:
       "Built as a focused frontend exercise, Nexus combines a compact navigation system, strong headline hierarchy, feature storytelling, and touch-friendly layouts.",
     tags: ["HTML5", "CSS3", "JavaScript", "Responsive"],
-    image: "/assets/portfolio.svg",
+    image: "/assets/landing-page.svg",
     className: "project-card--blue",
     category: "frontend",
     github: "https://github.com/Shuv2202/OIBSIP-WEB-DEVELOPMENT-DESIGNING---Level-1-Task-1---Landing-Page-",
@@ -361,7 +361,7 @@ function Work({ onOpenServeMe, onOpenProject }: { onOpenServeMe: () => void; onO
           {/* 02 - MEDISCAN */}
           <article className="project-card project-card--medium project-card--ink reveal-on-scroll">
             <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[1])} data-cursor-text="VIEW">
-              <img src="/assets/landing-page.svg" alt="MediScan AI Healthcare App" />
+              <img src="/assets/mediscan.svg" alt="MediScan AI Healthcare App" />
               <span>Open details <ArrowIcon /></span>
             </button>
             <div className="project-card__content">
@@ -375,7 +375,7 @@ function Work({ onOpenServeMe, onOpenProject }: { onOpenServeMe: () => void; onO
           {/* 03 - NEXUS */}
           <article className="project-card project-card--medium project-card--blue reveal-on-scroll">
             <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[2])} data-cursor-text="VIEW">
-              <img src="/assets/portfolio.svg" alt="Nexus Landing Page" />
+              <img src="/assets/landing-page.svg" alt="Nexus Landing Page" />
               <span>Open details <ArrowIcon /></span>
             </button>
             <div className="project-card__content">
