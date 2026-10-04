@@ -2867,6 +2867,19 @@ img, svg { display: block; max-width: 100%; }
   border-color: #7c6e19 !important;
 }
 
+.tagline-badge {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #7c6e19;
+  letter-spacing: 0.05em;
+  background: #f4ebd0;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
 .hero-subhead {
   margin-top: 14px;
   max-width: 580px;

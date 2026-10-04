@@ -167,6 +167,7 @@ function Hero() {
         <div className="hero-title hero-reveal hero-reveal--4">
           <p className="script">SHUBHAM KUMAR · FULL-STACK DEVELOPER</p>
           <h1>I BUILD DIGITAL PRODUCTS.</h1>
+          <span className="tagline-badge">“I THINK, THEN I BUILD.”</span>
           <p className="hero-subhead">
             Full-stack developer creating useful web applications, AI-powered experiences and interfaces that feel good to use.
           </p>
