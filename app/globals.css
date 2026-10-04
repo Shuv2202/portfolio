@@ -3698,6 +3698,41 @@ body.is-pencil-active {
   to { opacity: 1; transform: translateX(0); }
 }
 
+.flower-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 12px;
+  background: #f4f0e6;
+  border: 1px solid #e2dac9;
+}
+
+.mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: #666054;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.mode-btn:hover {
+  color: #11110f;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.mode-btn.is-selected {
+  background: var(--dark);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
 .flower-size-selector {
   display: flex;
   align-items: center;
