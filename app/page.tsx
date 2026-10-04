@@ -124,7 +124,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (va
         <a href="#work" onClick={() => setMenuOpen(false)}>WORK</a>
         <a href="#about" onClick={() => setMenuOpen(false)}>ABOUT</a>
         <a href="#manifesto" onClick={() => setMenuOpen(false)}>PLAYGROUND</a>
-        <a href="mailto:shuvm2000@gmail.com" target="_blank" rel="noreferrer" className="nav-resume-btn" data-cursor-text="RESUME">RESUME ↗</a>
+        <a href="/assets/shubham-kumar-resume.jpg" target="_blank" rel="noreferrer" className="nav-resume-btn" data-cursor-text="RESUME">RESUME ↗</a>
       </nav>
     </header>
   );
@@ -643,10 +643,11 @@ export default function Home() {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main>
         <Hero />
-        <Work onOpenServeMe={() => setServeMeModalOpen(true)} onOpenProject={(proj) => setSelectedProject(proj)} />
         <About />
         <Toolbox />
         <ManifestoSection />
+        <FinderProjectsSection />
+        <Work onOpenServeMe={() => setServeMeModalOpen(true)} onOpenProject={(proj) => setSelectedProject(proj)} />
       </main>
       <Contact />
       <ServeMeCaseStudyModal isOpen={serveMeModalOpen} onClose={() => setServeMeModalOpen(false)} />
