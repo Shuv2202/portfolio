@@ -29,7 +29,6 @@ const clamp = (
 
 const nameVariants = [
   { name: "Shubham", lang: "English", code: "EN" },
-  { name: "शुभम", lang: "Hindi", code: "HI" },
   { name: "シュバム", lang: "Japanese", code: "JA" },
   { name: "舒巴姆", lang: "Chinese", code: "ZH" },
   { name: "Шубхам", lang: "Russian", code: "RU" },
@@ -37,6 +36,14 @@ const nameVariants = [
   { name: "슈밤", lang: "Korean", code: "KO" },
   { name: "শুভম", lang: "Bengali", code: "BN" },
   { name: "Σούμπχαμ", lang: "Greek", code: "EL" },
+  { name: "שובהם", lang: "Hebrew", code: "HE" },
+  { name: "ชุบฮัม", lang: "Thai", code: "TH" },
+  { name: "შუბჰამ", lang: "Georgian", code: "KA" },
+  { name: "Շուբհամ", lang: "Armenian", code: "HY" },
+  { name: "Shubham", lang: "Spanish", code: "ES" },
+  { name: "Shubham", lang: "French", code: "FR" },
+  { name: "Shubham", lang: "German", code: "DE" },
+  { name: "Шубхам", lang: "Mongolian", code: "MN" },
 ];
 
 export default function HangingIdCard() {
