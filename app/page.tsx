@@ -633,11 +633,11 @@ export default function Home() {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main>
         <Hero />
-        <Work onOpenServeMe={() => setServeMeModalOpen(true)} onOpenProject={(proj) => setSelectedProject(proj)} />
         <About />
         <Toolbox />
         <ManifestoSection />
         <FinderProjectsSection />
+        <Work onOpenServeMe={() => setServeMeModalOpen(true)} onOpenProject={(proj) => setSelectedProject(proj)} />
       </main>
       <Contact />
       <ServeMeCaseStudyModal isOpen={serveMeModalOpen} onClose={() => setServeMeModalOpen(false)} />
