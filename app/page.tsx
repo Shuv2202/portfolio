@@ -5,14 +5,11 @@ import Lenis from "lenis";
 import ShubhamVisitIntro from "./components/ShubhamVisitIntro";
 import CustomCursor from "./components/CustomCursor";
 import HangingIdCard from "./components/HangingIdCard";
-import TornPaperHeader from "./components/TornPaperHeader";
 import PolaroidScrapbookCard from "./components/PolaroidScrapbookCard";
 import ManifestoSection from "./components/ManifestoSection";
 import FinderProjectsSection from "./components/FinderProjectsSection";
 import MoodboardSection from "./components/MoodboardSection";
-
 import MobileDesktopNoticePopup from "./components/MobileDesktopNoticePopup";
-
 import { toggleLofiAudio } from "./utils/lofiAudio";
 
 type Project = {
@@ -34,82 +31,61 @@ const projects: Project[] = [
   {
     id: "serveme",
     title: "ServeMe",
-    label: "Restaurant operating system",
+    label: "Restaurant Operating System",
     year: "2026",
     description:
       "A mobile-first QR ordering flow connecting guests, kitchens, and restaurant teams in real time.",
     story:
       "ServeMe turns a table QR into a complete ordering journey: browse the menu, place an order, follow kitchen progress, confirm payment, and leave feedback. The wider system includes vendor and kitchen workspaces built around one shared backend.",
-    tags: ["React", "TypeScript", "PostgreSQL", "Product UX"],
+    tags: ["React", "TypeScript", "Node.js", "PostgreSQL"],
     image: "/assets/serveme.svg",
     className: "project-card--yellow",
     category: "product",
-    github: "https://github.com/Shuv2202",
-    cursorText: "View ServeMe project",
+    github: "https://github.com/Shuv2202/finnal-website",
+    cursorText: "View ServeMe case study",
   },
   {
-    id: "portfolio",
-    title: "Creative Workspace",
-    label: "Interactive portfolio experience",
+    id: "mediscan",
+    title: "MediScan AI",
+    label: "AI Medical Reader",
     year: "2026",
     description:
-      "A personal site that treats the browser like a living desk—part journal, part terminal, part project archive.",
+      "AI-powered medical report analyzer providing instant summary insights and health metric breakdowns.",
     story:
-      "This portfolio is an experiment in translating physical objects into useful interface patterns. Paper, tickets, folders, and terminal windows create personality, while the information hierarchy stays clear and responsive.",
-    tags: ["Next.js", "React", "Motion", "Creative Dev"],
-    image: "/assets/portfolio.svg",
+      "MediScan helps users read complex medical lab reports by generating plain-language summaries, flag alerts, and visual health indicators.",
+    tags: ["TypeScript", "AI", "Healthcare", "React"],
+    image: "/assets/landing-page.svg",
     className: "project-card--ink",
-    category: "creative",
-    github: "https://github.com/Shuv2202",
-    cursorText: "View creative portfolio",
+    category: "product",
+    github: "https://github.com/Shuv2202/MediScan",
+    cursorText: "View MediScan project",
   },
   {
-    id: "landing",
-    title: "Nexus Landing Page",
-    label: "Responsive frontend build",
+    id: "nexus",
+    title: "Nexus Landing",
+    label: "Responsive Product UX",
     year: "2026",
     description:
       "A polished product landing page focused on visual hierarchy, conversion flow, and responsive behavior.",
     story:
-      "Built as a focused frontend exercise, Nexus combines a compact navigation system, strong headline hierarchy, feature storytelling, and touch-friendly layouts across desktop and mobile screens.",
+      "Built as a focused frontend exercise, Nexus combines a compact navigation system, strong headline hierarchy, feature storytelling, and touch-friendly layouts.",
     tags: ["HTML5", "CSS3", "JavaScript", "Responsive"],
-    image: "/assets/landing-page.svg",
+    image: "/assets/portfolio.svg",
     className: "project-card--blue",
     category: "frontend",
-    github: "https://github.com/Shuv2202",
-    cursorText: "View landing page",
+    github: "https://github.com/Shuv2202/OIBSIP-WEB-DEVELOPMENT-DESIGNING---Level-1-Task-1---Landing-Page-",
+    cursorText: "View Nexus landing",
   },
 ];
 
 const terminalCommands: Record<string, string> = {
-  whoami: "Shubham Kumar — B.Tech CSE student and web developer.",
-  skills: "React  TypeScript  JavaScript  Python  APIs  UI/UX",
-  projects: "serveme/  creative-portfolio/  nexus-landing/",
-  status: "Open to internships, collaborations, and useful product ideas.",
+  whoami: "Shubham Kumar — Full-Stack Developer & B.Tech CSE student.",
+  skills: "React  TypeScript  Node.js  PostgreSQL  Python  REST APIs  Tailwind",
+  projects: "serveme/  mediscan/  nexus-landing/",
+  status: "Open to internships, freelance projects, and useful product ideas.",
   contact: "shuvm2000@gmail.com",
   help: "Try: whoami, skills, projects, status, contact, clear",
 };
-
-const skillGroups = [
-  {
-    index: "01",
-    title: "Frontend",
-    copy: "Interfaces that stay clear, fast, and comfortable on every screen.",
-    items: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Responsive UI"],
-  },
-  {
-    index: "02",
-    title: "Product building",
-    copy: "Turning a rough problem into a sensible user flow and working prototype.",
-    items: ["UI/UX", "REST APIs", "Authentication", "PostgreSQL", "Supabase", "Prototyping"],
-  },
-  {
-    index: "03",
-    title: "Workflow",
-    copy: "A practical toolset for shipping, testing, and improving real projects.",
-    items: ["Git", "GitHub", "Vite", "Vercel", "VS Code", "Python"],
-  },
-];
 
 function ArrowIcon() {
   return (
@@ -131,7 +107,7 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (va
   return (
     <header className="site-nav">
       <a className="brand" href="#home" onClick={() => setMenuOpen(false)} aria-label="Shubham Kumar, back to home">
-        <span>Shubham Kumar</span>
+        <span>SHUBHAM KUMAR</span>
       </a>
 
       <button
@@ -147,9 +123,10 @@ function Navbar({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (va
       </button>
 
       <nav id="primary-navigation" className={menuOpen ? "nav-links nav-links--open" : "nav-links"} aria-label="Primary navigation">
-        <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-        <a href="#work" onClick={() => setMenuOpen(false)}>Work</a>
-        <a href="#manifesto" onClick={() => setMenuOpen(false)}>Playground</a>
+        <a href="#work" onClick={() => setMenuOpen(false)}>WORK</a>
+        <a href="#about" onClick={() => setMenuOpen(false)}>ABOUT</a>
+        <a href="#manifesto" onClick={() => setMenuOpen(false)}>PLAYGROUND</a>
+        <a href="mailto:shuvm2000@gmail.com" target="_blank" rel="noreferrer" className="nav-resume-btn" data-cursor-text="RESUME">RESUME ↗</a>
       </nav>
     </header>
   );
@@ -176,20 +153,31 @@ function Hero() {
         {/* Top Right: Boarding Pass Ticket */}
         <div className="boarding-pass hero-reveal hero-reveal--3">
           <div className="boarding-pass__title">
-            <strong>DESIGN ×<br />TECHNOLOGY</strong>
+            <strong>FULL-STACK ×<br />DEVELOPER</strong>
             <span>2026</span>
           </div>
           <div className="boarding-pass__meta">
-            <span><small>DISCIPLINE</small>WEB / PRODUCT</span>
+            <span><small>LOCATION</small>INDIA</span>
             <span><small>STATUS</small>OPEN TO WORK</span>
           </div>
-          <div className="boarding-pass__edge" aria-hidden="true">SK&nbsp;&nbsp;001&nbsp;&nbsp;CSE</div>
+          <div className="boarding-pass__edge" aria-hidden="true">SK&nbsp;&nbsp;2026&nbsp;&nbsp;DEV</div>
         </div>
 
-        {/* Center Title & Subhead */}
+        {/* Hero Headline & Actions */}
         <div className="hero-title hero-reveal hero-reveal--4">
-          <p className="script">Shubham Kumar</p>
-          <h1>I THINK, THEN I BUILD.</h1>
+          <p className="script">SHUBHAM KUMAR · FULL-STACK DEVELOPER</p>
+          <h1>I BUILD DIGITAL PRODUCTS.</h1>
+          <p className="hero-subhead">
+            Full-stack developer creating useful web applications, AI-powered experiences and interfaces that feel good to use.
+          </p>
+          <div className="hero-actions">
+            <a href="#work" className="hero-btn hero-btn--primary" data-cursor-text="VIEW">VIEW MY WORK</a>
+            <a href="mailto:shuvm2000@gmail.com" target="_blank" rel="noreferrer" className="hero-btn hero-btn--secondary" data-cursor-text="RESUME">RESUME ↗</a>
+          </div>
+          <div className="hero-status">
+            <span className="status-dot" />
+            <span>OPEN TO INTERNSHIPS / FREELANCE</span>
+          </div>
         </div>
 
         {/* Center Right: Vinyl Record Playlist Card */}
@@ -218,32 +206,186 @@ function Hero() {
           className="folder-card hero-reveal hero-reveal--6"
           type="button"
           onClick={() => document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" })}
-          data-cursor-text="Open my projects"
+          data-cursor-text="Open projects"
         >
           <span className="folder-card__tab" aria-hidden="true" />
           <span className="folder-card__icon" aria-hidden="true">↳</span>
-          <span><strong>projects/</strong><small>03 selected builds</small></span>
+          <span><strong>projects/</strong><small>featured builds</small></span>
         </button>
 
-        {/* Bottom Center: macOS Mini Terminal */}
+        {/* Bottom Center: Signature Mini Terminal */}
         <div className="mini-terminal hero-reveal hero-reveal--7">
           <div className="window-bar">
             <span className="window-dots"><i /><i /><i /></span>
-            <span>shubham — zsh</span>
+            <span>shubham@portfolio ~</span>
           </div>
           <div className="mini-terminal__body">
-            <p><b>~ $</b> whoami</p>
-            <span>Shubham Kumar · Web Developer</span>
-            <p><b>~ $</b> ls interests/</p>
-            <span>web/ products/ ai/ design/</span>
-            <p className="mini-terminal__cursor"><b>~ $</b> <i /></p>
+            <p><b>$</b> whoami</p>
+            <span>full-stack developer</span>
+            <p><b>$</b> ls interests/</p>
+            <span>web/ ai/ design/ products/</span>
+            <p className="mini-terminal__cursor"><b>$</b> <i className="blinking-cursor" /></p>
           </div>
         </div>
 
-        {/* Bottom Right: Polaroid Scrapbook Collage Album Card ("capture moments") */}
+        {/* Bottom Right: Polaroid Scrapbook Card */}
         <PolaroidScrapbookCard />
 
-        <a className="hero-scroll" href="#manifesto"><span>Scroll to explore</span><i aria-hidden="true" /></a>
+        <a className="hero-scroll" href="#work"><span>Scroll to explore</span><i aria-hidden="true" /></a>
+      </div>
+    </section>
+  );
+}
+
+function ServeMeCaseStudyModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+  if (!isOpen) return null;
+  return (
+    <div className="modal case-study-modal" role="dialog" aria-modal="true" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="modal__panel case-study-panel">
+        <button className="modal__close" type="button" onClick={onClose} aria-label="Close Case Study"><CloseIcon /></button>
+        <header className="case-study__header">
+          <span className="case-study__tag">FEATURED CASE STUDY</span>
+          <h2>SERVEME</h2>
+          <p className="case-study__sub">Restaurant ordering, reimagined. A QR-based ecosystem connecting customers, kitchen staff, and vendors.</p>
+        </header>
+
+        <section className="case-study__section">
+          <h3>01 / THE PROBLEM</h3>
+          <p>Traditional restaurant ordering creates unnecessary friction between customers, waitstaff, and kitchen dispatch—causing delayed orders, menu miscommunications, and slow billing during peak hours.</p>
+        </section>
+
+        <section className="case-study__section">
+          <h3>02 / THE SOLUTION FLOW</h3>
+          <div className="flow-diagram">
+            <span>CUSTOMER</span> <i>→</i> <span>SCAN QR</span> <i>→</i> <span>MENU</span> <i>→</i> <span>ORDER</span> <i>→</i> <span>KITCHEN</span> <i>→</i> <span>VENDOR</span>
+          </div>
+        </section>
+
+        <section className="case-study__section">
+          <h3>03 / SYSTEM WORKSPACES</h3>
+          <div className="workspace-preview-grid">
+            <div className="workspace-card">
+              <img src="/assets/serveme.svg" alt="ServeMe Guest Ordering UI" />
+              <h4>01. Guest Mobile Ordering</h4>
+              <p>Touch-friendly menu browsing, real-time cart, and instant order tracking directly from table QR code.</p>
+            </div>
+            <div className="workspace-card">
+              <img src="/assets/landing-page.svg" alt="Kitchen Display System" />
+              <h4>02. Kitchen Display System (KDS)</h4>
+              <p>Real-time order ticket dispatch board tracking cooking timers and dish preparation status.</p>
+            </div>
+            <div className="workspace-card">
+              <img src="/assets/portfolio.svg" alt="Vendor Management Console" />
+              <h4>03. Vendor Admin Console</h4>
+              <p>Centralized inventory management, menu pricing updates, and sales analytics console.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="case-study__section">
+          <h3>04 / TECH ARCHITECTURE</h3>
+          <div className="tech-matrix">
+            <div><strong>FRONTEND</strong><span>React · TypeScript · CSS3</span></div>
+            <div><strong>BACKEND</strong><span>Node.js · Express · REST APIs</span></div>
+            <div><strong>DATABASE</strong><span>PostgreSQL · Supabase</span></div>
+            <div><strong>DEPLOYMENT</strong><span>Vercel · Railway</span></div>
+          </div>
+        </section>
+
+        <section className="case-study__section">
+          <h3>05 / WHAT I LEARNED</h3>
+          <ul className="takeaways-list">
+            <li>Designing multi-user synchronized workflows across customers, kitchen, and vendor admin.</li>
+            <li>Real-time order status updates and low-latency database queries.</li>
+            <li>Mobile-first, high-accessibility UI patterns optimized for busy environments.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  );
+}
+
+function Work({ onOpenServeMe, onOpenProject }: { onOpenServeMe: () => void; onOpenProject: (project: Project) => void }) {
+  return (
+    <section id="work" className="work">
+      <div className="section-shell">
+        <div className="section-kicker section-kicker--dark reveal-on-scroll"><span>SELECTED WORK</span><p>FEATURED &amp; RECENT BUILDS</p></div>
+
+        {/* HUGE FEATURED PROJECT 01 — SERVEME */}
+        <div className="featured-project-card reveal-on-scroll">
+          <span className="featured-card__badge">FEATURED PROJECT / FULL-STACK</span>
+          <div className="featured-card__grid">
+            <div className="featured-card__info">
+              <span className="featured-card__num">01 — FEATURED</span>
+              <h2>SERVEME</h2>
+              <p className="featured-card__subtitle">Restaurant Operating System</p>
+              <p className="featured-card__desc">
+                A mobile-first QR ordering ecosystem connecting customers, kitchens, and restaurant management teams in real time.
+              </p>
+
+              <div className="featured-card__features">
+                <span>QR MENU</span>
+                <span>ORDER MANAGEMENT</span>
+                <span>KITCHEN DASHBOARD</span>
+                <span>VENDOR PORTAL</span>
+              </div>
+
+              <div className="chip-list">
+                <span>React</span>
+                <span>TypeScript</span>
+                <span>Node.js</span>
+                <span>PostgreSQL</span>
+              </div>
+
+              <div className="featured-card__actions">
+                <button type="button" className="btn-case-study" onClick={onOpenServeMe} data-cursor-text="CASE STUDY">
+                  VIEW CASE STUDY ↗
+                </button>
+                <a href="https://github.com/Shuv2202/finnal-website" target="_blank" rel="noreferrer" className="btn-github">
+                  GitHub <ArrowIcon />
+                </a>
+              </div>
+            </div>
+
+            <div className="featured-card__preview" onClick={onOpenServeMe} data-cursor-text="VIEW CASE STUDY">
+              <img src="/assets/serveme.svg" alt="ServeMe Restaurant System UI" />
+              <div className="preview-overlay">
+                <span>EXPLORE SERVEME WORKFLOW ↗</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* OTHER SELECTED PROJECTS GRID */}
+        <div className="other-projects-grid">
+          {/* 02 - MEDISCAN */}
+          <article className="project-card project-card--medium project-card--ink reveal-on-scroll">
+            <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[1])} data-cursor-text="VIEW">
+              <img src="/assets/landing-page.svg" alt="MediScan AI Healthcare App" />
+              <span>Open details <ArrowIcon /></span>
+            </button>
+            <div className="project-card__content">
+              <div className="project-card__meta"><span>02 — AI / HEALTHCARE</span><span>2026</span></div>
+              <h3>MediScan AI</h3>
+              <p>AI-powered medical report analyzer providing instant summary insights and health metric breakdowns.</p>
+              <div className="chip-list"><span>TypeScript</span><span>AI</span><span>React</span></div>
+            </div>
+          </article>
+
+          {/* 03 - NEXUS */}
+          <article className="project-card project-card--medium project-card--blue reveal-on-scroll">
+            <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[2])} data-cursor-text="VIEW">
+              <img src="/assets/portfolio.svg" alt="Nexus Landing Page" />
+              <span>Open details <ArrowIcon /></span>
+            </button>
+            <div className="project-card__content">
+              <div className="project-card__meta"><span>03 — FRONTEND / PRODUCT</span><span>2026</span></div>
+              <h3>Nexus Landing</h3>
+              <p>Polished product landing page focused on visual hierarchy, conversion flow, and responsive touch layout.</p>
+              <div className="chip-list"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   );
@@ -252,171 +394,83 @@ function Hero() {
 function About() {
   return (
     <section id="about" className="about section-shell">
-      <div className="section-kicker reveal-on-scroll"><span>01</span><p>ABOUT / THE SHORT VERSION</p></div>
-      <div className="about__headline reveal-on-scroll">
-        <p className="script">A little about me</p>
-        <h2>I turn rough ideas into <span>interfaces</span> that feel obvious.</h2>
-      </div>
+      <div className="section-kicker reveal-on-scroll"><span>ABOUT</span><p>PERSONAL &amp; FOCUS</p></div>
+
       <div className="about__grid">
-        <div className="about__note reveal-on-scroll">
-          <span className="tape" aria-hidden="true" />
-          <p>“Keep the idea ambitious.<br />Keep the experience simple.”</p>
-          <small>— my build rule</small>
-        </div>
         <div className="about__copy reveal-on-scroll">
-          <p>I&apos;m Shubham Kumar, a B.Tech Computer Science &amp; Engineering student who enjoys building modern web experiences and solving practical problems.</p>
-          <p>My process is simple: understand the real user flow, prototype quickly, test the edge cases, and keep refining until the product feels clear.</p>
-          <a className="text-link" href="#work">Explore selected work <ArrowIcon /></a>
+          <p className="script">A little about me</p>
+          <h2>I turn ideas into <span>things people can actually use.</span></h2>
+          <p>
+            I&apos;m a full-stack developer who works across frontend, backend, and AI—building clean interfaces, practical products, and web experiences that don&apos;t feel boring.
+          </p>
+          <p>
+            Currently exploring full-stack architecture, AI-powered products, and better ways to combine technology with design.
+          </p>
+        </div>
+
+        <div className="about__meta-card reveal-on-scroll" style={{ padding: "28px", border: "1px solid var(--line)", background: "#fffdf7", borderRadius: "12px" }}>
+          <div className="meta-row" style={{ display: "flex", justifyContent: "space-between", marginBottom: "14px", borderBottom: "1px solid #eee", paddingBottom: "8px" }}><strong>BASED IN</strong><span>India</span></div>
+          <div className="meta-row" style={{ display: "flex", justifyContent: "space-between", marginBottom: "14px", borderBottom: "1px solid #eee", paddingBottom: "8px" }}><strong>FOCUS</strong><span>Full-Stack &amp; AI</span></div>
+          <div className="meta-row" style={{ display: "flex", justifyContent: "space-between", marginBottom: "14px", borderBottom: "1px solid #eee", paddingBottom: "8px" }}><strong>CURRENTLY</strong><span>Building ServeMe</span></div>
+          <div className="meta-row" style={{ display: "flex", justifyContent: "space-between" }}><strong>STATUS</strong><span>Open to opportunities</span></div>
         </div>
       </div>
-      <div className="about__facts reveal-on-scroll" aria-label="Quick facts">
-        <div><strong>03</strong><span>featured projects</span></div>
-        <div><strong>2026</strong><span>building &amp; learning</span></div>
-        <div><strong>∞</strong><span>iterations welcome</span></div>
-        <div><strong>OPEN</strong><span>to opportunities</span></div>
+
+      {/* CURRENTLY SECTION */}
+      <div className="currently-section reveal-on-scroll">
+        <h3 className="currently-title">CURRENTLY</h3>
+        <div className="currently-grid">
+          <div className="currently-card">
+            <span className="currently-num">01</span>
+            <h4>BUILDING</h4>
+            <p>ServeMe Restaurant Operating System</p>
+          </div>
+          <div className="currently-card">
+            <span className="currently-num">02</span>
+            <h4>LEARNING</h4>
+            <p>Full-stack architecture &amp; backend systems</p>
+          </div>
+          <div className="currently-card">
+            <span className="currently-num">03</span>
+            <h4>EXPLORING</h4>
+            <p>AI × Product Design</p>
+          </div>
+          <div className="currently-card">
+            <span className="currently-num">04</span>
+            <h4>LOOKING FOR</h4>
+            <p>Internships / Freelance projects</p>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
 function Toolbox() {
+  const skillProof = [
+    { skill: "React", copy: "Used in → ServeMe & MediScan" },
+    { skill: "TypeScript", copy: "Used in → ServeMe & Portfolio" },
+    { skill: "Node.js / Express", copy: "Used in → ServeMe backend" },
+    { skill: "PostgreSQL", copy: "Used in → ServeMe database" },
+    { skill: "Python", copy: "Used in → AI & automation scripts" },
+    { skill: "HTML / CSS", copy: "Used in → Nexus & Responsive UI" },
+  ];
+
   return (
-    <section className="toolbox section-shell" aria-labelledby="toolbox-title">
-      <div className="section-kicker reveal-on-scroll"><span>02</span><p>TOOLBOX / WHAT I USE</p></div>
+    <section className="toolbox section-shell">
+      <div className="section-kicker reveal-on-scroll"><span>TOOLBOX</span><p>SKILLS → PROOF</p></div>
       <div className="section-heading reveal-on-scroll">
-        <p className="script">Built with curiosity</p>
-        <h2 id="toolbox-title">A practical toolkit for real ideas.</h2>
+        <p className="script">What I work with</p>
+        <h2>Practical tech stack backed by real code.</h2>
       </div>
-      <div className="toolbox__grid">
-        {skillGroups.map((group) => (
-          <article className="tool-card reveal-on-scroll" key={group.title}>
-            <span className="tool-card__index">{group.index}</span>
-            <div className="tool-card__icon" aria-hidden="true">{group.index === "01" ? "⌘" : group.index === "02" ? "↗" : "✦"}</div>
-            <h3>{group.title}</h3>
-            <p>{group.copy}</p>
-            <div className="chip-list">
-              {group.items.map((item) => <span key={item}>{item}</span>)}
-            </div>
-          </article>
+
+      <div className="proof-grid">
+        {skillProof.map((item) => (
+          <div className="proof-card reveal-on-scroll" key={item.skill}>
+            <h3>{item.skill}</h3>
+            <p>{item.copy}</p>
+          </div>
         ))}
-      </div>
-      <div className="marquee" aria-hidden="true"><div><span>REACT</span><i>✦</i><span>TYPESCRIPT</span><i>✦</i><span>PRODUCT THINKING</span><i>✦</i><span>RESPONSIVE UI</span><i>✦</i><span>REACT</span><i>✦</i><span>TYPESCRIPT</span><i>✦</i><span>PRODUCT THINKING</span><i>✦</i><span>RESPONSIVE UI</span></div></div>
-    </section>
-  );
-}
-
-function Work({ onOpen }: { onOpen: (project: Project) => void }) {
-  const [filter, setFilter] = useState<"all" | Project["category"]>("all");
-  const visibleProjects = useMemo(() => filter === "all" ? projects : projects.filter((project) => project.category === filter), [filter]);
-
-  return (
-    <section id="work" className="work">
-      <div className="section-shell">
-        <div className="section-kicker section-kicker--dark reveal-on-scroll"><span>03</span><p>WORK / SELECTED PROJECTS</p></div>
-        <div className="work__intro reveal-on-scroll">
-          <div><p className="script">Things I&apos;ve built</p><h2>Selected work,<br />filed properly.</h2></div>
-          <p>Projects where I learned by making, testing, breaking, and improving—not just following a tutorial.</p>
-        </div>
-
-        <div className="project-window reveal-on-scroll">
-          <div className="project-window__bar">
-            <span className="window-dots"><i /><i /><i /></span>
-            <span>~/shubham/projects</span>
-            <span className="project-window__view">GRID VIEW</span>
-          </div>
-          <div className="project-window__tabs" role="group" aria-label="Filter projects">
-            {(["all", "product", "frontend", "creative"] as const).map((item) => (
-              <button key={item} type="button" className={filter === item ? "is-active" : ""} onClick={() => setFilter(item)}>
-                {item === "all" ? "Favorites" : item}
-              </button>
-            ))}
-          </div>
-          <div className="project-grid">
-            {visibleProjects.map((project, index) => (
-              <article className={`project-card ${project.className}`} key={project.id}>
-                <button
-                  className="project-card__image"
-                  type="button"
-                  onClick={() => onOpen(project)}
-                  aria-label={`Open ${project.title} details`}
-                  data-cursor-text={project.cursorText}
-                >
-                  <img src={project.image} alt={`${project.title} project preview`} />
-                  <span>Open case study <ArrowIcon /></span>
-                </button>
-                <div className="project-card__content">
-                  <div className="project-card__meta"><span>PROJECT 0{index + 1}</span><span>{project.year}</span></div>
-                  <p className="project-card__label">{project.label}</p>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="project-card__footer">
-                    <div className="chip-list">{project.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
-                    <button type="button" onClick={() => onOpen(project)} aria-label={`Read about ${project.title}`}><ArrowIcon /></button>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TerminalLab() {
-  const [input, setInput] = useState("");
-  const [history, setHistory] = useState<Array<{ command: string; output: string }>>([
-    { command: "whoami", output: terminalCommands.whoami },
-  ]);
-
-  const runCommand = (commandValue?: string) => {
-    const command = (commandValue ?? input).trim().toLowerCase();
-    if (!command) return;
-    if (command === "clear") {
-      setHistory([]);
-      setInput("");
-      return;
-    }
-    setHistory((current) => [...current, { command, output: terminalCommands[command] ?? `command not found: ${command}. Type “help”.` }]);
-    setInput("");
-  };
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    runCommand();
-  };
-
-  return (
-    <section id="lab" className="lab section-shell">
-      <div className="section-kicker reveal-on-scroll"><span>04</span><p>LAB / TRY SOMETHING</p></div>
-      <div className="lab__layout">
-        <div className="lab__copy reveal-on-scroll">
-          <p className="script">An interactive corner</p>
-          <h2>Ask the terminal.</h2>
-          <p>A tiny command line for the curious. Use a quick command or type your own.</p>
-          <div className="command-chips">
-            {["skills", "projects", "status", "contact", "help"].map((command) => (
-              <button key={command} type="button" onClick={() => runCommand(command)}>{command}</button>
-            ))}
-          </div>
-        </div>
-        <div className="terminal reveal-on-scroll">
-          <div className="window-bar"><span className="window-dots"><i /><i /><i /></span><span>shubham@portfolio — zsh</span><span>⌘ K</span></div>
-          <div className="terminal__output" aria-live="polite">
-            <p className="terminal__welcome">Welcome to Shubham&apos;s workspace. Type “help” to begin.</p>
-            {history.map((line, index) => (
-              <div className="terminal__line" key={`${line.command}-${index}`}>
-                <p><b>~ $</b> {line.command}</p>
-                <span>{line.output}</span>
-              </div>
-            ))}
-          </div>
-          <form className="terminal__form" onSubmit={handleSubmit}>
-            <label htmlFor="terminal-command">~ $</label>
-            <input id="terminal-command" value={input} onChange={(event) => setInput(event.target.value)} autoComplete="off" spellCheck={false} placeholder="type a command…" />
-            <button type="submit">Run</button>
-          </form>
-        </div>
       </div>
     </section>
   );
@@ -440,30 +494,24 @@ function Contact() {
         <div className="contact__layout">
           <div className="contact__headline reveal-on-scroll">
             <p className="script">Have an idea?</p>
-            <h2>LET&apos;S BUILD<br />SOMETHING <span>USEFUL.</span></h2>
+            <h2>HAVE AN IDEA?<br />LET&apos;S BUILD <span>SOMETHING USEFUL.</span></h2>
           </div>
           <div className="contact__card reveal-on-scroll">
-            <span className="contact__status"><i /> Available for new opportunities</span>
+            <span className="contact__status"><i /> Available for opportunities</span>
             <p>Tell me what you&apos;re working on, what is not working yet, or the idea you want to bring to life.</p>
-            <a
-              className="contact__email"
-              href="mailto:shuvm2000@gmail.com"
-              data-cursor
-              data-cursor-mode="view"
-              data-cursor-text="EMAIL"
-            >
+            <a className="contact__email" href="mailto:shuvm2000@gmail.com" data-cursor-text="EMAIL">
               shuvm2000@gmail.com <ArrowIcon />
             </a>
-            <button type="button" onClick={copyEmail}>{copied ? "Copied ✓" : "Copy email"}</button>
+            <button type="button" onClick={copyEmail} data-cursor-text="COPY">{copied ? "Copied ✓" : "Copy email"}</button>
           </div>
         </div>
         <div className="contact__footer">
-          <div><strong>Shubham Kumar</strong><span>B.Tech CSE · Web Developer</span></div>
+          <div><strong>SHUBHAM KUMAR</strong><span>Full-Stack Developer · India</span></div>
           <nav aria-label="Social links">
-            <a href="https://github.com/Shuv2202" target="_blank" rel="noreferrer">{`{ GitHub }`}</a>
-            <a href="https://www.linkedin.com/in/shubham-kumar-17313a236" target="_blank" rel="noreferrer">{`{ LinkedIn }`}</a>
-            <a href="https://www.instagram.com/thatsosubh/" target="_blank" rel="noreferrer">{`{ Instagram }`}</a>
-            <a href="mailto:shuvm2000@gmail.com">{`{ Email }`}</a>
+            <a href="mailto:shuvm2000@gmail.com" data-cursor-text="EMAIL">Email ↗</a>
+            <a href="https://github.com/Shuv2202" target="_blank" rel="noreferrer" data-cursor-text="GITHUB">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/shubham-kumar-17313a236" target="_blank" rel="noreferrer" data-cursor-text="LINKEDIN">LinkedIn ↗</a>
+            <a href="https://www.instagram.com/thatsosubh/" target="_blank" rel="noreferrer" data-cursor-text="INSTAGRAM">Instagram ↗</a>
           </nav>
           <a href="#home">Back to top ↑</a>
           <span>© 2026</span>
@@ -495,6 +543,7 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
 export default function Home() {
   const [introComplete, setIntroComplete] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [serveMeModalOpen, setServeMeModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const lenisRef = useRef<Lenis | null>(null);
 
@@ -535,7 +584,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const isLocked = !introComplete || Boolean(selectedProject);
+    const isLocked = !introComplete || Boolean(selectedProject) || serveMeModalOpen;
     document.body.classList.toggle("is-locked", isLocked);
     if (isLocked) {
       lenisRef.current?.stop();
@@ -543,7 +592,7 @@ export default function Home() {
       lenisRef.current?.start();
     }
     return () => document.body.classList.remove("is-locked");
-  }, [introComplete, selectedProject]);
+  }, [introComplete, selectedProject, serveMeModalOpen]);
 
   useEffect(() => {
     const revealItems = document.querySelectorAll<HTMLElement>(".reveal-on-scroll");
@@ -563,6 +612,7 @@ export default function Home() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setSelectedProject(null);
+        setServeMeModalOpen(false);
         setMenuOpen(false);
       }
     };
@@ -580,6 +630,9 @@ export default function Home() {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main>
         <Hero />
+        <Work onOpenServeMe={() => setServeMeModalOpen(true)} onOpenProject={(proj) => setSelectedProject(proj)} />
+        <About />
+        <Toolbox />
         <ManifestoSection />
         <FinderProjectsSection />
         <div id="moodboard">
@@ -604,6 +657,7 @@ export default function Home() {
         </div>
       </main>
       <Contact />
+      <ServeMeCaseStudyModal isOpen={serveMeModalOpen} onClose={() => setServeMeModalOpen(false)} />
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </>
   );

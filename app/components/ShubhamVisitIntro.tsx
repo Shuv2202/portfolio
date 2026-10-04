@@ -127,81 +127,40 @@ export default function ShubhamVisitIntro({
     timeline
       .to(seed, {
         opacity: 1,
-        scale: 1.35,
-        duration: 0.52,
+        scale: 1.2,
+        duration: 0.25,
         ease: "power4.out",
       })
-
-      .to(seed, {
-        scale: 0.9,
-        duration: 0.3,
-      })
-
       .to(seed, {
         opacity: 0,
         scale: 0.4,
-        duration: 0.18,
+        duration: 0.1,
       })
-
       .to(letters, {
         opacity: 1,
         x: 0,
         y: 0,
         rotation: 0,
         scale: 1,
-        duration: 0.82,
-
+        duration: 0.45,
         stagger: {
-          each: 0.045,
-          from: "random",
+          each: 0.02,
+          from: "center",
         },
-
-        ease: "back.out(1.8)",
+        ease: "power3.out",
       })
-
       .to(
         subtitle,
         {
           opacity: 1,
           y: 0,
-          duration: 0.26,
+          duration: 0.18,
         },
-        "-=0.2",
+        "-=0.15"
       )
-
-      .to(surname, {
-        fontStyle: "italic",
-        skewX: -7,
-        duration: 0.3,
-      })
-
-      .fromTo(
-        spark,
-        {
-          opacity: 0,
-          left: "-5%",
-          top: "-25%",
-          scale: 0.4,
-        },
-        {
-          opacity: 1,
-          left: "100%",
-          top: "-5%",
-          scale: 1.3,
-          duration: 0.65,
-          ease: "power2.inOut",
-        },
-      )
-
-      .to(spark, {
-        opacity: 0,
-        scale: 0,
-        duration: 0.12,
-      })
-
       .to(intro, {
         clipPath: "circle(0px at 50% 50%)",
-        duration: 0.88,
+        duration: 0.35,
         ease: "power4.inOut",
       });
 
