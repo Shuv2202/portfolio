@@ -156,7 +156,7 @@ function Hero() {
           </div>
           <div className="boarding-pass__meta">
             <span><small>LOCATION</small>INDIA</span>
-            <span><small>STATUS</small>OPEN TO WORK</span>
+            <span><small>STATUS</small>OPEN TO INTERNSHIPS / FREELANCE</span>
           </div>
           <div className="boarding-pass__edge" aria-hidden="true">SK&nbsp;&nbsp;2026&nbsp;&nbsp;DEV</div>
         </div>
@@ -168,10 +168,6 @@ function Hero() {
           <p className="hero-subhead">
             Full-stack developer creating useful web applications, AI-powered experiences and interfaces that feel good to use.
           </p>
-          <div className="hero-status">
-            <span className="status-dot" />
-            <span>OPEN TO INTERNSHIPS / FREELANCE</span>
-          </div>
         </div>
 
         {/* Center Right: Vinyl Record Playlist Card */}

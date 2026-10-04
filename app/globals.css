@@ -254,7 +254,7 @@ img, svg { display: block; max-width: 100%; }
 .boarding-pass__title { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 13px; border-bottom: 1px dashed #bdb4a4; }
 .boarding-pass__title strong { font-size: 1.35rem; line-height: .86; letter-spacing: -.07em; }
 .boarding-pass__title span { padding: 3px 5px; border: 1px solid var(--ink); font: 500 .48rem var(--mono); }
-.boarding-pass__meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 12px; font: 500 .54rem var(--mono); }
+.boarding-pass__meta { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 8px; padding-top: 12px; font: 500 .50rem var(--mono); }
 .boarding-pass__meta span, .boarding-pass__meta small { display: block; }
 .boarding-pass__meta small { margin-bottom: 3px; color: #9a9388; font-size: .46rem; }
 .boarding-pass__edge { position: absolute; inset: 0 0 0 auto; display: flex; width: 34px; align-items: center; justify-content: center; border-left: 1px dashed #aca493; font: 400 .42rem var(--mono); writing-mode: vertical-rl; }
