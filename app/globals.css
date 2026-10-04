@@ -159,8 +159,8 @@ img, svg { display: block; max-width: 100%; }
    HANGING ID CARD (SPRING PHYSICS)
 ======================================== */
 .hanging-id {
-  top: 0; left: 8.5%; z-index: 10;
-  width: 220px; height: 500px;
+  top: 0; left: 4.5%; z-index: 10;
+  width: 205px; height: 480px;
   box-shadow: none; touch-action: none; user-select: none;
 }
 .hanging-id__pendulum {
@@ -178,12 +178,12 @@ img, svg { display: block; max-width: 100%; }
 }
 .hanging-id__strap {
   position: relative; display: flex; justify-content: center;
-  width: 26px; height: 160px; overflow: hidden;
+  width: 26px; height: 140px; overflow: hidden;
   border-right: 1px solid #4e4c46; border-left: 1px solid #4e4c46;
   background: repeating-linear-gradient(90deg, #1c1c1a 0 3px, #2f2f2b 3px 6px);
 }
 .hanging-id__strap span {
-  position: absolute; top: 72px; color: rgba(255, 255, 255, 0.55);
+  position: absolute; top: 62px; color: rgba(255, 255, 255, 0.55);
   font-family: var(--mono); font-size: 0.44rem; letter-spacing: 0.12em;
   white-space: nowrap; transform: rotate(-90deg);
 }
@@ -194,7 +194,7 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18); border-radius: 3px;
 }
 .hanging-id__card {
-  position: relative; width: 205px; min-height: 330px; padding: 0;
+  position: relative; width: 195px; min-height: 310px; padding: 0;
   overflow: hidden; border-radius: 16px; border: 1px solid rgba(255,255,255,.14);
   background: #1e1e1b; color: #f5f1e7;
   box-shadow: 0 28px 50px rgba(45, 40, 32, 0.24); transition: box-shadow 0.3s ease;
@@ -259,7 +259,7 @@ img, svg { display: block; max-width: 100%; }
 .boarding-pass__meta small { margin-bottom: 3px; color: #9a9388; font-size: .46rem; }
 .boarding-pass__edge { position: absolute; inset: 0 0 0 auto; display: flex; width: 34px; align-items: center; justify-content: center; border-left: 1px dashed #aca493; font: 400 .42rem var(--mono); writing-mode: vertical-rl; }
 
-.hero-title { position: absolute; top: 280px; left: 50%; z-index: 6; width: min(720px, 92vw); text-align: center; transform: translateX(-50%); pointer-events: auto; }
+.hero-title { position: absolute; top: 310px; left: 50%; z-index: 6; width: min(600px, 88vw); text-align: center; transform: translateX(-50%); pointer-events: auto; }
 .hero-title .script { margin-bottom: 8px; font-size: clamp(3.2rem, 5.2vw, 4.8rem); line-height: 1; font-weight: 500; color: var(--ink); transform: none; }
 .hero-title h1 { font-family: var(--mono); font-size: clamp(.72rem, 1.1vw, .85rem); font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--ink); opacity: .9; }
 
