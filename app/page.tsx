@@ -168,10 +168,6 @@ function Hero() {
           <p className="hero-subhead">
             Full-stack developer creating useful web applications, AI-powered experiences and interfaces that feel good to use.
           </p>
-          <div className="hero-actions">
-            <a href="#work" className="hero-btn hero-btn--primary" data-cursor-text="VIEW">VIEW MY WORK</a>
-            <a href="mailto:shuvm2000@gmail.com" target="_blank" rel="noreferrer" className="hero-btn hero-btn--secondary" data-cursor-text="RESUME">RESUME ↗</a>
-          </div>
           <div className="hero-status">
             <span className="status-dot" />
             <span>OPEN TO INTERNSHIPS / FREELANCE</span>
