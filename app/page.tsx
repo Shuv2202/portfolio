@@ -8,6 +8,7 @@ import HangingIdCard from "./components/HangingIdCard";
 import PolaroidScrapbookCard from "./components/PolaroidScrapbookCard";
 import ManifestoSection from "./components/ManifestoSection";
 import FinderProjectsSection from "./components/FinderProjectsSection";
+import FlowerDrawer from "./components/FlowerDrawer";
 import { toggleLofiAudio } from "./utils/lofiAudio";
 
 type Project = {
@@ -652,6 +653,7 @@ export default function Home() {
       <Contact />
       <ServeMeCaseStudyModal isOpen={serveMeModalOpen} onClose={() => setServeMeModalOpen(false)} />
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <FlowerDrawer />
     </>
   );
 }

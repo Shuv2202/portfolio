@@ -1,0 +1,165 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+type Flower = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  petals: number;
+  color: string;
+  centerColor: string;
+  rotation: number;
+};
+
+const FLOWER_COLORS = [
+  { petal: "#ff85a2", center: "#ffee93" }, // Pink
+  { petal: "#ffd166", center: "#704010" }, // Sunflower Yellow
+  { petal: "#b5e2fa", center: "#edafb8" }, // Soft Sky Blue
+  { petal: "#ff70a6", center: "#ff9770" }, // Vibrant Coral
+  { petal: "#c77dff", center: "#e0aaff" }, // Violet
+  { petal: "#70e4d5", center: "#38b000" }, // Mint Green
+  { petal: "#ffffff", center: "#ffb703" }, // Classic White Daisy
+];
+
+export default function FlowerDrawer() {
+  const [isActive, setIsActive] = useState(false);
+  const [flowers, setFlowers] = useState<Flower[]>([]);
+  const isDragging = useRef(false);
+  const lastPos = useRef({ x: 0, y: 0 });
+
+  const addFlower = (clientX: number, clientY: number) => {
+    const pageX = clientX + window.scrollX;
+    const pageY = clientY + window.scrollY;
+
+    const dist = Math.hypot(pageX - lastPos.current.x, pageY - lastPos.current.y);
+    if (isDragging.current && dist < 28) return;
+
+    lastPos.current = { x: pageX, y: pageY };
+
+    const randomPalette = FLOWER_COLORS[Math.floor(Math.random() * FLOWER_COLORS.length)];
+    const newFlower: Flower = {
+      id: Date.now() + Math.random(),
+      x: pageX,
+      y: pageY,
+      size: Math.floor(Math.random() * 18) + 28, // 28px to 46px
+      petals: Math.random() > 0.35 ? 6 : 8,
+      color: randomPalette.petal,
+      centerColor: randomPalette.center,
+      rotation: Math.floor(Math.random() * 360),
+    };
+
+    setFlowers((prev) => [...prev.slice(-90), newFlower]);
+  };
+
+  useEffect(() => {
+    if (!isActive) return;
+
+    const handlePointerDown = (e: PointerEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target?.closest(".flower-drawer-controls")) return;
+
+      isDragging.current = true;
+      addFlower(e.clientX, e.clientY);
+    };
+
+    const handlePointerMove = (e: PointerEvent) => {
+      if (!isDragging.current) return;
+      addFlower(e.clientX, e.clientY);
+    };
+
+    const handlePointerUp = () => {
+      isDragging.current = false;
+    };
+
+    window.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
+
+    return () => {
+      window.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
+    };
+  }, [isActive]);
+
+  return (
+    <>
+      {/* Flower Overlay Layer */}
+      <div
+        className="flower-canvas-overlay"
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          zIndex: 8888,
+          overflow: "hidden",
+        }}
+      >
+        {flowers.map((f) => (
+          <div
+            key={f.id}
+            className="blooming-flower"
+            style={{
+              position: "absolute",
+              left: `${f.x}px`,
+              top: `${f.y}px`,
+              width: `${f.size}px`,
+              height: `${f.size}px`,
+              transform: `translate(-50%, -50%) rotate(${f.rotation}deg)`,
+            }}
+          >
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+              <g fill={f.color} stroke="rgba(0,0,0,0.18)" strokeWidth="3">
+                {Array.from({ length: f.petals }).map((_, i) => {
+                  const angle = (360 / f.petals) * i;
+                  return (
+                    <ellipse
+                      key={i}
+                      cx="50"
+                      cy="22"
+                      rx="14"
+                      ry="22"
+                      transform={`rotate(${angle} 50 50)`}
+                    />
+                  );
+                })}
+              </g>
+              <circle cx="50" cy="50" r="15" fill={f.centerColor} stroke="rgba(0,0,0,0.22)" strokeWidth="3" />
+            </svg>
+          </div>
+        ))}
+      </div>
+
+      {/* Pencil Tool Floating Controls */}
+      <div className="flower-drawer-controls">
+        {isActive && (
+          <div className="flower-drawer-badge">
+            <span>Click or drag anywhere to draw 🌸</span>
+            {flowers.length > 0 && (
+              <button
+                type="button"
+                className="flower-clear-btn"
+                onClick={() => setFlowers([])}
+              >
+                Clear ({flowers.length})
+              </button>
+            )}
+          </div>
+        )}
+
+        <button
+          type="button"
+          className={`pencil-toggle-btn ${isActive ? "is-active" : ""}`}
+          onClick={() => setIsActive(!isActive)}
+          data-cursor-text={isActive ? "Stop drawing" : "Draw flowers"}
+          aria-label="Pencil tool to draw flowers"
+        >
+          <span className="pencil-icon">✏️</span>
+          <span className="pencil-label">{isActive ? "Drawing..." : "Draw Flowers"}</span>
+        </button>
+      </div>
+    </>
+  );
+}

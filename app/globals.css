@@ -3571,3 +3571,117 @@ img, svg { display: block; max-width: 100%; }
   }
 }
 
+/* ========================================
+   FLOWER DRAWER & PENCIL TOOL STYLES
+======================================== */
+.blooming-flower {
+  pointer-events: none;
+  animation: flowerBloom 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+}
+
+@keyframes flowerBloom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1.15) rotate(15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+.flower-drawer-controls {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pencil-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: var(--dark);
+  color: #faf7ef;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pencil-toggle-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  background: #33322d;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.3);
+}
+
+.pencil-toggle-btn.is-active {
+  background: var(--yellow);
+  color: var(--dark);
+  border-color: var(--dark);
+  box-shadow: 0 0 20px rgba(228, 216, 79, 0.6);
+  animation: pencilPulse 2s infinite ease-in-out;
+}
+
+@keyframes pencilPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+.pencil-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.pencil-toggle-btn:hover .pencil-icon {
+  transform: rotate(-15deg);
+}
+
+.flower-drawer-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  animation: badgeFadeIn 0.3s ease-out;
+}
+
+@keyframes badgeFadeIn {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.flower-clear-btn {
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: #242421;
+  color: #ffffff;
+  font-size: 0.64rem;
+  font-family: var(--mono);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.flower-clear-btn:hover {
+  background: #ff5f56;
+}
+
