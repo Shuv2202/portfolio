@@ -82,7 +82,9 @@ const jsonLdData = {
       "url": siteUrl,
       "image": `${siteUrl}/og.png`,
       "sameAs": [
-        "https://github.com/Shuv2202"
+        "https://github.com/Shuv2202",
+        "https://www.linkedin.com/in/shubham-kumar-17313a236",
+        "https://www.instagram.com/thatsosubh/"
       ],
       "knowsAbout": [
         "React",
