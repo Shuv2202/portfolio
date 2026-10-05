@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://shubham-creative-portfolio.mk1632003.chatgpt.site";
+  const baseUrl = "https://me.sosubh.online";
   return [
     {
       url: baseUrl,

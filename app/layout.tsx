@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const siteUrl = "https://shubham-creative-portfolio.mk1632003.chatgpt.site";
+const siteUrl = "https://me.sosubh.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   publisher: "Shubham Kumar",
   category: "technology",
   alternates: {
-    canonical: siteUrl,
+    canonical: "https://me.sosubh.online/",
   },
   robots: {
     index: true,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shubham Kumar — I Think, Then I Build",
     description: "Selected web projects, experiments, and the creative process behind them.",
-    url: siteUrl,
+    url: "https://me.sosubh.online/",
     siteName: "Shubham Kumar Portfolio",
     locale: "en_US",
     type: "website",
@@ -98,24 +98,12 @@ const jsonLdData = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       "url": siteUrl,
-      "name": "Shubham Kumar — Portfolio",
+      "name": "Shubham Kumar Portfolio",
       "description": "Portfolio of Shubham Kumar, Full-Stack Web Developer & B.Tech CSE student.",
       "publisher": {
         "@id": `${siteUrl}/#person`
       },
       "inLanguage": "en-US"
-    },
-    {
-      "@type": "ProfilePage",
-      "@id": `${siteUrl}/#webpage`,
-      "url": siteUrl,
-      "name": "Shubham Kumar — Web Developer & Creative Builder",
-      "isPartOf": {
-        "@id": `${siteUrl}/#website`
-      },
-      "mainEntity": {
-        "@id": `${siteUrl}/#person`
-      }
     }
   ]
 };
@@ -124,7 +112,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="canonical" href={siteUrl} />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.addEventListener('unhandledrejection',function(e){if(e&&e.preventDefault){e.preventDefault();}});`,
@@ -139,4 +126,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+
 

@@ -256,17 +256,17 @@ function ServeMeCaseStudyModal({ isOpen, onClose }: { isOpen: boolean; onClose: 
           <h3>03 / SYSTEM WORKSPACES</h3>
           <div className="workspace-preview-grid">
             <div className="workspace-card">
-              <img src="/assets/serveme.svg" alt="ServeMe Guest Ordering UI" />
+              <img src="/assets/serveme.svg" alt="ServeMe Guest Ordering UI" loading="lazy" decoding="async" />
               <h4>01. Guest Mobile Ordering</h4>
               <p>Touch-friendly menu browsing, real-time cart, and instant order tracking directly from table QR code.</p>
             </div>
             <div className="workspace-card">
-              <img src="/assets/landing-page.svg" alt="Kitchen Display System" />
+              <img src="/assets/landing-page.svg" alt="Kitchen Display System" loading="lazy" decoding="async" />
               <h4>02. Kitchen Display System (KDS)</h4>
               <p>Real-time order ticket dispatch board tracking cooking timers and dish preparation status.</p>
             </div>
             <div className="workspace-card">
-              <img src="/assets/portfolio.svg" alt="Vendor Management Console" />
+              <img src="/assets/portfolio.svg" alt="Vendor Management Console" loading="lazy" decoding="async" />
               <h4>03. Vendor Admin Console</h4>
               <p>Centralized inventory management, menu pricing updates, and sales analytics console.</p>
             </div>
@@ -339,7 +339,7 @@ function Work({ onOpenServeMe, onOpenProject }: { onOpenServeMe: () => void; onO
             </div>
 
             <div className="featured-card__preview" onClick={onOpenServeMe} data-cursor-text="VIEW CASE STUDY">
-              <img src="/assets/serveme.svg" alt="ServeMe Restaurant System UI" />
+              <img src="/assets/serveme.svg" alt="ServeMe Restaurant System UI" loading="lazy" decoding="async" />
               <div className="preview-overlay">
                 <span>EXPLORE SERVEME WORKFLOW ↗</span>
               </div>
@@ -352,7 +352,7 @@ function Work({ onOpenServeMe, onOpenProject }: { onOpenServeMe: () => void; onO
           {/* 02 - MEDISCAN */}
           <article className="project-card project-card--medium project-card--ink project-card--tilted-left">
             <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[1])} data-cursor-text="VIEW">
-              <img src="/assets/mediscan.svg" alt="MediScan AI Healthcare App" />
+              <img src="/assets/mediscan.svg" alt="MediScan AI Healthcare App" loading="lazy" decoding="async" />
               <span>Open details <ArrowIcon /></span>
             </button>
             <div className="project-card__content">
@@ -366,7 +366,7 @@ function Work({ onOpenServeMe, onOpenProject }: { onOpenServeMe: () => void; onO
           {/* 03 - NEXUS */}
           <article className="project-card project-card--medium project-card--blue project-card--tilted-right">
             <button className="project-card__image" type="button" onClick={() => onOpenProject(projects[2])} data-cursor-text="VIEW">
-              <img src="/assets/landing-page.svg" alt="Nexus Landing Page" />
+              <img src="/assets/landing-page.svg" alt="Nexus Landing Page" loading="lazy" decoding="async" />
               <span>Open details <ArrowIcon /></span>
             </button>
             <div className="project-card__content">

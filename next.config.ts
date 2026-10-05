@@ -1,5 +1,18 @@
 import type { NextConfig } from "next";
 
+const cspHeader = `
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com data:;
+  img-src 'self' data: blob: https:;
+  media-src 'self' data: blob:;
+  connect-src 'self' https:;
+  frame-ancestors 'self';
+  object-src 'none';
+  upgrade-insecure-requests;
+`.replace(/\s{2,}/g, " ").trim();
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
@@ -30,11 +43,15 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
+            value: "strict-origin-when-cross-origin",
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+            value: "camera=(), microphone=(), geolocation=()",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: cspHeader,
           },
         ],
       },
