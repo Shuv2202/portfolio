@@ -92,7 +92,9 @@ export function startLofiAudio() {
   }
 
   if (audioCtx.state === "suspended") {
-    audioCtx.resume();
+    audioCtx.resume().catch((err) => {
+      console.warn("AudioContext resume rejected:", err);
+    });
   }
 
   isPlaying = true;
@@ -130,6 +132,8 @@ export function stopLofiAudio() {
     timerId = null;
   }
   if (audioCtx && audioCtx.state === "running") {
-    audioCtx.suspend();
+    audioCtx.suspend().catch((err) => {
+      console.warn("AudioContext suspend rejected:", err);
+    });
   }
 }
